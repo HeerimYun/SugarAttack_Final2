@@ -21,6 +21,9 @@ public class CharSelect : MonoBehaviour {
     /*캐릭터 선택 수*/
     public int onCount = 0;
 
+    /*캐릭터 선택 애니메이션*/
+    Animator selectAnim;
+
     // Use this for initialization
     void Start()
     {
@@ -50,6 +53,8 @@ public class CharSelect : MonoBehaviour {
         {
             if (characters[i].isOn)
             {
+                selectAnim = GameObject.Find(characters[i].name).GetComponent<Animator>();
+                selectAnim.SetTrigger(characters[i].name + "Select");
                 onCount++;
             }
         }
