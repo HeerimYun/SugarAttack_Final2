@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/0.0_Splash.unity
+    guid: 4b999791a36f54c49afffcd93ad47b48
+  - enabled: 1
+    path: Assets/Scenes/0.1_WaitingRoom.unity
+    guid: faeca11a4086e6f4db22901f24872207
+  - enabled: 1
+    path: Assets/Scenes/1.0_IntroAnimation.unity
+    guid: e2231d7f39ed34876a5d417aee50ab45
+  - enabled: 1
+    path: Assets/Scenes/1.1_CharSelect.unity
+    guid: 4346be50cb5614d619797c7b42f97d4d
+  - enabled: 1
+    path: Assets/Scenes/1.2_CharOrder.unity
+    guid: a05e0758c7e8ff445874863e63394b46
+  - enabled: 1
+    path: Assets/Scenes/1.3_InsulinInput.unity
+    guid: a5eca507ddd21374e98dc827e9012735
+  - enabled: 1
+    path: Assets/Scenes/1.5_Roulette.unity
+    guid: e07461676fe71504a9cd00174e635a76
+  m_configObjects: {}
