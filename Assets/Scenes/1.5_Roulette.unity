@@ -1403,11 +1403,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114625476976342052, guid: 39aa22349c98ad849a4ab7e77006349e,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1800731856}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39aa22349c98ad849a4ab7e77006349e, type: 2}
   m_IsPrefabAsset: 0
@@ -1421,12 +1416,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4215884765140862, guid: 49b9c0f9270519f438ebfdb058c780e3,
     type: 2}
   m_PrefabInternal: {fileID: 1453605028}
---- !u!114 &1800731856 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114148333523677126, guid: 49b9c0f9270519f438ebfdb058c780e3,
-    type: 2}
-  m_PrefabInternal: {fileID: 1453605028}
-  m_Script: {fileID: 11500000, guid: ecab8b52f6992f848a090438c4f1a220, type: 3}
 --- !u!1 &1848274713
 GameObject:
   m_ObjectHideFlags: 0

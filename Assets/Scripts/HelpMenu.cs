@@ -33,6 +33,9 @@ public class HelpMenu : MonoBehaviour {
     /* 페이지네이션 부분 텍스트 */
     Text currentPage; //현재 보고 있는 페이지
     Text allPage; // 해당 메뉴의 전체 페이지 수
+    Button[] pageBtn = new Button[2]; //페이지 버튼
+    const int LEFT = 0;
+    const int RIGHT = 1;
 
     const int MARIE = 0;
     const int MATT = 1;
@@ -67,6 +70,9 @@ public class HelpMenu : MonoBehaviour {
         charNames[MATT] = "Matt";
         charNames[LUCY] = "Lucy";
         charNames[VICTOR] = "Victor";
+
+        pageBtn[0] = GameObject.Find("Left_btn").GetComponent<Button>();
+        pageBtn[1] = GameObject.Find("Right_btn").GetComponent<Button>();
     }
 
     public void SetUI(int curMenu)
