@@ -33,6 +33,12 @@ public class Inventory : MonoBehaviour {
 
     /*아이템 버튼*/
     Button[] itemBtn = new Button[4];
+
+    /*인벤토리 열 시 나타나는 캐릭터와 그래프*/
+    GameObject charAndChart;
+
+    /*인벤토리의 이미지*/
+    Image invenChar;
     
     //인덱스 정의
     const int JUICE = 0;
@@ -114,7 +120,7 @@ public class Inventory : MonoBehaviour {
         itemPopup = GameObject.Find("Item_using");
         itemPopup.transform.localScale = close;
 
-        itemImg = GameObject.Find("Item_Image").GetComponent<Image>();       
+        itemImg = GameObject.Find("Item_Image").GetComponent<Image>();
         itemName = GameObject.Find("Item_name").GetComponent<Text>();
         itemGI = GameObject.Find("Item_text").GetComponent<Text>();
         //Debug.Log(itemImg + ", " + itemName + ", " + itemGI);
@@ -131,6 +137,11 @@ public class Inventory : MonoBehaviour {
         itemBtn[CANDY] = GameObject.Find("CandyBtn").GetComponent<Button>();
 
         bag_audio = GameObject.Find("Bag_toggle").GetComponent<AudioSource>();
+
+        charAndChart = GameObject.Find("CharAndChart");
+        charAndChart.transform.localScale = close;
+        invenChar = GameObject.Find("CharImg").GetComponent<Image>();
+        invenChar.sprite = Resources.Load<Sprite>("Characters/" + currentChar.name + "/idle/" + currentChar.name.ToLower() + "_idle_01");
     }
 	// Update is called once per frame
 	void Update () {
@@ -167,7 +178,10 @@ public class Inventory : MonoBehaviour {
         inven_guide.transform.localScale = open;
 
         //판넬 펼친다.
-        panel.transform.localScale = open;       
+        panel.transform.localScale = open;
+
+        //캐릭터 그래프 펼친다.
+        charAndChart.transform.localScale = open;
     }
 
     /**
@@ -183,6 +197,9 @@ public class Inventory : MonoBehaviour {
 
         //판넬 닫는다.
         panel.transform.localScale = close;
+
+        //캐릭터 그래프 닫는다.
+        charAndChart.transform.localScale = close;
 
         //팝업이 열려있으면 닫는다.
         if (itemPopup.transform.localScale == open)
