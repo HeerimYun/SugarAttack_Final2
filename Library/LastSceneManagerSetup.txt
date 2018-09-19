@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/1.5_Roulette.unity
-=======
-- path: Assets/Scenes/1.1_CharSelect.unity
->>>>>>> origin/V.0.1/hyebin
+- path: Assets/Scenes/1.2_CharOrder.unity
   isLoaded: 1
   isActive: 1
