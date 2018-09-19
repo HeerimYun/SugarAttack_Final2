@@ -4,7 +4,11 @@
 EditorSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 7
+<<<<<<< HEAD
   m_ExternalVersionControlSupport: PlasticSCM
+=======
+  m_ExternalVersionControlSupport: Hidden Meta Files
+>>>>>>> V.0.1/hyebin
   m_SerializationMode: 2
   m_LineEndingsForNewScripts: 2
   m_DefaultBehaviorMode: 1
