@@ -80,6 +80,20 @@ public class PageMove : MonoBehaviour {
         SceneManager.LoadScene(6);
     }
 
+    /**
+     * 룰렛결과에 따라 
+     */
+    public static void Roulette()
+    {
+        //현재 위치
+        switch (GameData.board[GameData.GetCharByOrder(GameData.currentOrder).position])
+        {
+            case "퀴즈":
+                //퀴즈 씬으로 보내기
+                break;
+        }
+    }
+
     // Update is called once per frame
     void Update () {
 		

@@ -68,8 +68,10 @@ public class RouletteScene : MonoBehaviour {
         Debug.Log("현재 시간" + currentTime);
         if (currentTime > duraition && currentTime < duraition + 2)
         {
-            GameData.TurnChange();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            //GameData.TurnChange();
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            PageMove.Roulette();
+            
         }
     }
 }
