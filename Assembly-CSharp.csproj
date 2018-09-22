@@ -73,6 +73,9 @@
     <Compile Include="Assets\Scripts\PageMove.cs" />
     <Compile Include="Assets\Scripts\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\PlayerOrder.cs" />
+    <Compile Include="Assets\Scripts\Quiz_Choice.cs" />
+    <Compile Include="Assets\Scripts\Quiz_Line.cs" />
+    <Compile Include="Assets\Scripts\Quiz_OX.cs" />
     <Compile Include="Assets\Scripts\RouletteScene.cs" />
     <Compile Include="Assets\Scripts\RouletteSpin.cs" />
     <Compile Include="Assets\Scripts\ShowTurn.cs" />
