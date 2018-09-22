@@ -26,4 +26,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/1.5_Roulette.unity
     guid: e07461676fe71504a9cd00174e635a76
+  - enabled: 1
+    path: Assets/Scenes/5.0_Quiz_Choice.unity
+    guid: aa7acef8387ae9d44877fdd31b754f00
+  - enabled: 1
+    path: Assets/Scenes/5.0_Quiz_Drag.unity
+    guid: 65f2cfcd42a71194b9f89d554263f77a
+  - enabled: 1
+    path: Assets/Scenes/5.0_Quiz_Line.unity
+    guid: d37b4099eaef3a14aa3e7da2717e44a1
+  - enabled: 1
+    path: Assets/Scenes/5.0_Quiz_OX.unity
+    guid: 13f590592caf1f4478e58681a74c3c8a
   m_configObjects: {}

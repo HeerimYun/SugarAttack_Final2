@@ -85,13 +85,17 @@ public class PageMove : MonoBehaviour {
      */
     public static void Roulette()
     {
+        //SceneManager.LoadScene(7); //4지선다형 
+        SceneManager.LoadScene(10); //OX퀴즈 
         //현재 위치
-        switch (GameData.board[GameData.GetCharByOrder(GameData.currentOrder).position])
+        /*switch (GameData.board[GameData.GetCharByOrder(GameData.currentOrder).position])
         {
             case "퀴즈":
-                //퀴즈 씬으로 보내기
+                //퀴즈 씬으로 보내기 - 유형 4개 중 랜덤 Scene 넘버 7~10
+                //SceneManager.LoadScene(Random.Range(7, 11));
+                
                 break;
-        }
+        }*/
     }
 
     // Update is called once per frame

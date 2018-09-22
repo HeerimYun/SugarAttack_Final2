@@ -22,7 +22,7 @@ public class RouletteScene : MonoBehaviour {
     Animator rouletteCharacterAnim;
 
     /*룰렛씬 머무는 시간*/
-    public float duraition = 23;
+    float duraition = 20;
 
     float currentTime = 30;
 
