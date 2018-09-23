@@ -85,8 +85,10 @@ public class PageMove : MonoBehaviour {
      */
     public static void Roulette()
     {
-        //SceneManager.LoadScene(7); //4지선다형 
-        SceneManager.LoadScene(10); //OX퀴즈 
+        SceneManager.LoadScene(7); //4지선다형 
+        //SceneManager.LoadScene(10); //OX퀴즈 
+        //SceneManager.LoadScene(9); //선잇기 퀴즈 
+
         //현재 위치
         /*switch (GameData.board[GameData.GetCharByOrder(GameData.currentOrder).position])
         {

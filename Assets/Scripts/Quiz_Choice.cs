@@ -85,7 +85,7 @@ public class Quiz_Choice : MonoBehaviour {
 
     public void randomQuiz()
     {
-        quiz = GameData.choiceQuizzes[Random.Range(0, GameData.choiceQuizzes.Length + 1)];
+        quiz = GameData.choiceQuizzes[Random.Range(0, GameData.choiceQuizzes.Length)];
         quiz.appeard++;
     }
 
