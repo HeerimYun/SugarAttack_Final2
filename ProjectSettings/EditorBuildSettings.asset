@@ -30,8 +30,8 @@ EditorBuildSettings:
     path: Assets/Scenes/5.0_Quiz_Choice.unity
     guid: aa7acef8387ae9d44877fdd31b754f00
   - enabled: 1
-    path: Assets/Scenes/5.0_Quiz_Drag.unity
-    guid: 65f2cfcd42a71194b9f89d554263f77a
+    path: Assets/Scenes/5.0_Quiz_DragDrop.unity
+    guid: b9dcee45086568043b9fa2efa4598e6a
   - enabled: 1
     path: Assets/Scenes/5.0_Quiz_Line.unity
     guid: d37b4099eaef3a14aa3e7da2717e44a1

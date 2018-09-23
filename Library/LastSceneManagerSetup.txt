@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/5.0_Quiz_Drag.unity
+=======
+- path: Assets/Scenes/5.0_Quiz_DragDrop.unity
+>>>>>>> c3c1509c04c8411e2ef0c8ed7340929771bb5819
   isLoaded: 1
   isActive: 1
