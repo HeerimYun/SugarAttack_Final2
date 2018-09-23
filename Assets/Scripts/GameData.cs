@@ -265,10 +265,10 @@ public class GameData {
     //드래드앤드랍 퀴즈
     public string[] quiz_drag_question = new string[]
     {
-        "저혈당 상태가 온 것 같아요. 저혈당 상태에 나타나는 내 몸의 증상은 무엇일까요?",
-        "모든 일에 집중이 되지 않아요. 뭔가를 먹어볼까요?",
+        "저혈당 상태가 온 것 같아요. \n저혈당 상태에 나타나는 내 몸의 증상은 무엇일까요?",
+        "모든 일에 집중이 되지 않아요. \n뭔가를 먹어볼까요?",
         "저혈당이 왔을 때 먹을 간식을 챙겨보아요!",
-        "식후 운동을 하려고 해요. 어떤 운동을 하는게 좋을까요?",
+        "식후 운동을 하려고 해요. \n어떤 운동을 하는게 좋을까요?",
         "고혈당 상태가 온 것 같아요. 고혈당 상태에 나타나는 내 몸의 증상은 무엇일까요?",
         "인슐린 주사를 맞을 때 올바른 부위를 선택해주세요.",
         "혈당을 낮추는 데에 도움이 되는 운동을 골라보세요!"
@@ -279,7 +279,7 @@ public class GameData {
         "기침","발저림","식은땀","집중력\n저하","치통","복통",
         "물","쨈","포도당\n사탕","초콜릿","오렌지\n주스","우유",
         "포도당\n사탕","치킨","짜장면","피자","꿀물","햄버거",
-        "한강\n수영하기","한라산\n오르기","가벼운\n걷기","자전거\n타기","5시간\n뛰기","체조\n백번 하기",
+        "한강\n수영하기","한라산\n오르기","가벼운\n걷기","자전거\n타기","5시간\n뛰기","체조\n백번하기",
         "목이\n말라요","계속\n먹어요","몸이\n떨려요","기침이\n나와요","이가\n아파요","배가\n아파요",
         "배","손","허벅지","가슴","발","목",
         "에어로빅","윗몸\n일으키기","체조\n백번","숨쉬기","팔굽혀\n펴기","앉기"
@@ -294,6 +294,19 @@ public class GameData {
         "목이\n말라요","계속\n먹어요",
         "배","허벅지",
         "에어로빅"
+    };
+
+    public int[] quiz_drag_answer_num = new int[7] { 2,2,2,2,2,2,1 };
+
+    public string[] quiz_drag_library = new string[]
+    {
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
     };
 
     //캐릭터 변수
@@ -330,6 +343,8 @@ public class GameData {
     public static OXQuiz[] oxQuizzes;
     //Line 퀴즈 객체 배열
     public static LineQuiz[] lineQuizzes;
+    //드래그 퀴즈 객체 배열
+    public static DragQuiz[] dragQuizzes;
 
     /*리스트*/
     List<int> bloodSugar;
@@ -425,9 +440,33 @@ public class GameData {
      */
     private void SetQuiz()
     {
+        SetQuestion();
         SetOXQuiz();
         SetChoiceQuiz();
         SetLineQuiz();
+        SetDragQuiz();
+    }
+
+    /**
+     * 모든 유형의 문제 앞에 문제 단어를 붙임
+     */
+    public void SetQuestion()
+    {
+        AddText(quiz_ox_question);
+        AddText(quiz_line_question);
+        AddText(quiz_choice_question);
+        AddText(quiz_drag_question);
+    }
+
+    /**
+     * 모든 문제 앞에 "문제. "를 붙이는 작업
+     */
+    public void AddText(string[] questionArray)
+    {
+        for(int i=0; i<questionArray.Length; i++)
+        {
+            questionArray[i] = "문제. " + questionArray[i];
+        }
     }
 
     /**
@@ -484,6 +523,33 @@ public class GameData {
             }
 
             lineQuizzes[i] = new LineQuiz(quiz_line_question[i], c_left, c_right, answer, quiz_line_library[i], 0);
+        }
+    }
+
+    /**
+     * 드래그앤 드랍 퀴즈
+     * answer 배열 사이즈 다른 것 유의
+     */
+    private void SetDragQuiz()
+    {
+        dragQuizzes = new DragQuiz[quiz_drag_question.Length];
+
+        for (int i=0; i<quiz_drag_question.Length; i++)
+        {
+            string[] postits = new string[quiz_drag_postit.Length]; //한 문제에 대한 포스트잇 배열 생성
+            string[] answers = new string[quiz_drag_answer_num[i]]; //답 배열 생성
+
+            for(int k=0; k<6; k++) //포스트잇 텍스트
+            {
+                postits[k] = quiz_drag_postit[i * 6 + k];
+            }
+
+            for (int n=0; n< quiz_drag_answer_num[i]; n++) //답 배열 텍스트
+            {
+                answers[n] = quiz_drag_answer[i * 2 + n];
+            }
+
+            dragQuizzes[i] = new DragQuiz(quiz_drag_question[i], postits, answers, quiz_drag_library[i], 0);
         }
     }
 
@@ -822,6 +888,32 @@ public class LineQuiz
         this.choice_left = choice_left;
         this.choice_right = choice_right;
         this.answers = answers;
+        this.library = library;
+        this.appear = appear;
+    }
+}
+
+/**
+ * 드래그 퀴즈
+ */
+public class DragQuiz
+{
+    /*퀴즈 질문*/
+    public string question;
+    /*6개 포스트잇 보기 텍스트*/
+    public string[] postit = new string[6];
+    /*정답*/
+    public string[] answer; //사이즈가 다름
+    /*해설*/
+    public string library;
+    /*퀴즈 등장 횟수*/
+    public int appear;
+
+    public DragQuiz(string question, string[] postit, string[] answer, string library, int appear)
+    {
+        this.question = question;
+        this.postit = postit;
+        this.answer = answer;
         this.library = library;
         this.appear = appear;
     }

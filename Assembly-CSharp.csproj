@@ -65,6 +65,8 @@
     <Compile Include="Assets\Scripts\CharOrder.cs" />
     <Compile Include="Assets\Scripts\CharSelect.cs" />
     <Compile Include="Assets\Scripts\CustomOutline.cs" />
+    <Compile Include="Assets\Scripts\Draggable.cs" />
+    <Compile Include="Assets\Scripts\DropZone.cs" />
     <Compile Include="Assets\Scripts\GameData.cs" />
     <Compile Include="Assets\Scripts\HelpMenu.cs" />
     <Compile Include="Assets\Scripts\InsulinInput.cs" />
@@ -74,8 +76,10 @@
     <Compile Include="Assets\Scripts\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\PlayerOrder.cs" />
     <Compile Include="Assets\Scripts\Quiz_Choice.cs" />
+    <Compile Include="Assets\Scripts\Quiz_DragDrop.cs" />
     <Compile Include="Assets\Scripts\Quiz_Line.cs" />
     <Compile Include="Assets\Scripts\Quiz_OX.cs" />
+    <Compile Include="Assets\Scripts\QuizResultPopUp.cs" />
     <Compile Include="Assets\Scripts\RouletteScene.cs" />
     <Compile Include="Assets\Scripts\RouletteSpin.cs" />
     <Compile Include="Assets\Scripts\ShowTurn.cs" />

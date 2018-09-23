@@ -22,8 +22,16 @@ public class Quiz_OX : MonoBehaviour {
     /*고른 답*/
     string choosedAnswer;
 
-	// Use this for initialization
-	void Start () {
+    /*결과 팝업*/
+    GameObject quizResult;
+    /*팝업 상태*/
+    Vector3 open = new Vector3(1, 1, 1);
+    Vector3 close = new Vector3(0, 1, 1);
+    /*팝업 이미지*/
+    Image popUpImg;
+
+    // Use this for initialization
+    void Start () {
         RandomQuiz();
         GetUI();
         SetUI();
@@ -54,6 +62,11 @@ public class Quiz_OX : MonoBehaviour {
 
         checkAnswerBtn = GameObject.Find("CheckAnswerBtn").GetComponent<Button>();
         checkAnswerBtn.interactable = false;
+
+        quizResult = GameObject.Find("QuizResult");
+        quizResult.transform.localScale = close;
+
+        popUpImg = GameObject.Find("QuizResult/Image").GetComponent<Image>();
     }
 
     /**
@@ -86,14 +99,19 @@ public class Quiz_OX : MonoBehaviour {
      */
     public void OnClickCheckAnswerBtn()
     {
+        string correctness = "";
+
         if (choosedAnswer.Equals(quiz.answer))
         {
-            Debug.Log("맞았어요!");
+            correctness = "correct";
         }
         else
         {
-            Debug.Log("틀렸어요!");
+            correctness = "incorrect";
         }
+
+        popUpImg.sprite = Resources.Load<Sprite>("quiz/" + correctness + "_" + GameData.GetCharByOrder(GameData.currentOrder).name);
+        quizResult.transform.localScale = open;
     }
 
 	// Update is called once per frame
