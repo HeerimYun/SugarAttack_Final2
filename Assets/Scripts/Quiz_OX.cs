@@ -42,7 +42,7 @@ public class Quiz_OX : MonoBehaviour {
      */
     public void RandomQuiz()
     {
-        quiz = GameData.oxQuizzes[Random.Range(0, GameData.oxQuizzes.Length + 1)];
+        quiz = GameData.oxQuizzes[Random.Range(0, GameData.oxQuizzes.Length)];
         quiz.appeard++;
     }
 
@@ -100,7 +100,8 @@ public class Quiz_OX : MonoBehaviour {
     public void OnClickCheckAnswerBtn()
     {
         string correctness = "";
-
+        Debug.Log(quiz.answer);
+        Debug.Log(choosedAnswer);
         if (choosedAnswer.Equals(quiz.answer))
         {
             correctness = "correct";

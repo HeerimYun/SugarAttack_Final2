@@ -355,6 +355,10 @@ public class GameData {
     List<int> bloodSugar;
     List<int> monsterCard;
 
+    /*열고 닫기*/
+    public static Vector3 open = new Vector3(1, 1, 1);
+    public static Vector3 close = new Vector3(0, 1, 1);
+
     //인스턴스 없을 시 생성
     void Awake()
     {

@@ -80,8 +80,10 @@
     <Compile Include="Assets\Scripts\Quiz_Line.cs" />
     <Compile Include="Assets\Scripts\Quiz_OX.cs" />
     <Compile Include="Assets\Scripts\QuizResultPopUp.cs" />
+    <Compile Include="Assets\Scripts\QuizReward.cs" />
     <Compile Include="Assets\Scripts\RouletteScene.cs" />
     <Compile Include="Assets\Scripts\RouletteSpin.cs" />
+    <Compile Include="Assets\Scripts\SecretLockerRoom.cs" />
     <Compile Include="Assets\Scripts\ShowTurn.cs" />
     <Compile Include="Assets\Scripts\SplashController.cs" />
     <Reference Include="UnityEditor.StandardEvents">
