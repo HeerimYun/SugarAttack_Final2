@@ -65,7 +65,7 @@ public class RouletteScene : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         currentTime += Time.deltaTime;
-        Debug.Log("현재 시간" + currentTime);
+        //Debug.Log("현재 시간" + currentTime);
         if (currentTime > duraition && currentTime < duraition + 2)
         {
             //GameData.TurnChange();

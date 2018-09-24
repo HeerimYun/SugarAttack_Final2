@@ -261,7 +261,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 210545227}
-  - component: {fileID: 210545228}
   m_Layer: 0
   m_Name: RightBtns
   m_TagString: Untagged
@@ -289,18 +288,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &210545228
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 210545226}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1184210157, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AllowSwitchOff: 1
 --- !u!1 &354415087
 GameObject:
   m_ObjectHideFlags: 0
@@ -922,8 +909,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -250.19995, y: 35.19995}
-  m_SizeDelta: {x: 323, y: 166.6}
+  m_AnchoredPosition: {x: -250, y: 87.89}
+  m_SizeDelta: {x: 355.3, y: 266.7}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &912455829
 MonoBehaviour:
@@ -956,7 +943,7 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
+    m_LineSpacing: 1.1
   m_Text: "\uD53C\uC5D0 \uB2F9\uC774\n\uBD80\uC871\uD55C \uC0C1\uD0DC"
 --- !u!222 &912455830
 CanvasRenderer:
@@ -1080,8 +1067,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -232.19989, y: 13.5}
-  m_SizeDelta: {x: 246, y: 166.6}
+  m_AnchoredPosition: {x: -250, y: 72}
+  m_SizeDelta: {x: 284.67, y: 237.7}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1236629999
 MonoBehaviour:
@@ -1109,12 +1096,12 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 5
     m_MaxSize: 90
-    m_Alignment: 0
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
+    m_LineSpacing: 1.1
   m_Text: "\uD53C\uC5D0 \uB2F9\uC774\n\uB9CE\uC740 \uC0C1\uD0DC"
 --- !u!222 &1236630000
 CanvasRenderer:
@@ -1337,10 +1324,21 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 95052471}
   toggleTransition: 1
   graphic: {fileID: 728555019}
-  m_Group: {fileID: 210545228}
+  m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1833241008}
+        m_MethodName: OnClickChoice
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 0
@@ -1514,8 +1512,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 225, y: -28.5}
-  m_SizeDelta: {x: 200.4, y: 83}
+  m_AnchoredPosition: {x: 318.4, y: -12.7}
+  m_SizeDelta: {x: 387, y: 156.4}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1428610537
 MonoBehaviour:
@@ -1543,13 +1541,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 5
     m_MaxSize: 90
-    m_Alignment: 0
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC800\uD608\uB2F9"
+  m_Text: "\uC800\uD608\uB2F9\n"
 --- !u!222 &1428610538
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1632,8 +1630,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1833241010}
-        m_MethodName: CheckAnswer
+      - m_Target: {fileID: 1833241008}
+        m_MethodName: OnClickCheckAnswerBtn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1725,7 +1723,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1537800601}
-  - component: {fileID: 1537800602}
   m_Layer: 0
   m_Name: LeftBtns
   m_TagString: Untagged
@@ -1753,18 +1750,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1537800602
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1537800600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1184210157, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AllowSwitchOff: 1
 --- !u!1 &1632282149
 GameObject:
   m_ObjectHideFlags: 0
@@ -1818,7 +1803,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -1839,10 +1824,21 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 479556943}
   toggleTransition: 1
   graphic: {fileID: 527734739}
-  m_Group: {fileID: 1537800602}
+  m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1833241008}
+        m_MethodName: OnClickChoice
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 0
@@ -1969,7 +1965,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -1990,10 +1986,21 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1337559923}
   toggleTransition: 1
   graphic: {fileID: 1401991404}
-  m_Group: {fileID: 1537800602}
+  m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1833241008}
+        m_MethodName: OnClickChoice
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 0
@@ -2117,9 +2124,6 @@ GameObject:
   - component: {fileID: 1833241014}
   - component: {fileID: 1833241013}
   - component: {fileID: 1833241012}
-  - component: {fileID: 1833241011}
-  - component: {fileID: 1833241010}
-  - component: {fileID: 1833241009}
   - component: {fileID: 1833241008}
   m_Layer: 5
   m_Name: Canvas
@@ -2134,42 +2138,9 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1833241007}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14fd7ba3dfc39f44bb6fd19450dc0339, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1833241009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1833241007}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc74d20e4b933924bbffbdbcd39cc5ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1833241010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1833241007}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9dd0eac4e545b1e498cad19c8b6164b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1833241011
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1833241007}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9f429fa88cb49b4cbb949c602f5bdbb, type: 3}
+  m_Script: {fileID: 11500000, guid: 03be3aa7fa6100e44a9059fe41847f97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1833241012
@@ -2327,10 +2298,21 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1319025583}
   toggleTransition: 1
   graphic: {fileID: 410504670}
-  m_Group: {fileID: 210545228}
+  m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1833241008}
+        m_MethodName: OnClickChoice
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 0
@@ -2441,8 +2423,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 225, y: -28.5}
-  m_SizeDelta: {x: 200.4, y: 83}
+  m_AnchoredPosition: {x: 307.6, y: -1}
+  m_SizeDelta: {x: 365.5, y: 177.4}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &2028972638
 MonoBehaviour:
@@ -2470,13 +2452,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 5
     m_MaxSize: 90
-    m_Alignment: 0
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uACE0\uD608\uB2F9"
+  m_Text: "\uACE0\uD608\uB2F9\n"
 --- !u!222 &2028972639
 CanvasRenderer:
   m_ObjectHideFlags: 0

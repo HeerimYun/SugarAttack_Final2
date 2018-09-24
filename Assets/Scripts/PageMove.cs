@@ -81,12 +81,23 @@ public class PageMove : MonoBehaviour {
     }
 
     /**
+     * 퀴즈 보상화면으로 넘기기
+     */
+    public static void MoveToQuizReward()
+    {
+        SceneManager.LoadScene(11);
+    }
+
+    /**
      * 룰렛결과에 따라 
      */
     public static void Roulette()
     {
         //SceneManager.LoadScene(7); //4지선다형 
+        //SceneManager.LoadScene(8); //드래그 퀴즈 
+        //SceneManager.LoadScene(9); //선잇기 퀴즈
         SceneManager.LoadScene(10); //OX퀴즈 
+
         //현재 위치
         /*switch (GameData.board[GameData.GetCharByOrder(GameData.currentOrder).position])
         {

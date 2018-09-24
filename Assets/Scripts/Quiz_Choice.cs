@@ -23,10 +23,18 @@ public class Quiz_Choice : MonoBehaviour {
     ChoiceQuiz quiz;
     /*사용자 선택 정답*/
     string choosedAnswer;
+    
+    /*결과 팝업*/
+    GameObject quizResult;
+    /*팝업 상태*/
+    Vector3 open = new Vector3(1, 1, 1);
+    Vector3 close = new Vector3(0, 1, 1);
+    /*팝업 이미지*/
+    Image popUpImg;
 
 	// Use this for initialization
 	void Start () {
-        randomQuiz();
+        RandomQuiz();
         GetUI();
         SetUI();
 	}
@@ -47,6 +55,11 @@ public class Quiz_Choice : MonoBehaviour {
 
         checkAnswerBtn = GameObject.Find("CheckAnswerBtn").GetComponent<Button>();
         checkAnswerBtn.interactable = false;
+
+        quizResult = GameObject.Find("QuizResult");
+        quizResult.transform.localScale = close;
+
+        popUpImg = GameObject.Find("QuizResult/Image").GetComponent<Image>();
     }
 
     /**
@@ -69,23 +82,45 @@ public class Quiz_Choice : MonoBehaviour {
      */
     public void OnClickCheckAnswer()
     {
+        bool isAnswer = false;
         //맞았는지 틀렸는지 판단
         //if (선택한 버튼의 선택지 text.Equals(실제 정답 text string)
         if (choosedAnswer.Equals(quiz.answer))
         {
             //맞았어요!
-            Debug.Log("맞았어요!");
+            isAnswer = true;
         }
         else
         {
             //틀렸어요!
-            Debug.Log("틀렸어요!");
+            isAnswer = false;
         }
+
+        DisplayResult(isAnswer);
     }
 
-    public void randomQuiz()
+    /**
+     * 퀴즈 맞춤 여부에 대한 결과 팝업 띄우기
+     */
+    public void DisplayResult(bool isAnswer)
     {
-        quiz = GameData.choiceQuizzes[Random.Range(0, GameData.choiceQuizzes.Length + 1)];
+        string correctness = "";
+        if (isAnswer)
+        {
+            correctness = "correct";
+        }
+        else
+        {
+            correctness = "incorrect";
+        }
+
+        popUpImg.sprite = Resources.Load<Sprite>("quiz/" + correctness + "_" + GameData.GetCharByOrder(GameData.currentOrder).name);
+        quizResult.transform.localScale = open;
+    }
+
+    public void RandomQuiz()
+    {
+        quiz = GameData.choiceQuizzes[Random.Range(0, GameData.choiceQuizzes.Length)];
         quiz.appeard++;
     }
 
