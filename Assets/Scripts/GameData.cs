@@ -26,14 +26,28 @@ public class GameData {
     //아이템 종류 개수
     public const int ITEM = 4;
 
+    //퀴즈 타입
+    public const int OX_QUIZ = 0;
+    public const int CHOICE_QUIZ = 1;
+    public const int DRAG_QUIZ = 2;
+    public const int LINE_QUIZ = 4;
+
+
     //보드 정보: 총 54칸
     public static string[] board = new string[54] {
-    "출발", "몬스터", "식사", "퀴즈", "몬스터", "사물함", "퀴즈", "운동",
-    "상황", "사물함", "몬스터","간식","퀴즈","몬스터","식사","급식","퀴즈","몬스터",
-    "찬스","사물함", "몬스터","운동","사물함","몬스터","상황","실험실","몬스터","퀴즈","급식"
-    ,"찬스", "사물함","퀴즈","몬스터","운동","몬스터","사물함","퀴즈","식사","퀴즈","운동",
-    "급식","상황","찬스","몬스터","퀴즈","몬스터","간식","실험실","운동","몬스터","퀴즈","도착",
-    "도서관","보건실"};
+    "출발", "몬스터", "급식실", "퀴즈", "몬스터",
+    "사물함", "퀴즈", "운동", "별별상황실", "사물함",
+    "몬스터","급식실","퀴즈","급식실","몬스터",
+    "급식실(stop)","퀴즈","몬스터", "별별상황실","사물함",
+    "몬스터","운동","사물함","몬스터", "별별상황실",
+    "과학실","몬스터","퀴즈","급식실(stop)" , "몬스터",
+    "사물함","퀴즈","몬스터","운동", "몬스터",
+    "사물함","퀴즈","급식실","퀴즈", "운동",
+    "급식실(stop)","별별상황실","퀴즈","몬스터","퀴즈",
+    "급식실", "몬스터","과학실","운동","몬스터",
+    "퀴즈","도착","도서관","보건실"};
+
+    //
 
     //*************************************각 칸 별 정보*************************************//
 
@@ -73,97 +87,232 @@ public class GameData {
 
     //아이템
     string[] itemKNames = { "당근주스", "꿀", "요구르트", "포도당사탕" };
+    string[] itemNames = { "Juice", "Honey", "Yogurt", "Candy" };
     int[] itemGI = { 14, 9, 7, 3 };
+    public const int JUICE = 0;
+    public const int HONEY = 1;
+    public const int YOGURT = 2;
+    public const int CANDY = 3;
 
     //퀴즈
-    public static string[] quizQuestion = new string[QUIZ] {
-        "상태와 증상을 알맞게 연결해주세요.",
-        "저혈당 상태가 온 것 같아요. 저혈당 상태에 나타나는 내 몸의 증상은 무엇일까요?",
+    //OX QUIZ
+    public string[] quiz_ox_question = new string[]
+    {
         "고혈당의 증상 중 하나는 식은 땀이 나는 거야!",
         "저혈당의 증상 중 하나는 몸이 으슬으슬 떨리는 거야!",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "", "", "",
-        "", "", "", "", "", "", "", "", "", "",
-        "", "", "", "", "", "", "", "", "", "",
-        "", "", "", "", "", "", "", "", "", "",
-        "", "", "", "", ""
+        "30분 전에 피자를 먹었어요, 입이 심심하니 도넛을 먹을까요?",
+        "고혈당별에서 온 몬스터들은 포도당캔디를 먹고 건강해진대!",
+        "혈당에 좋은 음식을 먹으면 불규칙한 시간에 먹어도 될까요?",
+        "운동을 많이 하면 그만큼 많이 간식을 먹어도 된대!",
+        "운동을 하면서 힘들면 중간중간 휴식을 취해줘요.",
+        "상한 인슐린을 맞으면 오히려 혈당이 올라가요.",
+        "매일 똑같은 부위에 주사를 맞아야해요!",
+        "주사 바늘은 계속 사용할 수 있어요!",
+        "매일 같은 시간에 식사를 하는 게 좋아요!",
+        "주사 바늘은 45~90도 사이에서 맞아야 해요!",
+        "인슐린 주사는 근육에 주사해야한다.",
+        "몸이 아프면 혈당체크를 하지 않아도 돼요!",
+        "인슐린 주사를 맞고 운동하면 혈당을 낮추는데 효과적이예요!",
+        "인슐린 주사를 맞을 때 공기를 제거하지 않아도 된다.",
+        "운동은 식사 후보다 식사 전에 하는 게 더 좋아!",
+        "혈당이 올라갈 수 있어서 과일은 절대 먹으면 안돼!",
+        "자신이 할 수 있는 만큼의 운동을 꾸준히 하는 게 좋아.",
+        "과식을 했을 때는 다음 끼니를 굶어야해!",
+        "혈당이 70이하로 떨어졌을 때를 저혈당이라고해!",
+        "저혈당의 증상이 느껴지면 하던 일을 멈추고 혈당체크를 해야해!",
+        "과도한 운동은 고혈당의 위험을 높여!",
+        "힘들고 오래 하는 운동은 혈당이 적게 떨어진다.",
+        "설사를 해서 음식을 적게 먹으면 주사의 양을 줄여야 해요!",
+        "갈증이 나면 저혈당이 올 수 있어서 단 음료를 먹어야 한다.",
+        "운동할 때 땀을 많이 흘리면 혈당이 더 잘 내려가요!",
+        "당뇨에 걸리면 감기약을 먹으면 안돼요!",
+        "당이 적은 음식은 폭식을 해도 괜찮아요!",
+        "주사 버튼을 누른 뒤에 천천히 10초를 세고 주사 바늘을 빼야해!",
+        "인슐린의 양은 내 마음대로 바꿔도 돼요!",
+        "밥 먹기 전 혈당이 120 이상인 상태를 고혈당이라고 해!"
     };
-    public static string[] quizAnswer = new string[QUIZ] {
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "", "", "",
-        "", "", "", "", "", "", "", "", "", "",
-        "", "", "", "", "", "", "", "", "", "",
-        "", "", "", "", "", "", "", "", "", "",
-        "", "", "", "", ""
-    };
-    public static string[] quizType = new string[QUIZ] {
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "", "", "",
-        "", "", "", "", "", "", "", "", "", "",
-        "", "", "", "", "", "", "", "", "", "",
-        "", "", "", "", "", "", "", "", "", "",
-        "", "", "", "", ""
-    };
-    //public static int curQuiz = 0;
 
-    //음식 - 임시로 만든 목록
-    /*public static string[] kFoodName = {"샌드위치", "우동" , "짬뽕", "피자"}; //화면에 뜰 글자
-    public static string[] foodName = {"sandwich","udong","jjamppong", "pizza"}; //각 음식에 대한 파일명
-    public static int curFood = 0;
-    public static int[] foodSugar = { 27, 47, 43, 26};*/
+    //ox퀴즈 답
+    public string[] quiz_ox_answer = new string[]
+    {
+        "X",
+        "O",
+        "X",
+        "X",
+        "X",
+        "X",
+        "X",
+        "O",
+        "O",
+        "X",
+        "X",
+        "O",
+        "O",
+        "X",
+        "X",
+        "X",
+        "X",
+        "X",
+        "O",
+        "X",
+        "O",
+        "O",
+        "X",
+        "X",
+        "O",
+        "X",
+        "X",
+        "X",
+        "X",
+        "X",
+        "X",
+        "O"
+    };
+
+    //ox퀴즈 해설
+    public string[] quiz_ox_library = new string[]
+    {
+        "식은땀이 나는 건 고혈당 상태가 아니라 저혈당 상태예요.",
+        "몸이 으슬으슬 떨리면 저혈당 상태이기 때문에 간단한 간식을 먹어줘야해요.",
+        "식사 후에 바로 간식을 먹으면 고혈당이 될 위험이 높아져요!",
+        "고혈당 상태의 몬스터들은 포도당캔디를 먹으면 혈당이 많이 높아져서",
+        "음식은 규칙적으로 먹는 게 좋아요.",
+        "운동을 많이했다고 간식을 많이 먹으면 혈당이 갑자기 올라갈 수 있어요.",
+        "힘들게 운동하다 보면 혈당이 갑자기 내려가서 저혈당이 올 수 있어요",
+        "상한 인슐린을 맞으면 오히려 혈당이 갑자기 올라가게 돼요.",
+        "주사 부위는 조금씩 바꿔주는 게 좋아요.",
+        "주사 바늘은 한 번 쓰고 버려야해요.",
+        "규칙적인 식사를 하면 정상적인 혈당을 유지할 수 있어요.",
+        "주사 바늘은 45~90도 사이에서 맞아야 인슐린이 잘 들어가요.",
+        "인슐린을 근육에 맞으면 저혈당이 올 수 있어요.",
+        "몸이 아플 때는 평소보다 자주 혈당을 체크해야 해요.",
+        "인슐린 주사를 맞고 바로 운동을 하게 되면 혈당이 갑자기 낮아져서 저혈당이 올 수 있어요",
+        "인슐린 주사를 맞을 때는 공기를 충분히 빼주어야 아프지 않게 맞을 수 있어요.",
+        "식사 후 1시간 뒤에 운동을 하는 것이 가장 좋아요.",
+        "조금씩 과일을 먹는 건 괜찮지만 너무 많이 먹으면 혈당이 올라갈 수 있어요.",
+        "운동을 꾸준히 하면 혈당을 낮춰줄 수 있어요.",
+        "과식을 했을 때는다음 끼니를 굶지말고 가벼운 운동을 통해 혈당을 내려주는 게 좋아요.",
+        "혈당이 70 이하로 떨어졌을 때를 저혈당이라고 해요.",
+        "저혈당의 증상이 느껴지면 하던 일이 멈추고 혈당체크를 해서 혈당을 확인해주는게 좋아요.",
+        "과도한 운동은 저혈당의 위험이 있어요.",
+        "힘들고 오래하는 운동은 오히려 혈당이 더 많이 떨어져서 저혈당이 발생할 수 있어요.",
+        "음식을 적게 먹었는데 주사를 똑같이 맞으면 저혈당이 올 수 있어요!",
+        "갈증이 나면 혈당을 갑자기 올리는 단 음료보다 당분이 적은 이온음료가 좋아요!",
+        "운동할 때 땀을 많이 흘리게 되면 오히려 탈수 증상이 올 수 있어요!",
+        "종합감기약은 먹어도 괜찮아요!",
+        "당이 적은 음식이어도 폭식은 안돼요!",
+        "주사 버튼을 누른 뒤에 천천히 5초를 세고 주사 바늘을 빼야 해요!",
+        "인슐린 용량은 의사선생님께 물어보고 결정해야해요!",
+        "혈당을 80 ~ 120으로 유지해 주는게 가장 좋아요!"
+    };
+
+    //4지 선다형 퀴즈
+    public string[] quiz_choice_question = new string[]
+    {
+        "머릿 속이 멍해요! 잠깐 쉬어갈까요?",
+        "엄지와 검지를 (   )CM 정도 벌려 피부를 잡아주어야해요!",
+        "보관이 잘 된 인슐린은 무엇일까요?"
+    };
+    
+    public string[] quiz_choice_choice = new string[]
+    {
+        "열심히 몬스터를 잡아야해","인슐린 주사를 맞을까?","잠시 앉아서 휴식을 취하자","운동을 해야해",
+        "2","3","5","7",
+        "3년된 인슐린", "냉동 보관된 인슐린", "덩어리가 없는 인슐린", "유효기한이 지난 인슐린"
+
+    };
+    public string[] quiz_choice_answer = new string[]
+    {
+        "잠시 앉아서 휴식을 취하자",
+        "5",
+        "덩어리가 없는 인슐린"
+    };
+
+    public string[] quiz_choice_library = new string[]
+    {
+        "머릿 속이 멍한 건 저혈당 증상이예요. 그렇기 때문에 잠시 휴식을 취하는 게 좋아요.",
+        "냉동으로 얼린 인슐린이나 2년 이상된 인슐린은 상한 인슐린이예요.",
+        "손가락으로 오센티 피부를 잡아 올려주어야 인슐린이 잘 들어가요."
+    };
+
+    //선 잇기 퀴즈
+    public string[] quiz_line_question = new string[]
+    {
+        "상태와 증상을 알맞게 연결해주세요.",
+        "고혈당과 저혈당의 상태를 알맞게 연결해주세요.",
+        "운동에 맞는 올바른 효과를 골라주세요!"
+    };
+    public string[] quiz_line_choices1 = new string[]
+    {
+        "피에 당이 많은 상태","피에 당이 부족한 상태",
+        "고혈당","저혈당",
+        "짧은운동","긴운동"
+    };
+    public string[] quiz_line_choices2 = new string[]
+    {
+        "저혈당","고혈당",
+        "목이 마르다","식은땀이 난다",
+        "몸무게가 줄어든다","혈당이 떨어진다"
+    };
+    public string[] quiz_line_answerMatch = new string[]
+    {
+        "고혈당","저혈당",
+        "목이 마르다","식은땀이 난다",
+        "혈당이 떨어진다","몸무게가 줄어든다"
+    };
+    public string[] quiz_line_library = new string[]
+    {
+        "당이 많으면 고혈당, 적으면 저혈당이예요.",
+        "고혈당일 때는 목이 자주 마르고, 저혈당일 때는 식은 땀이 나요.",
+        "짧은운동이 혈당을 떨어지게 하는데에 좋아요!"
+    };
+
+    //드래드앤드랍 퀴즈
+    public string[] quiz_drag_question = new string[]
+    {
+        "저혈당 상태가 온 것 같아요. \n저혈당 상태에 나타나는 내 몸의 증상은 무엇일까요?",
+        "모든 일에 집중이 되지 않아요. \n뭔가를 먹어볼까요?",
+        "저혈당이 왔을 때 먹을 간식을 챙겨보아요!",
+        "식후 운동을 하려고 해요. \n어떤 운동을 하는게 좋을까요?",
+        "고혈당 상태가 온 것 같아요. 고혈당 상태에 나타나는 내 몸의 증상은 무엇일까요?",
+        "인슐린 주사를 맞을 때 올바른 부위를 선택해주세요.",
+        "혈당을 낮추는 데에 도움이 되는 운동을 골라보세요!"
+    };
+
+    public string[] quiz_drag_postit = new string[]
+    {
+        "기침","발저림","식은땀","집중력\n저하","치통","복통",
+        "물","쨈","포도당\n사탕","초콜릿","오렌지\n주스","우유",
+        "포도당\n사탕","치킨","짜장면","피자","꿀물","햄버거",
+        "한강\n수영하기","한라산\n오르기","가벼운\n걷기","자전거\n타기","5시간\n뛰기","체조\n백번하기",
+        "목이\n말라요","계속\n먹어요","몸이\n떨려요","기침이\n나와요","이가\n아파요","배가\n아파요",
+        "배","손","허벅지","가슴","발","목",
+        "에어로빅","윗몸\n일으키기","체조\n백번","숨쉬기","팔굽혀\n펴기","앉기"
+    };
+
+    public string[] quiz_drag_answer = new string[]
+    {
+        "식은땀","집중력\n저하",
+        "포도당\n사탕","오렌지\n주스",
+        "포도당\n사탕","꿀물",
+        "가벼운\n걷기","자전거\n타기",
+        "목이\n말라요","계속\n먹어요",
+        "배","허벅지",
+        "에어로빅"
+    };
+
+    public int[] quiz_drag_answer_num = new int[7] { 2,2,2,2,2,2,1 };
+
+    public string[] quiz_drag_library = new string[]
+    {
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+    };
 
     //캐릭터 변수
     public static Character[] character;
@@ -193,6 +342,15 @@ public class GameData {
     //아이템 배열
     public static Item[] item;
 
+    //선택형 퀴즈 객체 배열
+    public static ChoiceQuiz[] choiceQuizzes;
+    //OX 퀴즈 객체 배열
+    public static OXQuiz[] oxQuizzes;
+    //Line 퀴즈 객체 배열
+    public static LineQuiz[] lineQuizzes;
+    //드래그 퀴즈 객체 배열
+    public static DragQuiz[] dragQuizzes;
+
     /*리스트*/
     List<int> bloodSugar;
     List<int> monsterCard;
@@ -215,12 +373,13 @@ public class GameData {
      */
     public void SetData()
     {
-        SetMonsters(); //몬스터 카드
-        SetFood(); //음식
-        SetSnack(); //간식
-        SetExercise(); //운동
+        //SetMonsters(); //몬스터 카드
+        //SetFood(); //음식
+        //SetSnack(); //간식
+        //SetExercise(); //운동
         SetQuiz(); //퀴즈
         SetItem(); //아이템
+        
 
         //PageMove의 MoveToIntro() 에서 한 번 실행
         //Debug.Log("SetData 실행");
@@ -286,12 +445,116 @@ public class GameData {
      */
     private void SetQuiz()
     {
-        quiz = new Quiz[QUIZ]; //퀴즈 배열 생성
+        SetQuestion();
+        SetOXQuiz();
+        SetChoiceQuiz();
+        SetLineQuiz();
+        SetDragQuiz();
+    }
 
-        //배열 초기화
-        for (int i=0; i<QUIZ; i++)
+    /**
+     * 모든 유형의 문제 앞에 문제 단어를 붙임
+     */
+    public void SetQuestion()
+    {
+        AddText(quiz_ox_question);
+        AddText(quiz_line_question);
+        AddText(quiz_choice_question);
+        AddText(quiz_drag_question);
+    }
+
+    /**
+     * 모든 문제 앞에 "문제. "를 붙이는 작업
+     */
+    public void AddText(string[] questionArray)
+    {
+        for(int i=0; i<questionArray.Length; i++)
         {
-            quiz[i] = new Quiz(quizQuestion[i], quizAnswer[i], quizType[i], 0);
+            questionArray[i] = "문제. " + questionArray[i];
+        }
+    }
+
+    /**
+     * 선택형 퀴즈 객체 배열
+     */
+    private void SetChoiceQuiz()
+    {
+        choiceQuizzes = new ChoiceQuiz[quiz_choice_question.Length];
+        
+        for (int i=0; i<quiz_choice_question.Length; i++)
+        {
+            string[] choices = new string[4];
+            //정답 배열 만들기
+            for (int k=0; k<4; k++)
+            {
+                choices[k] = quiz_choice_choice[(i * 4) + k];
+            }
+
+            choiceQuizzes[i] = new ChoiceQuiz(quiz_choice_question[i], choices, quiz_choice_answer[i], 0, quiz_choice_library[i]);
+        }
+    }
+
+    /**
+     * OX 퀴즈 객체 배열 생성
+     */
+    private void SetOXQuiz()
+    {
+        oxQuizzes = new OXQuiz[quiz_ox_question.Length];
+
+        for (int i = 0; i < quiz_ox_question.Length; i++)
+        {
+            oxQuizzes[i] = new OXQuiz(quiz_ox_question[i], quiz_ox_answer[i], 0, quiz_ox_library[i]);
+        }
+    }
+
+    /**
+     * Line 퀴즈 객체 배열 생성
+     */
+    private void SetLineQuiz()
+    {
+        lineQuizzes = new LineQuiz[quiz_line_question.Length];
+
+        for (int i=0; i<quiz_line_question.Length; i++)
+        {
+            string[] c_left = new string[2]; //왼쪽 선택지
+            string[] c_right = new string[2]; //오른쪽 선택지
+            string[] answer = new string[2]; //선택지에 대한 답
+
+            for (int k=0; k<2; k++)
+            {
+                c_left[k] = quiz_line_choices1[(i * 2) + k];
+                c_right[k] = quiz_line_choices2[(i * 2) + k];
+                answer[k] = quiz_line_answerMatch[(i * 2) + k];
+            }
+
+            lineQuizzes[i] = new LineQuiz(quiz_line_question[i], c_left, c_right, answer, quiz_line_library[i], 0);
+        }
+    }
+
+    /**
+     * 드래그앤 드랍 퀴즈
+     * answer 배열 사이즈 다른 것 유의
+     */
+    private void SetDragQuiz()
+    {
+        dragQuizzes = new DragQuiz[quiz_drag_question.Length];
+
+        for (int i=0; i<quiz_drag_question.Length; i++)
+        {
+            string[] postits = new string[quiz_drag_postit.Length]; //한 문제에 대한 포스트잇 배열 생성
+            string[] answers = new string[quiz_drag_answer_num[i]]; //답 배열 생성
+
+            for(int k=0; k<6; k++) //포스트잇 텍스트
+            {
+                postits[k] = quiz_drag_postit[i * 6 + k];
+            }
+
+            for (int n=0; n< quiz_drag_answer_num[i]; n++) //답 배열 텍스트
+            {
+                answers[n] = quiz_drag_answer[i * 2 + n];
+            }
+
+            dragQuizzes[i] = new DragQuiz(quiz_drag_question[i], postits, answers, quiz_drag_library[i], 0);
         }
     }
 
@@ -305,7 +568,7 @@ public class GameData {
         //배열 초기화
         for (int i=0; i<ITEM; i++)
         {
-            item[i] = new Item(itemKNames[i], itemGI[i]);
+            item[i] = new Item(itemNames[i],itemKNames[i], itemGI[i]);
         }
     }
 
@@ -556,6 +819,112 @@ public class Quiz
 }
 
 /**
+ * 4지 선다형 퀴즈 클래스
+ */
+public class ChoiceQuiz
+{
+    /*퀴즈 질문*/
+    public string question;
+    /*퀴즈 선택지*/
+    public string[] choice = new string[4];
+    /*실제 정답*/
+    public string answer;
+    /*퀴즈 등장 여부*/
+    public int appeard;
+    /*해설*/
+    public string library;
+
+    //생성자
+    public ChoiceQuiz(string question, string[] choice, string answer, int appeard, string library)
+    {
+        this.question = question;
+        this.choice = choice;
+        this.answer = answer;
+        this.appeard = appeard;
+        this.library = library;
+    }
+}
+
+/**
+ * OXQuiz
+ */
+public class OXQuiz
+{
+    /*퀴즈 질문*/
+    public string question;
+    /*실제 정답*/
+    public string answer;
+    /*퀴즈 등장 여부*/
+    public int appeard;
+    /*도서관 해설*/
+    public string library;
+
+    //생성자
+    public OXQuiz(string question,  string answer, int appeard, string library)
+    {
+        this.question = question;
+        this.answer = answer;
+        this.appeard = appeard;
+        this.library = library;
+    }
+}
+
+/**
+ * 선잇기 퀴즈
+ */
+public class LineQuiz
+{
+    /*퀴즈 질문*/
+    public string question;
+    /*선잇기 왼쪽 영역*/
+    public string[] choice_left = new string[2];
+    /*선잇기 오른쪽 영역*/
+    public string[] choice_right = new string[2];
+    /*정답*/
+    public string[] answers = new string[4];
+    /*해설*/
+    public string library;
+    /*퀴즈 등장 횟수*/
+    int appear;
+
+    public LineQuiz(string question, string[] choice_left, string[] choice_right, string[] answers, string library, int appear)
+    {
+        this.question = question;
+        this.choice_left = choice_left;
+        this.choice_right = choice_right;
+        this.answers = answers;
+        this.library = library;
+        this.appear = appear;
+    }
+}
+
+/**
+ * 드래그 퀴즈
+ */
+public class DragQuiz
+{
+    /*퀴즈 질문*/
+    public string question;
+    /*6개 포스트잇 보기 텍스트*/
+    public string[] postit = new string[6];
+    /*정답*/
+    public string[] answer; //사이즈가 다름
+    /*해설*/
+    public string library;
+    /*퀴즈 등장 횟수*/
+    public int appear;
+
+    public DragQuiz(string question, string[] postit, string[] answer, string library, int appear)
+    {
+        this.question = question;
+        this.postit = postit;
+        this.answer = answer;
+        this.library = library;
+        this.appear = appear;
+    }
+}
+
+/**
  * 비밀의 사물함 클래스
  */
  public class SecretLocker
@@ -593,14 +962,17 @@ public class Exercise
 
 public class Item
 {
+    /*아이템 이름*/
+    public string name;
     /*아이템 한글 이름*/
     public string kName;
     /*GI 지수*/
     public int itemGI;
 
     //생성자
-    public Item(string kName, int itemGI)
+    public Item(string name, string kName, int itemGI)
     {
+        this.name = name;
         this.kName = kName;
         this.itemGI = itemGI;
     }

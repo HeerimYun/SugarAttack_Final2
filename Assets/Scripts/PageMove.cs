@@ -80,6 +80,36 @@ public class PageMove : MonoBehaviour {
         SceneManager.LoadScene(6);
     }
 
+    /**
+     * 퀴즈 보상화면으로 넘기기
+     */
+    public static void MoveToQuizReward()
+    {
+        SceneManager.LoadScene(11);
+    }
+
+    /**
+     * 룰렛결과에 따라 
+     */
+    public static void Roulette()
+    {
+        //SceneManager.LoadScene(7); //4지선다형 
+        //SceneManager.LoadScene(8); //드래그 퀴즈 
+        //SceneManager.LoadScene(9); //선잇기 퀴즈
+        //SceneManager.LoadScene(10); //OX퀴즈 
+        SceneManager.LoadScene(12); //비밀의 사물함
+
+        //현재 위치
+        /*switch (GameData.board[GameData.GetCharByOrder(GameData.currentOrder).position])
+        {
+            case "퀴즈":
+                //퀴즈 씬으로 보내기 - 유형 4개 중 랜덤 Scene 넘버 7~10
+                //SceneManager.LoadScene(Random.Range(7, 11));
+                
+                break;
+        }*/
+    }
+
     // Update is called once per frame
     void Update () {
 		
