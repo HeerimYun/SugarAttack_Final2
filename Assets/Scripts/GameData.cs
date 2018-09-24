@@ -87,7 +87,12 @@ public class GameData {
 
     //아이템
     string[] itemKNames = { "당근주스", "꿀", "요구르트", "포도당사탕" };
+    string[] itemNames = { "Juice", "Honey", "Yogurt", "Candy" };
     int[] itemGI = { 14, 9, 7, 3 };
+    public const int JUICE = 0;
+    public const int HONEY = 1;
+    public const int YOGURT = 2;
+    public const int CANDY = 3;
 
     //퀴즈
     //OX QUIZ
@@ -563,7 +568,7 @@ public class GameData {
         //배열 초기화
         for (int i=0; i<ITEM; i++)
         {
-            item[i] = new Item(itemKNames[i], itemGI[i]);
+            item[i] = new Item(itemNames[i],itemKNames[i], itemGI[i]);
         }
     }
 
@@ -957,14 +962,17 @@ public class Exercise
 
 public class Item
 {
+    /*아이템 이름*/
+    public string name;
     /*아이템 한글 이름*/
     public string kName;
     /*GI 지수*/
     public int itemGI;
 
     //생성자
-    public Item(string kName, int itemGI)
+    public Item(string name, string kName, int itemGI)
     {
+        this.name = name;
         this.kName = kName;
         this.itemGI = itemGI;
     }

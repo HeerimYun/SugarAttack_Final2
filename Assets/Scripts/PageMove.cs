@@ -96,7 +96,8 @@ public class PageMove : MonoBehaviour {
         //SceneManager.LoadScene(7); //4지선다형 
         //SceneManager.LoadScene(8); //드래그 퀴즈 
         //SceneManager.LoadScene(9); //선잇기 퀴즈
-        SceneManager.LoadScene(10); //OX퀴즈 
+        //SceneManager.LoadScene(10); //OX퀴즈 
+        SceneManager.LoadScene(12); //비밀의 사물함
 
         //현재 위치
         /*switch (GameData.board[GameData.GetCharByOrder(GameData.currentOrder).position])

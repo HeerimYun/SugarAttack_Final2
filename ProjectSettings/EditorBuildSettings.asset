@@ -41,4 +41,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/5.1.a.1_QuizReward.unity
     guid: 85e8658cfac22654a8a85373bbdb2738
+  - enabled: 1
+    path: Assets/Scenes/10.0_SecretLockerRoom.unity
+    guid: a5fdde95f9bfc7c4abe584ab763d402c
   m_configObjects: {}
