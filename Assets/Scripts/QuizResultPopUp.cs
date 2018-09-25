@@ -49,7 +49,7 @@ public class QuizResultPopUp : MonoBehaviour {
             //transform.localScale = close;
             //화면 넘어가기
 
-            if (transform.GetChild(0).GetComponent<Image>().sprite.name.Equals("correct_" + GameData.GetCharByOrder(GameData.currentOrder).name))
+            if (transform.GetChild(1).GetComponent<SpriteRenderer>().sprite.name.Equals("correct_" + GameData.GetCharByOrder(GameData.currentOrder).name))
             {
                 //맞았으면 보상화면
                 PageMove.MoveToQuizReward();
