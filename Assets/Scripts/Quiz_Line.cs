@@ -70,7 +70,7 @@ public class Quiz_Line : MonoBehaviour {
 	
     public void RandomQuiz()
     {
-        quiz = GameData.lineQuizzes[Random.Range(0, GameData.lineQuizzes.Length + 1)];
+        quiz = GameData.lineQuizzes[Random.Range(0, GameData.lineQuizzes.Length)];
     }
 
     /**

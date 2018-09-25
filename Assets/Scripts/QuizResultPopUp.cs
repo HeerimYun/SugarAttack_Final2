@@ -46,7 +46,7 @@ public class QuizResultPopUp : MonoBehaviour {
 
         if (currentTime > duraition)
         {
-            transform.localScale = close;
+            //transform.localScale = close;
             //화면 넘어가기
 
             if (transform.GetChild(0).GetComponent<Image>().sprite.name.Equals("correct_" + GameData.GetCharByOrder(GameData.currentOrder).name))
