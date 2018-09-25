@@ -145,7 +145,7 @@ public class Inventory : MonoBehaviour {
     }
 	// Update is called once per frame
 	void Update () {
- 
+        UpdateItemNum();
     }
 
     /**
@@ -260,21 +260,25 @@ public class Inventory : MonoBehaviour {
         switch (itemName.text)
         {
             case "주스":
-                currentChar.juice -= 1;
+                currentChar.juice -= 1; //아이템 개수 감소
+                GameData.UpdateBloodSugar(currentChar, GameData.item[GameData.JUICE].itemGI); //혈당 올리기
                 break;
             case "꿀":
                 currentChar.honey -= 1;
+                GameData.UpdateBloodSugar(currentChar, GameData.item[GameData.HONEY].itemGI);
                 break;
             case "요구르트":
                 currentChar.yogurt -= 1;
+                GameData.UpdateBloodSugar(currentChar, GameData.item[GameData.YOGURT].itemGI);
                 break;
             case "포도당사탕":
                 currentChar.candy -= 1;
+                GameData.UpdateBloodSugar(currentChar, GameData.item[GameData.CANDY].itemGI);
                 break;
         }
 
         //아이템 개수 업데이트
-        UpdateItemNum();
+        //UpdateItemNum();
 
         //팝업 닫기
         itemPopup.transform.localScale = close;

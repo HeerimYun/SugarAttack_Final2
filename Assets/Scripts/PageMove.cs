@@ -98,7 +98,8 @@ public class PageMove : MonoBehaviour {
         //SceneManager.LoadScene(9); //드래그 앤 드랍
         //SceneManager.LoadScene(10); //OX퀴즈  
         //SceneManager.LoadScene(11); //비밀의 사물함
-        SceneManager.LoadScene(Random.Range(8, 12));
+        //SceneManager.LoadScene(Random.Range(8, 12));
+        SceneManager.LoadScene(13); //체육관
 
         //현재 위치
         /*switch (GameData.board[GameData.GetCharByOrder(GameData.currentOrder).position])

@@ -79,7 +79,7 @@ public class InsulinInput : MonoBehaviour {
             PageMove.MoveToRoulette();
         }
         GameData.TurnChange(); //다음 턴으로 넘김
-        Debug.Log("현재 순서 : " + GameData.currentOrder);
+        //Debug.Log("현재 순서 : " + GameData.currentOrder);
     }
 
     /**
@@ -112,7 +112,7 @@ public class InsulinInput : MonoBehaviour {
     public void SetInsulin()
     {
         currentChar.inputInsulin = selectInsulin;
-        Debug.Log("캐릭터: " + currentChar.kName + "의 인슐린 총량은 " + currentChar.inputInsulin);
+        //Debug.Log("캐릭터: " + currentChar.kName + "의 인슐린 총량은 " + currentChar.inputInsulin);
     }
 
     /**
