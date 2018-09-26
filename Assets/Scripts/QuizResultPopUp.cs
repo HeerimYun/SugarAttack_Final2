@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 /**
  * 판넬 오브젝트에 붙어서 동작하는 팝업
@@ -49,16 +50,33 @@ public class QuizResultPopUp : MonoBehaviour {
             //transform.localScale = close;
             //화면 넘어가기
 
-            if (transform.GetChild(1).GetComponent<SpriteRenderer>().sprite.name.Equals("correct_" + GameData.GetCharByOrder(GameData.currentOrder).name))
+            if (SceneManager.GetActiveScene().name.Equals("5.0_Quiz_OX"))
             {
-                //맞았으면 보상화면
-                PageMove.MoveToQuizReward();
+                if(transform.GetChild(1).GetComponent<SpriteRenderer>().sprite.name.Equals("correct_" + GameData.GetCharByOrder(GameData.currentOrder).name))
+                {
+                    //맞았으면 보상화면
+                    PageMove.MoveToQuizReward();
+                }
+                else
+                {
+                    //틀렸으면 턴 넘기기
+                    GameData.TurnChange();
+                    PageMove.MoveToRoulette();
+                }
             }
             else
             {
-                //틀렸으면 턴 넘기기
-                GameData.TurnChange();
-                PageMove.MoveToRoulette();
+                if (transform.GetChild(0).GetComponent<Image>().sprite.name.Equals("correct_" + GameData.GetCharByOrder(GameData.currentOrder).name))
+                {
+                    //맞았으면 보상화면
+                    PageMove.MoveToQuizReward();
+                }
+                else
+                {
+                    //틀렸으면 턴 넘기기
+                    GameData.TurnChange();
+                    PageMove.MoveToRoulette();
+                }
             }
         }
     }

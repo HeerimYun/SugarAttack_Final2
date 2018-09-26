@@ -128,7 +128,7 @@ public class RouletteSpin : MonoBehaviour {
         rouletteResult.text = "?";
 
         //sound + .8sec delay
-        source.Play(35280);
+        source.PlayDelayed(35280);
     }
 
     /**
