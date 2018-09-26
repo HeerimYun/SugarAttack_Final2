@@ -28,7 +28,7 @@ public class Quiz_OX : MonoBehaviour {
     Vector3 open = new Vector3(1, 1, 1);
     Vector3 close = new Vector3(0, 1, 1);
     /*팝업 이미지*/
-    Image popUpImg;
+    SpriteRenderer popUpImg;
 
     // Use this for initialization
     void Start () {
@@ -66,7 +66,7 @@ public class Quiz_OX : MonoBehaviour {
         quizResult = GameObject.Find("QuizResult");
         quizResult.transform.localScale = close;
 
-        popUpImg = GameObject.Find("QuizResult/Image").GetComponent<Image>();
+        popUpImg = GameObject.Find("QuizResult/Image").GetComponent<SpriteRenderer>();
     }
 
     /**

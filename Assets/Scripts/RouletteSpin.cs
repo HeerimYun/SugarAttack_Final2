@@ -25,6 +25,10 @@ public class RouletteSpin : MonoBehaviour {
     GameObject hightlight;
     //결과 숫자 이미지
     GameObject resultNum;
+    //sound
+    AudioSource source;
+    //result sound audio clip
+    public AudioClip resultAppear;
 
 	// Use this for initialization
 	void Start () {
@@ -38,6 +42,9 @@ public class RouletteSpin : MonoBehaviour {
 
         resultNum = GameObject.Find("Number_Img");
         resultNum.GetComponent<Image>().enabled = false;
+
+        //sound
+        source = GetComponent<AudioSource>();
     }
 	
 	// Update is called once per frame
@@ -76,6 +83,9 @@ public class RouletteSpin : MonoBehaviour {
             //중앙 돌리기 버튼 led 애니메이션 변경
             Animator btnAnim = spinBtn.GetComponent<Animator>();
             btnAnim.SetTrigger("RouletteBtnStop");
+
+            //result appear sound
+            source.PlayOneShot(resultAppear);
 
             //하이라이트 이미지 각도 조정하고, 보이기
             hightlight.transform.Rotate(0, 0, (rouletteAngle % 30) - 15);
@@ -116,6 +126,9 @@ public class RouletteSpin : MonoBehaviour {
         //룰렛 가운데 글자를 물음표로 변경
         rouletteResult.enabled = true; //글자를 활성화 하고,
         rouletteResult.text = "?";
+
+        //sound + .8sec delay
+        source.Play(35280);
     }
 
     /**
