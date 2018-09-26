@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
  * SceneManager.GetActiveScene();
  * SceneManager.GetActiveScene().buildIndex = 현재 빌드된 인덱스
  * SceneManager.LoadScene(씬번호);
+ * SceneManager.LoadScene(SceneManager.GetSceneByName("Scene1").buildIndex);
  */
 /**
  * 씬 이동
@@ -27,7 +28,17 @@ public class PageMove : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+
 	}
+
+    /**
+     * @parameter: asset 폴더에서의 씬 이름 ex)0.0_Splash
+     */
+    public static void LoadSceneByName(string sceneName)
+    {
+        //Debug.Log(SceneManager.GetSceneByName(sceneName).buildIndex);
+        SceneManager.LoadScene(SceneManager.GetSceneByName(sceneName).buildIndex);
+    }
 	
     /**
      * 0.0_splash -> 0.1_WaitingRoom
@@ -77,7 +88,7 @@ public class PageMove : MonoBehaviour {
      */
     public static void MoveToRoulette()
     {
-        SceneManager.LoadScene(6);
+        SceneManager.LoadScene(7);
     }
 
     /**
@@ -85,7 +96,7 @@ public class PageMove : MonoBehaviour {
      */
     public static void MoveToQuizReward()
     {
-        SceneManager.LoadScene(12);
+        SceneManager.LoadScene(6);
     }
 
     /**
@@ -93,13 +104,8 @@ public class PageMove : MonoBehaviour {
      */
     public static void Roulette()
     {
-        //SceneManager.LoadScene(7); //선잇기 퀴즈 (미완성)
-        //SceneManager.LoadScene(8); //4지선다 선택형 퀴즈
-        //SceneManager.LoadScene(9); //드래그 앤 드랍
-        //SceneManager.LoadScene(10); //OX퀴즈  
-        //SceneManager.LoadScene(11); //비밀의 사물함
-        //SceneManager.LoadScene(Random.Range(8, 12));
-        SceneManager.LoadScene(13); //체육관
+        SceneManager.LoadScene(Random.Range(8, 13)); //퀴즈 유형 4개, 체육관, 비밀의 사물함 중 하나 랜덤
+        //SceneManager.LoadScene(8);
 
         //현재 위치
         /*switch (GameData.board[GameData.GetCharByOrder(GameData.currentOrder).position])

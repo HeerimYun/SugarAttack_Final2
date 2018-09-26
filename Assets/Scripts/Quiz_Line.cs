@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -11,14 +12,10 @@ public class Quiz_Line : MonoBehaviour {
 
     /*문제 텍스트*/
     Text quizText;
-    /*왼쪽 부분 버튼*/
-    Toggle[] leftBtn = new Toggle[2];
     /*왼쪽 부분 텍스트*/
-    Text[] leftText = new Text[2];
-    /*오른쪽 부분 버튼*/
-    Toggle[] rightBtn = new Toggle[2];
-    /*오른쪽 부분 텍스트*/
-    Text[] rightText = new Text[2];
+    Text[] text = new Text[4];
+    /*4개 토글 버튼*/
+    Toggle[] toggleBtn = new Toggle[4];
     /*퀴즈 객체*/
     LineQuiz quiz;
     /*정답확인 버튼*/
@@ -31,6 +28,15 @@ public class Quiz_Line : MonoBehaviour {
     int clickIndex = 0;
     /*이전에 클릭한 객체*/
     string previous;
+    /*선*/
+    GameObject lines;
+    /*리셋 버튼 (칠판에 투명하게 있음)*/
+    GameObject resetBtn;
+
+    /*결과 팝업*/
+    GameObject quizResult;
+    /*팝업 이미지*/
+    Image popUpImg;
 
     // Use this for initialization
     void Start () {
@@ -43,34 +49,59 @@ public class Quiz_Line : MonoBehaviour {
     {
         quizText = GameObject.Find("QuizText").GetComponent<Text>();
 
-        for (int i=0; i<2; i++)
+        for (int i=0; i<text.Length; i++)
         {
-            leftBtn[i] = GameObject.Find("Q" + (i + 1) + "_Toggle").GetComponent<Toggle>();
-            rightBtn[i] = GameObject.Find("A" + (i + 1) + "_Toggle").GetComponent<Toggle>();
-            leftText[i] = GameObject.Find("Q" + (i + 1) + "_Text").GetComponent<Text>();
-            rightText[i] = GameObject.Find("A" + (i + 1) + "_Text").GetComponent<Text>();
+            text[i] = GameObject.Find("Text"+ (i + 1)).GetComponent<Text>();
+            //Debug.Log(text[i].text);
+        }
+
+        for (int i=0; i<toggleBtn.Length; i++)
+        {
+            toggleBtn[i] = GameObject.Find("Toggle" + (i + 1)).GetComponent<Toggle>();
         }
 
         checkAnswerBtn = GameObject.Find("CheckAnswerBtn").GetComponent<Button>();
         checkAnswerBtn.interactable = false;
+
+        resetBtn = GameObject.Find("ResetButton");
+        resetBtn.transform.localScale = GameData.close;
+        lines = GameObject.Find("Lines");
+
+        quizResult = GameObject.Find("QuizResult");
+        quizResult.transform.localScale = GameData.close;
+
+        popUpImg = GameObject.Find("QuizResult/Image").GetComponent<Image>();
     }
 
     public void SetUI()
     {
         for(int i=0; i<2; i++)
         {
-            leftBtn[i].isOn = false;
-            rightBtn[i].isOn = false;
-            leftText[i].text = quiz.choice_left[i];
-            rightText[i].text = quiz.choice_right[i];
+            text[i].text = quiz.choice_left[i];
+            text[i+2].text = quiz.choice_right[i];
+        }
+
+        for(int i=0; i<toggleBtn.Length; i++)
+        {
+            toggleBtn[i].isOn = false;
+        }
+
+        for(int i=0; i<inputAnswer.Length; i++)
+        {
+            inputAnswer[i] = "";
         }
 
         clickedObject[0] = "";
+
+        for (int i=0; i< lines.transform.childCount; i++) //선 모두 안보이게 하기
+        {
+            lines.transform.GetChild(i).transform.localScale = GameData.close;
+        }
     }
 	
     public void RandomQuiz()
     {
-        quiz = GameData.lineQuizzes[Random.Range(0, GameData.lineQuizzes.Length)];
+        quiz = GameData.lineQuizzes[UnityEngine.Random.Range(0, GameData.lineQuizzes.Length)];
     }
 
     /**
@@ -78,48 +109,25 @@ public class Quiz_Line : MonoBehaviour {
      */
     public void OnClickChoice()
     {
-        //선은 시각적으로 이어지도록 나중에 추가
-        
-        
-        //CheckClick();
-        if (leftBtn[0].isOn)
+        if (CheckToggleOn() == 4)
         {
-            if (rightBtn[0])
+            if (lines.transform.GetChild(0).transform.localScale == GameData.open)
             {
-                inputAnswer[0] = rightText[0].text;
+                lines.transform.GetChild(1).transform.localScale = GameData.open;
             }
-            else if (rightBtn[1])
+            else if(lines.transform.GetChild(1).transform.localScale == GameData.open)
             {
-                inputAnswer[0] = rightText[1].text;
+                lines.transform.GetChild(0).transform.localScale = GameData.open;
             }
-
-            if (leftBtn[1].isOn)
+            else if (lines.transform.GetChild(2).transform.localScale == GameData.open)
             {
-                if (rightBtn[0])
-                {
-                    inputAnswer[1] = rightText[0].text;
-                }
-                else if (rightBtn[1])
-                {
-                    inputAnswer[1] = rightText[1].text;
-                }
+                lines.transform.GetChild(3).transform.localScale = GameData.open;
+            }
+            else if (lines.transform.GetChild(3).transform.localScale == GameData.open)
+            {
+                lines.transform.GetChild(2).transform.localScale = GameData.open;
             }
         }
-
-        Debug.Log("선택한 답 1 : " + inputAnswer[0]);
-        Debug.Log("선택한 답 2 : " + inputAnswer[1]);
-
-        //모든 토글이 켜져야 정답 활성화
-        if (CheckAllToggleOn())
-        {
-            checkAnswerBtn.interactable = true;
-        }
-        else
-        {
-            checkAnswerBtn.interactable = false;
-        }
-
-        //previous = EventSystem.current.currentSelectedGameObject.name;
     }
 
     /**
@@ -127,74 +135,143 @@ public class Quiz_Line : MonoBehaviour {
      */
     public void CheckClick()
     {
-        //왼쪽 버튼 하나 켜져 있을 시 다른 쪽은 비활성화
-        if (leftBtn[0].isOn) //왼쪽 위 버튼이 켜지면
+        checkAnswerBtn.interactable = false;
+
+        if (CheckToggleOn() == 1) //토글 하나만 켜진 경우
         {
-            if (rightBtn[0].isOn)
+            if (toggleBtn[0].isOn)
             {
-                leftBtn[1].interactable = true;
-                inputAnswer[0] = rightText[0].text;
+                toggleBtn[1].interactable = false;
             }
-            else if (rightBtn[1].isOn)
+            else if (toggleBtn[1].isOn)
             {
-                leftBtn[1].interactable = true;
-                inputAnswer[0] = rightText[1].text;
+                toggleBtn[0].interactable = false;
             }
-            else //아직 선잇기를 안한 경우는 같은 쪽 버튼을 누를 수 없음
+            else if (toggleBtn[2].isOn)
             {
-                leftBtn[1].interactable = false;
+                toggleBtn[3].interactable = false;
+            }
+            else if (toggleBtn[3].isOn)
+            {
+                toggleBtn[2].interactable = false;
+            }
+
+            toggleBtn[2].interactable = true;
+            toggleBtn[3].interactable = true;
+        }
+
+        if (CheckToggleOn() == 0)
+        {
+            for (int i=0; i<2; i++)
+            {
+                toggleBtn[i].interactable = true;
+                toggleBtn[i+2].interactable = false;
             }
         }
-        else if (leftBtn[1].isOn)
+
+        if (CheckToggleOn() == 2) //2개가 켜진 경우
         {
-            if (rightBtn[0].isOn)
+            if (toggleBtn[0].isOn) //왼쪽 위 문제에 대한 답 입력
             {
-                leftBtn[0].interactable = true;
-                inputAnswer[1] = rightText[0].text;
+                toggleBtn[0].interactable = false;
+                if (toggleBtn[2].isOn) //오른쪽의 위를 선택한 경우
+                {
+                    inputAnswer[0] = text[2].text;
+                    //선그리기
+                    lines.transform.GetChild(2).transform.localScale = GameData.open;
+                    toggleBtn[2].interactable = false;
+                    toggleBtn[3].interactable = true;
+                }
+                else if (toggleBtn[3].isOn) //오른쪽 아래를 선택한 경우
+                {
+                    inputAnswer[0] = text[3].text;
+                    //선그리기
+                    lines.transform.GetChild(1).transform.localScale = GameData.open;
+                    toggleBtn[3].interactable = false;
+                    toggleBtn[2].interactable = true;
+                }
+                toggleBtn[1].interactable = true;
             }
-            else if (rightBtn[1].isOn)
+            else if (toggleBtn[1].isOn)
             {
-                leftBtn[0].interactable = true;
-                inputAnswer[1] = rightText[1].text;
+                if (toggleBtn[2].isOn) //오른쪽의 위를 선택한 경우
+                {
+                    inputAnswer[1] = text[2].text;
+                    //선그리기
+                    lines.transform.GetChild(0).transform.localScale = GameData.open;
+                    toggleBtn[2].interactable = false;
+                    toggleBtn[3].interactable = true;
+                }
+                else if (toggleBtn[3].isOn) //오른쪽 아래를 선택한 경우
+                {
+                    inputAnswer[1] = text[3].text;
+                    //선그리기
+                    lines.transform.GetChild(3).transform.localScale = GameData.open;
+                    toggleBtn[3].interactable = false;
+                    toggleBtn[2].interactable = true;
+                }
+
+                toggleBtn[0].interactable = true;
             }
-            else //아직 선잇기를 안한 경우는 같은 쪽 버튼을 누를 수 없음
+        }
+
+        if (CheckToggleOn() == 3) //3개가 켜진 경우
+        {
+            if (inputAnswer[0].Equals("")) //첫번째가 비어있으면,
             {
-                leftBtn[1].interactable = false;
+                if (toggleBtn[2].isOn)
+                {
+                    inputAnswer[0] = text[3].text;
+                }
+                else if (toggleBtn[3].isOn)
+                {
+                    inputAnswer[0] = text[2].text;
+                }
             }
+            else if (inputAnswer[1].Equals(""))
+            {
+                if (toggleBtn[2].isOn)
+                {
+                    inputAnswer[1] = text[3].text;
+                }
+                else if (toggleBtn[3].isOn)
+                {
+                    inputAnswer[1] = text[2].text;
+                }
+            }
+        }
+
+        if (CheckToggleOn() == 4) //4개 다 켜지면,
+        {
+            for (int i=0; i<toggleBtn.Length; i++)
+            {
+                toggleBtn[i].interactable = false;
+            }
+
+            checkAnswerBtn.interactable = true;
+
+            
         }
     }
 
+    
+
     /**
-     * 클릭 순서가 배열 됐는지 보기
+     * 켜진 토글 개수 알려주기
      */
-    public bool CheckAllToggleOn()
+    public int CheckToggleOn()
     {
         int count = 0;
-        bool result = false;
 
-        for (int i=0; i<2; i++)
+        for (int i=0; i<toggleBtn.Length; i++)
         {
-            if (leftBtn[i].isOn)
-            {
-                count++;
-            }
-
-            if (rightBtn[i].isOn)
+            if (toggleBtn[i].isOn)
             {
                 count++;
             }
         }
 
-        if (count == 4)
-        {
-            result = true;
-        }
-        else
-        {
-            result = false;
-        }
-
-        return result;
+        return count;
     }
 
     /**
@@ -202,19 +279,87 @@ public class Quiz_Line : MonoBehaviour {
      */
     public void OnClickCheckAnswerBtn()
     {
+        bool isAnswer = false;
+
         //정답 입력 받고, 정답인지 체크
         if (inputAnswer[0].Equals(quiz.answers[0]) && inputAnswer[1].Equals(quiz.answers[1]))
         {
-            Debug.Log("맞았어요");
+            isAnswer = true;
         }
         else
         {
-            Debug.Log("틀렸어요");
+            isAnswer = false;
+        }
+
+        DisplayResult(isAnswer);
+    }
+
+    /**
+     * 활성화 된 버튼 개수
+     */
+    public int CheckBtnsInteractable()
+    {
+        int count = 0;
+        for (int i = 0; i < toggleBtn.Length; i++)
+        {
+            if (toggleBtn[i].interactable) //활성화가 되면 추가
+            {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    public void ResetButtons()
+    {
+        if (CheckBtnsInteractable() == 0)
+        {
+            //모든 체크 사항 및 답 리셋
+            for (int i = 0; i < inputAnswer.Length; i++)
+            {
+                inputAnswer[i] = "";
+            }
+
+            for (int i = 0; i < toggleBtn.Length; i++)
+            {
+                toggleBtn[i].interactable = true;
+                toggleBtn[i].isOn = false;
+                lines.transform.GetChild(i).transform.localScale = GameData.close;
+            }
         }
     }
 
-	// Update is called once per frame
-	void Update () {
-		
+    /**
+     * 퀴즈 맞춤 여부에 대한 결과 팝업 띄우기
+     */
+    public void DisplayResult(bool isAnswer)
+    {
+        string correctness = "";
+        if (isAnswer)
+        {
+            correctness = "correct";
+        }
+        else
+        {
+            correctness = "incorrect";
+        }
+
+        popUpImg.sprite = Resources.Load<Sprite>("quiz/" + correctness + "_" + GameData.GetCharByOrder(GameData.currentOrder).name);
+        quizResult.transform.localScale = GameData.open;
+    }
+
+    // Update is called once per frame
+    void Update () {
+        CheckClick();
+
+        if (CheckBtnsInteractable() == 0)
+        {
+            resetBtn.transform.localScale = GameData.open;
+        }
+        else
+        {
+            resetBtn.transform.localScale = GameData.close;
+        }
 	}
 }
