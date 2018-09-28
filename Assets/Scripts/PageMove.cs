@@ -70,7 +70,7 @@ public class PageMove : MonoBehaviour {
     /**
      * 1.1_CharSelect -> 1.2_CharOrder
      */
-    public void MoveToCharOrder()
+    static public void MoveToCharOrder()
     {
         SceneManager.LoadScene(4);
     }
@@ -104,7 +104,8 @@ public class PageMove : MonoBehaviour {
      */
     public static void Roulette()
     {
-        SceneManager.LoadScene(Random.Range(8, 13)); //퀴즈 유형 4개, 체육관, 비밀의 사물함 중 하나 랜덤
+        //SceneManager.LoadScene(Random.Range(8, 13)); //퀴즈 유형 4개, 체육관, 비밀의 사물함 중 하나 랜덤
+        SceneManager.LoadScene(14); //인슐린 페이지
         //SceneManager.LoadScene(8);
 
         //현재 위치

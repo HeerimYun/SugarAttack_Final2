@@ -25,7 +25,7 @@ public class GameData {
     public const int EXERCISE = 13;
     //아이템 종류 개수
     public const int ITEM = 4;
-
+    
     //퀴즈 타입
     public const int OX_QUIZ = 0;
     public const int CHOICE_QUIZ = 1;
@@ -428,7 +428,6 @@ public class GameData {
 
     // Use this for initialization
     void Start () {
-        SetData(); //게임 내 필요 데이터 생성
 	}
 
     /**
@@ -682,7 +681,7 @@ public class GameData {
             character[i] = new Character(playerList[i], MakeKName(playerList[i]), false, 0, 0, 0, 0, 0, 5, monsterCard, 0, bloodSugar, 0, 0, false, 0); //만든 객체 초기화
         }
 
-        Debug.Log("캐릭터 생성완료");
+        //Debug.Log("캐릭터 생성완료");
     }
 
     /**
@@ -769,6 +768,15 @@ public class GameData {
 
         currentChar.bloodSugar.Add(lastValue + newBloodSugar);
         Debug.Log(currentChar.name + "의 혈당 변화 : " + lastValue + "->" + currentChar.bloodSugar[currentChar.bloodSugar.Count - 1]);
+    }
+
+    /**
+     * 현재 칸에 현재 캐릭터가 처음 도착했는가?
+     */
+    public static void IsFirstTime()
+    {
+        //보드 객체 생성 후, 해당 칸에 대한 속성확인
+
     }
 
     //혈당 매번 체크하여 저혈당인지 고혈당인지 체크할 것
