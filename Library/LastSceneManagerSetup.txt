@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/4.2_Insulin_volume.unity
+- path: Assets/Scenes/0.0_Splash.unity
   isLoaded: 1
   isActive: 1

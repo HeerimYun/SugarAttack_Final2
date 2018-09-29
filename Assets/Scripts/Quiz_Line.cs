@@ -38,6 +38,9 @@ public class Quiz_Line : MonoBehaviour {
     /*팝업 이미지*/
     Image popUpImg;
 
+    /*퀴즈 인덱스 넘버*/
+    public static int index;
+
     // Use this for initialization
     void Start () {
         RandomQuiz();
@@ -101,7 +104,8 @@ public class Quiz_Line : MonoBehaviour {
 	
     public void RandomQuiz()
     {
-        quiz = GameData.lineQuizzes[UnityEngine.Random.Range(0, GameData.lineQuizzes.Length)];
+        index = UnityEngine.Random.Range(0, GameData.lineQuizzes.Length);
+        quiz = GameData.lineQuizzes[index];
     }
 
     /**

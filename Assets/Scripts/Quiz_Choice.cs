@@ -32,6 +32,9 @@ public class Quiz_Choice : MonoBehaviour {
     /*팝업 이미지*/
     Image popUpImg;
 
+    /*문제 번호*/
+    public static int index = 0;
+
 	// Use this for initialization
 	void Start () {
         RandomQuiz();
@@ -120,7 +123,8 @@ public class Quiz_Choice : MonoBehaviour {
 
     public void RandomQuiz()
     {
-        quiz = GameData.choiceQuizzes[Random.Range(0, GameData.choiceQuizzes.Length)];
+        index = Random.Range(0, GameData.choiceQuizzes.Length);
+        quiz = GameData.choiceQuizzes[index];
         quiz.appeard++;
     }
 

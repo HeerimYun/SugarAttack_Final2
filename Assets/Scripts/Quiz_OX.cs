@@ -29,6 +29,8 @@ public class Quiz_OX : MonoBehaviour {
     Vector3 close = new Vector3(0, 1, 1);
     /*팝업 이미지*/
     Image popUpImg;
+    /*퀴즈 번호*/
+    public static int index = 0;
 
     // Use this for initialization
     void Start () {
@@ -42,7 +44,8 @@ public class Quiz_OX : MonoBehaviour {
      */
     public void RandomQuiz()
     {
-        quiz = GameData.oxQuizzes[Random.Range(0, GameData.oxQuizzes.Length)];
+        index = Random.Range(0, GameData.oxQuizzes.Length);
+        quiz = GameData.oxQuizzes[index];
         quiz.appeard++;
     }
 
@@ -100,8 +103,8 @@ public class Quiz_OX : MonoBehaviour {
     public void OnClickCheckAnswerBtn()
     {
         string correctness = "";
-        Debug.Log(quiz.answer);
-        Debug.Log(choosedAnswer);
+        //Debug.Log(quiz.answer);
+        //Debug.Log(choosedAnswer);
         if (choosedAnswer.Equals(quiz.answer))
         {
             correctness = "correct";
@@ -113,8 +116,9 @@ public class Quiz_OX : MonoBehaviour {
 
         popUpImg.sprite = Resources.Load<Sprite>("quiz/" + correctness + "_" + GameData.GetCharByOrder(GameData.currentOrder).name);
         quizResult.transform.localScale = open;
+        
     }
-
+    
 	// Update is called once per frame
 	void Update () {
 		

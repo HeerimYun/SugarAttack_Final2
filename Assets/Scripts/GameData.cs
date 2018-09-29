@@ -235,7 +235,7 @@ public class GameData {
         "보관이 잘 된 인슐린은 무엇일까요?",
         "엄지와 검지를 (  )CM 정도 벌려 피부를 잡아주어야해요!",
         "보관이 잘못된 인슐린을 골라주세요!",
-        "인슐린 주사 방법 중 빈칸의 순서는 무엇일까요?",
+        "인슐린 주사 방법 중 빈칸의 순서는 무엇일까요?\n인슐린 용기 소독하기 / (   )제거하기 / 용량 설정하기 / 인슐린 주사하기",
         "운동 하기 가장 좋은 시간은 언제일까?",
         "몸이 아플 때 어떻게 해야하는지 정답을 골라주세요!",
         "식사는 (  )분 이상 천천히 해야해요!",
@@ -305,7 +305,7 @@ public class GameData {
     {
         "피에 당이 많은 상태","피에 당이 부족한 상태",
         "고혈당","저혈당",
-        "짧은운동","긴운동"
+        "짧은 운동","긴 운동"
     };
     public string[] quiz_line_choices2 = new string[LINE_QUIZ_NUM * 2]
     {
@@ -678,7 +678,7 @@ public class GameData {
 
         for (int i = 0; i < character.Length; i++)
         {
-            character[i] = new Character(playerList[i], MakeKName(playerList[i]), false, 0, 0, 0, 0, 0, 5, monsterCard, 0, bloodSugar, 0, 0, false, 0); //만든 객체 초기화
+            character[i] = new Character(playerList[i], MakeKName(playerList[i]), false, 0, 0, 0, 0, 0, 5, monsterCard, 0, bloodSugar, 0, 0, false, 0, false); //만든 객체 초기화
         }
 
         //Debug.Log("캐릭터 생성완료");
@@ -818,10 +818,12 @@ public class Character
     public bool isCurrent;
     /*입력 혈당*/
     public int inputInsulin;
+    /*도서관 한 턴 쉬기*/
+    public bool libraryTurn;
 
     //생성자
     public Character (string name, string kName , bool abilityUsed, int order, int score, int honey, int juice, int yogurt, int candy, 
-        List<int> monsterCard, int position, List<int> bloodSugar, int highOrLowCount, int nurseCount, bool isCurrent, int inputInsulin)
+        List<int> monsterCard, int position, List<int> bloodSugar, int highOrLowCount, int nurseCount, bool isCurrent, int inputInsulin, bool libraryTurn)
     {
         this.name = name;
         this.kName = kName;
@@ -839,6 +841,7 @@ public class Character
         this.nurseCount = nurseCount;
         this.isCurrent = isCurrent;
         this.inputInsulin = inputInsulin;
+        this.libraryTurn = libraryTurn;
     }   
 }
 
@@ -1100,5 +1103,22 @@ public class Item
         this.name = name;
         this.kName = kName;
         this.itemGI = itemGI;
+    }
+}
+
+/**
+ * 보드판 클래스
+ */
+public class Board
+{
+    /*칸 이름*/
+    public string name;
+    /*방문자 수*/
+    public int visitor;
+
+    public Board(string name, int visitor)
+    {
+        this.name = name;
+        this.visitor = visitor;
     }
 }

@@ -16,7 +16,6 @@ public class QuizResultPopUp : MonoBehaviour {
     /*연 상태, 닫은 상태*/
     Vector3 open, close;
 
-
 	// Use this for initialization
 	void Start () {
         GetUI();
@@ -56,9 +55,8 @@ public class QuizResultPopUp : MonoBehaviour {
             }
             else
             {
-                //틀렸으면 턴 넘기기
-                GameData.TurnChange();
-                PageMove.MoveToRoulette();
+                //틀렸으면 도서관으로 보내기
+                PageMove.MoveToLibrary();
             }
         }
     }

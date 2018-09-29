@@ -17,6 +17,11 @@ public class NeedleHeadController : MonoBehaviour {
         Debug.Log("드래그중");
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("클릭됌");
+    }
+
     // Use this for initialization
     void Start () {
 		
