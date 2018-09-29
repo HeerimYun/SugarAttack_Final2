@@ -30,6 +30,11 @@ public class Quiz_OX : MonoBehaviour {
     /*팝업 이미지*/
     SpriteRenderer popUpImg;
 
+    /*correct_particle*/
+    ParticleSystem correctParticle;
+    /*Popup pop anim*/
+    Animator popAnim;
+
     // Use this for initialization
     void Start () {
         RandomQuiz();
@@ -67,6 +72,11 @@ public class Quiz_OX : MonoBehaviour {
         quizResult.transform.localScale = close;
 
         popUpImg = GameObject.Find("QuizResult/Image").GetComponent<SpriteRenderer>();
+
+        correctParticle = GameObject.Find("QuizResult/correct_panpare").GetComponent<ParticleSystem>();
+        correctParticle.Pause();
+
+        popAnim = GameObject.Find("QuizResult").GetComponent<Animator>();
     }
 
     /**
@@ -105,12 +115,17 @@ public class Quiz_OX : MonoBehaviour {
         if (choosedAnswer.Equals(quiz.answer))
         {
             correctness = "correct";
+            /*particle view*/
+            correctParticle.Play();        
         }
         else
         {
             correctness = "incorrect";
+            /*particle view*/
+            correctParticle.Stop();
         }
-
+        /*popup pop anim*/
+        popAnim.SetTrigger("ResultPop");
         popUpImg.sprite = Resources.Load<Sprite>("quiz/" + correctness + "_" + GameData.GetCharByOrder(GameData.currentOrder).name);
         quizResult.transform.localScale = open;
     }

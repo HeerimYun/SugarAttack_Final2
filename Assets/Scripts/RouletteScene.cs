@@ -44,7 +44,7 @@ public class RouletteScene : MonoBehaviour {
     public void GetCurrentChar()
     {
         currentChar = GameData.GetCharByOrder(GameData.currentOrder);
-        Debug.Log("현재 순서는 " + currentChar.kName);
+        //Debug.Log("현재 순서는 " + currentChar.kName);
     }
 
     public void GetUI()

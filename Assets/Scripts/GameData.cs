@@ -66,8 +66,31 @@ public class GameData {
     int[] snackCa = new int[SNACK] { 23, 10, 18, 15, 31, 23, 45, 25, 24, 13, 25, 25 };
 
     //운동 칸 배열
-    string[] exerciseName = new string[EXERCISE] { "느리게 걷기", "빠르게 걷기", "테니스(혼자)", "테니스(같이)", "자전거타기(느리게)", "자전거타기(보통)", "자전거타기(빠르게)", "자전거타기(격하게)", "배드민턴", "달리기", "계단 오르내리기", "체조", "수영" };
+    string[] exerciseName = new string[EXERCISE] { "걷기", "걷기", "테니스", "테니스", "자전거타기", "자전거타기", "자전거타기", "자전거타기", "배드민턴", "달리기", "계단 오르내리기", "체조", "수영" };
+    string[] exerciseType = new string[EXERCISE] { "(느리게)", "(빠르게)", "(혼자)", "(같이)", "(느리게)", "(보통)", "(빠르게)", "(격하게)", "", "", "", "", ""};
     int[] exerciseCa = new int[EXERCISE] { 17, 28, 28, 20, 17, 25, 28, 40, 20, 40, 19, 11, 45 };
+
+    string[] exerciseAdvantage = new string[] { //어디에 좋을까? 에 들어가는 내용
+        "가벼운 걷기 운동은 근육과 지방이\n활발히 움직이면서 혈당을 낮춰주는\n아주 좋은 운동이에요! 가볍게\n걸으면서 몸을 움직이면 식사 조절의 스트레스도 사라져요.", //걷기
+        "테니스는 팔과 다리 몸의 모든 근육을 골고루 사용해서 활동량이 매우 큰 운동이에요! 활동량이 많기 때문에 심장혈관을 튼튼하게 해주고, 혈당도 금방 낮아져요.", //테니스
+        "자전거는 관절에 무리가 없고,\n다리의 근육을 만들어 주는\n운동이에요! 심장과 폐 기능에\n좋아서 부담 없이 혈당을 조절하기\n위해 할 수 있는 운동이에요.", //자전거타기
+        "배드민턴은 상체로는 공을 치고,\n하체는 공을 향해 뛰는 운동으로\n근육 발달에 좋은 운동이에요!\n공을 칠 때 복부의 힘이 생겨 복근을 만들어줘요!", //배드민턴
+        "달리기는 지방을 사라지게 해주고,\n식욕을 낮춰서 혈당 조절에 좋은 운동이에요!\n뇌를 깨워주고, 피를 깨끗하게 만들어주는 운동이에요!", //달리기
+        "계단 오르내리기는 허벅지, 종아리,\n발목의 근육을 만들어 주는 운동이에요!\n심장 기능이 좋아져서 몸 전체에\n골고루 피를 전달할 수 있도록 도와줘요!", //계단 오르내리기
+        "체조는 몸 전체의 근육을 골고루\n발달시켜주는 운동이에요!\n꾸준한 체조 운동은 몸을 유연하게\n만들어줘서 부상을 예방할 수 있어요!", //체조
+        "수영은 다른 운동에 비해 짧은 시간 동안 혈당 조절을 할 수 있는 운동이에요!\n몸 전체의 피를 골고루 전달해줘서\n심장과 폐 기능을 강하게 해줘요!", //수영
+    };
+    string[] exerciseCaution = new string[] { //주의사항 에 대한 내용
+        "가볍게 걸을 때도 허리를 곧게 펴고,\n바닥을 뒤꿈치부터 내딛어야 해요!", //걷기
+        "공을 사용한 운동이기 때문에 스트레칭을 꼭 해주고, 너무 무리한 운동은 저혈당의 위험이 있어요!", //테니스
+        "자전거를 탈 때는 머리와 무릎,\n팔꿈치를 보호할 수 있는 보호\n장비를 꼭 착용해야 해요!", //자전거타기
+        "라켓을 사용하는 운동이기 때문에\n주변 사람들과 부딪치지 않도록\n조심해야 해요!", //배드민턴
+        "너무 빠르게 달리면 심장에 무리가\n갈 수 있으니 자신의 몸 상태에 맞게\n잘 체크해줘야 해요!", //달리기
+        "상체가 앞으로 구부러지지 않게\n허리를 꼿꼿이 펴고, 발바닥 전체를 딛으면서 오르내려야 해요!", //계단 오르내리기
+        "체조의 순서와 동작을 정확하게\n따라해야 운동의 효과를 더욱\n크게 만들어줘요!", //체조
+        "수영을 하면서 체온이 금방 떨어질 수 있으니 조심해야 해요!" //수영
+    };
+
 
     //몬스터 칸 배열
     int[] monsterScore = new int[MONSTER_CARD] { 5, 10, 20, 10, 15, 20, 5, 10, 25, 5, 20, 25, 5, 15, 20, 5, 15, 25 };
@@ -380,7 +403,7 @@ public class GameData {
         //SetMonsters(); //몬스터 카드
         //SetFood(); //음식
         //SetSnack(); //간식
-        //SetExercise(); //운동
+        SetExercise(); //운동
         SetQuiz(); //퀴즈
         SetItem(); //아이템
         
@@ -436,11 +459,40 @@ public class GameData {
     private void SetExercise()
     {
         exercise = new Exercise[EXERCISE]; //운동 배열 생성
-
+        int index;
         //배열 초기화
         for (int i=0; i<EXERCISE; i++)
         {
-            exercise[i] = new Exercise(exerciseName[i], exerciseCa[i]);
+            index = -1;
+            switch(exerciseName[i])
+            {
+                case "걷기":
+                    index = 0;
+                    break;
+                case "테니스":
+                    index = 1;
+                    break;
+                case "자전거타기":
+                    index = 2;
+                    break;
+                case "배드민턴":
+                    index = 3;
+                    break;
+                case "달리기":
+                    index = 4;
+                    break;
+                case "계단 오르내리기":
+                    index = 5;
+                    break;
+                case "체조":
+                    index = 6;
+                    break;
+                case "수영":
+                    index = 7;
+                    break;
+            }
+
+            exercise[i] = new Exercise(exerciseName[i], exerciseCa[i], exerciseType[i], exerciseAdvantage[index],exerciseCaution[index]);
         }
     }
 
@@ -668,6 +720,21 @@ public class GameData {
             }
         }
     }
+
+    /**
+     * 변화한 혈당값을 리스트의 맨 끝에 추가
+     */
+    public static void UpdateBloodSugar(Character currentChar, int newBloodSugar)
+    {
+        currentChar = GetCharByOrder(currentOrder);
+        int lastIndex = currentChar.bloodSugar.Count - 1;
+        int lastValue = currentChar.bloodSugar[lastIndex];
+
+        currentChar.bloodSugar.Add(lastValue + newBloodSugar);
+        Debug.Log(currentChar.name + "의 혈당 변화 : " + lastValue + "->" + currentChar.bloodSugar[currentChar.bloodSugar.Count - 1]);
+    }
+
+    //혈당 매번 체크하여 저혈당인지 고혈당인지 체크할 것
 }
 
 
@@ -955,12 +1022,21 @@ public class Exercise
     public string name;
     /*운동 소모 칼로리*/
     public int GI;
+    /*운동 종류*/
+    public string type;
+    /*어디에 좋을까? 설명*/
+    public string advantage;
+    /*주의할 점*/
+    public string caution;
 
     //생성자
-    public Exercise(string name, int GI)
+    public Exercise(string name, int GI, string type, string advantage, string caution)
     {
         this.name = name;
         this.GI = GI;
+        this.type = type;
+        this.advantage = advantage;
+        this.caution = caution;
     }
 }
 

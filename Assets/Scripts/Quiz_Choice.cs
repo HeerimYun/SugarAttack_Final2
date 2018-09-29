@@ -30,10 +30,15 @@ public class Quiz_Choice : MonoBehaviour {
     Vector3 open = new Vector3(1, 1, 1);
     Vector3 close = new Vector3(0, 1, 1);
     /*팝업 이미지*/
-    Image popUpImg;
+    SpriteRenderer popUpImg;
 
-	// Use this for initialization
-	void Start () {
+    /*correct_particle*/
+    ParticleSystem correctParticle;
+    /*Popup pop anim*/
+    Animator popAnim;
+
+    // Use this for initialization
+    void Start () {
         RandomQuiz();
         GetUI();
         SetUI();
@@ -59,7 +64,12 @@ public class Quiz_Choice : MonoBehaviour {
         quizResult = GameObject.Find("QuizResult");
         quizResult.transform.localScale = close;
 
-        popUpImg = GameObject.Find("QuizResult/Image").GetComponent<Image>();
+        popUpImg = GameObject.Find("QuizResult/Image").GetComponent<SpriteRenderer>();
+
+        correctParticle = GameObject.Find("QuizResult/correct_panpare").GetComponent<ParticleSystem>();
+        correctParticle.Pause();
+
+        popAnim = GameObject.Find("QuizResult").GetComponent<Animator>();
     }
 
     /**
@@ -107,13 +117,17 @@ public class Quiz_Choice : MonoBehaviour {
         string correctness = "";
         if (isAnswer)
         {
-            correctness = "correct";
+            /*particle view*/
+            correctParticle.Play();
         }
         else
         {
             correctness = "incorrect";
+            /*particle view*/
+            correctParticle.Stop();
         }
-
+        /*popup pop anim*/
+        popAnim.SetTrigger("ResultPop");
         popUpImg.sprite = Resources.Load<Sprite>("quiz/" + correctness + "_" + GameData.GetCharByOrder(GameData.currentOrder).name);
         quizResult.transform.localScale = open;
     }

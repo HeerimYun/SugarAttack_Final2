@@ -62,12 +62,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\AllCandyPopUp.cs" />
+    <Compile Include="Assets\Scripts\CharAndChart.cs" />
     <Compile Include="Assets\Scripts\CharOrder.cs" />
     <Compile Include="Assets\Scripts\CharSelect.cs" />
     <Compile Include="Assets\Scripts\CustomOutline.cs" />
     <Compile Include="Assets\Scripts\Draggable.cs" />
     <Compile Include="Assets\Scripts\DropZone.cs" />
     <Compile Include="Assets\Scripts\GameData.cs" />
+    <Compile Include="Assets\Scripts\Gym.cs" />
+    <Compile Include="Assets\Scripts\GymPopUp.cs" />
     <Compile Include="Assets\Scripts\HelpMenu.cs" />
     <Compile Include="Assets\Scripts\InsulinInput.cs" />
     <Compile Include="Assets\Scripts\Inventory.cs" />
@@ -86,6 +89,26 @@
     <Compile Include="Assets\Scripts\SecretLockerRoom.cs" />
     <Compile Include="Assets\Scripts\ShowTurn.cs" />
     <Compile Include="Assets\Scripts\SplashController.cs" />
+    <Compile Include="Assets\SmartChart\Core\Scripts\ChartDataMonitor.cs" />
+    <Compile Include="Assets\SmartChart\Core\Scripts\ChartDataPusher.cs" />
+    <Compile Include="Assets\SmartChart\Core\Scripts\ChartMarkerController.cs" />
+    <Compile Include="Assets\SmartChart\Core\Scripts\SmartChart.cs" />
+    <Compile Include="Assets\SmartChart\Core\Scripts\SmartChartData.cs" />
+    <Compile Include="Assets\SmartChart\Demo\Scripts\SimpleCaptions.cs" />
+    <Compile Include="Assets\SmartChart\Demo\Scripts\SimpleChartAnimation.cs" />
+    <Compile Include="Assets\SmartChart\Demo\Scripts\SimpleChartScaling.cs" />
+    <Compile Include="Assets\SmartChart\Demo\Scripts\SimpleChartSlider.cs" />
+    <Compile Include="Assets\SmartChart\Demo\Scripts\SimpleCVSDataImporter.cs" />
+    <Compile Include="Assets\SmartChart\Demo\Scripts\SimpleFPSReader.cs" />
+    <Compile Include="Assets\SmartChart\Demo\Scripts\SimpleRandomDataGenerator.cs" />
+    <Compile Include="Assets\SmartChart\Demo\Scripts\SimpleSinusGenerator.cs" />
+    <Compile Include="Assets\SmartChart\Dependencies\Interpolate.cs" />
+    <Compile Include="Assets\SmartChart\Dependencies\unity-ui-extensions\Scripts\Primitives\UILineRenderer.cs" />
+    <Compile Include="Assets\SmartChart\Dependencies\unity-ui-extensions\Scripts\Primitives\UIPrimitiveBase.cs" />
+    <Compile Include="Assets\SmartChart\Dependencies\unity-ui-extensions\Scripts\Utilities\BezierPath.cs" />
+    <Compile Include="Assets\SmartChart\Dependencies\unity-ui-extensions\Scripts\Utilities\SetPropertyUtility.cs" />
+    <None Include="Assets\SmartChart\Core\Shaders\ChartShader.shader" />
+    <None Include="Assets\SmartChart\Demo\Fonts\OFL.txt" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>/Users/mac/SugarAttack_Final2/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>

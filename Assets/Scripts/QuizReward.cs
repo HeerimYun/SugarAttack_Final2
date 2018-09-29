@@ -23,7 +23,7 @@ public class QuizReward : MonoBehaviour {
     /*캔디 개수*/
     int num;
     /*현재 캐릭터*/
-    Image charImg;
+    //Image charImg;
     /*현재 캐릭터 객체*/
     Character currentChar;
 
@@ -47,8 +47,8 @@ public class QuizReward : MonoBehaviour {
         resultText = GameObject.Find("TextArea/Text").GetComponent<Text>();
         resultPaper = GameObject.Find("paper").GetComponent<Image>();
         candyImg = GameObject.Find("candyImage").GetComponent<Image>();
-        charImg = GameObject.Find("CharacterImage").GetComponent<Image>();
-        charImg.sprite = Resources.Load<Sprite>("Characters/" + currentChar.name + "/idle/" + currentChar.name.ToLower() + "_idle_01");
+        //charImg = GameObject.Find("CharacterImage").GetComponent<Image>();
+        //charImg.sprite = Resources.Load<Sprite>("Characters/" + currentChar.name + "/idle/" + currentChar.name.ToLower() + "_idle_01");
     }
 
     /**
