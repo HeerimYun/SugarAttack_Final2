@@ -22,8 +22,9 @@
       <File FileName="Assets/Scripts/Draggable.cs" Line="78" Column="1" />
       <File FileName="ProjectSettings/EditorBuildSettings.asset" Line="53" Column="22" />
       <File FileName="Assets/Scripts/DropZone.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/QuizReward.cs" Line="89" Column="58" />
+      <File FileName="Assets/Scripts/QuizReward.cs" Line="62" Column="72" />
       <File FileName="Assets/SmartChart/Demo/Scripts/SimpleChartAnimation.cs" Line="24" Column="19" />
+      <File FileName="Assets/Scripts/CustomOutline.cs" Line="35" Column="14" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

@@ -60,7 +60,6 @@ public class QuizReward : MonoBehaviour {
         getText = GameObject.Find("getText").GetComponent<Image>();
         resultArea = GameObject.Find("paper/TextArea");
         rewardShow = GameObject.Find("paper").GetComponent<Animator>();
-        appearSource = GameObject.Find("Rewards").GetComponent<AudioSource>();
         //charImg = GameObject.Find("CharacterImage").GetComponent<Image>();
         //charImg.sprite = Resources.Load<Sprite>("Characters/" + currentChar.name + "/idle/" + currentChar.name.ToLower() + "_idle_01");
     }
