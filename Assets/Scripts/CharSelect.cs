@@ -105,6 +105,8 @@ public class CharSelect : MonoBehaviour {
 
         //캐릭터 생성
         gameData.SetCharacters();
+
+        PageMove.MoveToCharOrder(); //순서 결과 페이지로 이동
     }
 	
 	// Update is called once per frame

@@ -25,7 +25,7 @@ public class GameData {
     public const int EXERCISE = 13;
     //아이템 종류 개수
     public const int ITEM = 4;
-
+    
     //퀴즈 타입
     public const int OX_QUIZ = 0;
     public const int CHOICE_QUIZ = 1;
@@ -117,9 +117,10 @@ public class GameData {
     public const int YOGURT = 2;
     public const int CANDY = 3;
 
+    public const int OX_QUIZ_NUM = 31;
     //퀴즈
     //OX QUIZ
-    public string[] quiz_ox_question = new string[]
+    public string[] quiz_ox_question = new string[OX_QUIZ_NUM]
     {
         "고혈당의 증상 중 하나는 식은 땀이 나는 거야!",
         "저혈당의 증상 중 하나는 몸이 으슬으슬 떨리는 거야!",
@@ -133,30 +134,29 @@ public class GameData {
         "주사 바늘은 계속 사용할 수 있어요!",
         "매일 같은 시간에 식사를 하는 게 좋아요!",
         "주사 바늘은 45~90도 사이에서 맞아야 해요!",
-        "인슐린 주사는 근육에 주사해야한다.",
+        "인슐린 주사는 근육에 주사해야해요!",
         "몸이 아프면 혈당체크를 하지 않아도 돼요!",
         "인슐린 주사를 맞고 운동하면 혈당을 낮추는데 효과적이예요!",
-        "인슐린 주사를 맞을 때 공기를 제거하지 않아도 된다.",
+        "인슐린 주사를 맞을 때 공기를 제거하지 않아도 돼!",
         "운동은 식사 후보다 식사 전에 하는 게 더 좋아!",
         "혈당이 올라갈 수 있어서 과일은 절대 먹으면 안돼!",
-        "자신이 할 수 있는 만큼의 운동을 꾸준히 하는 게 좋아.",
+        "자신이 할 수 있는 만큼의 운동을 꾸준히 하는 게 좋아요!",
         "과식을 했을 때는 다음 끼니를 굶어야해!",
         "혈당이 70이하로 떨어졌을 때를 저혈당이라고해!",
         "저혈당의 증상이 느껴지면 하던 일을 멈추고 혈당체크를 해야해!",
-        "과도한 운동은 고혈당의 위험을 높여!",
-        "힘들고 오래 하는 운동은 혈당이 적게 떨어진다.",
+        "과도한 운동은 고혈당의 위험을 높여요!",
+        "힘들고 오래 하는 운동은 혈당이 적게 떨어져요!",
         "설사를 해서 음식을 적게 먹으면 주사의 양을 줄여야 해요!",
-        "갈증이 나면 저혈당이 올 수 있어서 단 음료를 먹어야 한다.",
+        "갈증이 나면 저혈당이 올 수 있어서 단 음료를 먹어야 해요!",
         "운동할 때 땀을 많이 흘리면 혈당이 더 잘 내려가요!",
         "당뇨에 걸리면 감기약을 먹으면 안돼요!",
         "당이 적은 음식은 폭식을 해도 괜찮아요!",
-        "주사 버튼을 누른 뒤에 천천히 10초를 세고 주사 바늘을 빼야해!",
         "인슐린의 양은 내 마음대로 바꿔도 돼요!",
         "밥 먹기 전 혈당이 120 이상인 상태를 고혈당이라고 해!"
     };
 
     //ox퀴즈 답
-    public string[] quiz_ox_answer = new string[]
+    public string[] quiz_ox_answer = new string[OX_QUIZ_NUM]
     {
         "X",
         "O",
@@ -164,7 +164,6 @@ public class GameData {
         "X",
         "X",
         "X",
-        "X",
         "O",
         "O",
         "X",
@@ -176,14 +175,14 @@ public class GameData {
         "X",
         "X",
         "X",
-        "O",
-        "X",
-        "O",
-        "O",
-        "X",
         "X",
         "O",
         "X",
+        "O",
+        "O",
+        "X",
+        "X",
+        "O",
         "X",
         "X",
         "X",
@@ -193,12 +192,12 @@ public class GameData {
     };
 
     //ox퀴즈 해설
-    public string[] quiz_ox_library = new string[]
+    public string[] quiz_ox_library = new string[OX_QUIZ_NUM]
     {
         "식은땀이 나는 건 고혈당 상태가 아니라 저혈당 상태예요.",
         "몸이 으슬으슬 떨리면 저혈당 상태이기 때문에 간단한 간식을 먹어줘야해요.",
         "식사 후에 바로 간식을 먹으면 고혈당이 될 위험이 높아져요!",
-        "고혈당 상태의 몬스터들은 포도당캔디를 먹으면 혈당이 많이 높아져서",
+        "포도당 사탕을 먹으면 혈당이 높아지기 때문에, 고혈당인 몬스터들에게 치명적이예요!",
         "음식은 규칙적으로 먹는 게 좋아요.",
         "운동을 많이했다고 간식을 많이 먹으면 혈당이 갑자기 올라갈 수 있어요.",
         "힘들게 운동하다 보면 혈당이 갑자기 내려가서 저혈당이 올 수 있어요",
@@ -214,7 +213,7 @@ public class GameData {
         "식사 후 1시간 뒤에 운동을 하는 것이 가장 좋아요.",
         "조금씩 과일을 먹는 건 괜찮지만 너무 많이 먹으면 혈당이 올라갈 수 있어요.",
         "운동을 꾸준히 하면 혈당을 낮춰줄 수 있어요.",
-        "과식을 했을 때는다음 끼니를 굶지말고 가벼운 운동을 통해 혈당을 내려주는 게 좋아요.",
+        "과식을 했을 때는 다음 끼니를 굶지말고 가벼운 운동을 통해 혈당을 내려주는 게 좋아요.",
         "혈당이 70 이하로 떨어졌을 때를 저혈당이라고 해요.",
         "저혈당의 증상이 느껴지면 하던 일이 멈추고 혈당체크를 해서 혈당을 확인해주는게 좋아요.",
         "과도한 운동은 저혈당의 위험이 있어요.",
@@ -224,74 +223,112 @@ public class GameData {
         "운동할 때 땀을 많이 흘리게 되면 오히려 탈수 증상이 올 수 있어요!",
         "종합감기약은 먹어도 괜찮아요!",
         "당이 적은 음식이어도 폭식은 안돼요!",
-        "주사 버튼을 누른 뒤에 천천히 5초를 세고 주사 바늘을 빼야 해요!",
         "인슐린 용량은 의사선생님께 물어보고 결정해야해요!",
         "혈당을 80 ~ 120으로 유지해 주는게 가장 좋아요!"
     };
 
+    public const int CHOICE_QUIZ_NUM = 12;
     //4지 선다형 퀴즈
-    public string[] quiz_choice_question = new string[]
+    public string[] quiz_choice_question = new string[CHOICE_QUIZ_NUM]
     {
         "머릿 속이 멍해요! 잠깐 쉬어갈까요?",
-        "엄지와 검지를 (   )CM 정도 벌려 피부를 잡아주어야해요!",
-        "보관이 잘 된 인슐린은 무엇일까요?"
+        "보관이 잘 된 인슐린은 무엇일까요?",
+        "엄지와 검지를 (  )CM 정도 벌려 피부를 잡아주어야해요!",
+        "보관이 잘못된 인슐린을 골라주세요!",
+        "인슐린 주사 방법 중 빈칸의 순서는 무엇일까요?",
+        "운동 하기 가장 좋은 시간은 언제일까?",
+        "몸이 아플 때 어떻게 해야하는지 정답을 골라주세요!",
+        "식사는 (  )분 이상 천천히 해야해요!",
+        "운동은 일주일에 (  )일 이상 하는 것이 좋아요!",
+        "올바른 운동법에 대해 골라보세요!",
+        "주사를 맞았던 자리는 (  )일 동안 맞지 않는게 좋아요!",
+        "물을 많이 먹고 화장실을 자주 가는 것은 어떤 상태일까요?"
     };
     
-    public string[] quiz_choice_choice = new string[]
+    public string[] quiz_choice_choice = new string[CHOICE_QUIZ_NUM * 4]
     {
         "열심히 몬스터를 잡아야해","인슐린 주사를 맞을까?","잠시 앉아서 휴식을 취하자","운동을 해야해",
+        "3년된 인슐린", "냉동 보관된 인슐린", "덩어리가 없는 인슐린", "유효기한이 지난 인슐린",
         "2","3","5","7",
-        "3년된 인슐린", "냉동 보관된 인슐린", "덩어리가 없는 인슐린", "유효기한이 지난 인슐린"
+        "덩어리가 없는 인슐린","냉장보관된 인슐린","유효기간이 지난 인슐린","투명한 인슐린",
+        "바늘","인슐린","공기","물",
+        "식사 후에","식사 전에","자기 전에","꿈 속에서",
+        "혈당체크를 자주한다.","밥을 안먹고 인슐린 주사를 맞는다.","운동을 무리하게 한다.","달콤한 간식을 먹는다.",
+        "5","10","15","20",
+        "0","1","2","3",
+        "힘든 운동을 오래 하기","식사 하고 운동하기","인슐린 주사 맞고 바로 운동하기","아예 운동 하지 않기",
+        "5","10","15","30",
+        "저혈당","고혈당","정상혈당","아무 상태 아니다."
 
     };
-    public string[] quiz_choice_answer = new string[]
+    public string[] quiz_choice_answer = new string[CHOICE_QUIZ_NUM]
     {
         "잠시 앉아서 휴식을 취하자",
+        "덩어리가 없는 인슐린",
         "5",
-        "덩어리가 없는 인슐린"
+        "유효기간이 지난 인슐린",
+        "공기",
+        "식사 후에",
+        "혈당체크를 자주한다.",
+        "20",
+        "3",
+        "식사 하고 운동하기",
+        "30",
+        "고혈당"
     };
 
-    public string[] quiz_choice_library = new string[]
+    public string[] quiz_choice_library = new string[CHOICE_QUIZ_NUM]
     {
         "머릿 속이 멍한 건 저혈당 증상이예요. 그렇기 때문에 잠시 휴식을 취하는 게 좋아요.",
         "냉동으로 얼린 인슐린이나 2년 이상된 인슐린은 상한 인슐린이예요.",
-        "손가락으로 오센티 피부를 잡아 올려주어야 인슐린이 잘 들어가요."
+        "손가락으로 5CM 피부를 잡아 올려주어야 인슐린이 잘 들어가요.",
+        "덩어리가 있는 인슐린과 유효기간이 지난 인슐린은 상한 인슐린이라서 오히려 혈당이 갑자기 높아질 수 있어요.",
+        "공기를 반드시 제거해줘야해요!",
+        "운동은 식사 후 1시간 뒤가 가장 좋아요.",
+        "식사를 안 했을때는 인슐린 주사를 조금만 맞아야 해요!",
+        "식사는 20분 이상 천천히 하는게 좋아요!",
+        "규칙적인 운동은 혈당 관리 많은 도움을 줘요!",
+        "밥을 먹지 않고 힘들게 하거나 오래 운동하게 되면 저혈당이 올 수 있어요!",
+        "주사를 맞았던 자리에 다시 주사를 놓으면 더 아파요!",
+        "고혈당은 물을 많이 먹고 화장실을 자주 가게 돼요!"
     };
 
+    public const int LINE_QUIZ_NUM = 3;
     //선 잇기 퀴즈
-    public string[] quiz_line_question = new string[]
+    public string[] quiz_line_question = new string[LINE_QUIZ_NUM]
     {
         "상태와 증상을 알맞게 연결해주세요.",
         "고혈당과 저혈당의 상태를 알맞게 연결해주세요.",
         "운동에 맞는 올바른 효과를 골라주세요!"
     };
-    public string[] quiz_line_choices1 = new string[]
+    public string[] quiz_line_choices1 = new string[LINE_QUIZ_NUM * 2]
     {
         "피에 당이 많은 상태","피에 당이 부족한 상태",
         "고혈당","저혈당",
         "짧은운동","긴운동"
     };
-    public string[] quiz_line_choices2 = new string[]
+    public string[] quiz_line_choices2 = new string[LINE_QUIZ_NUM * 2]
     {
         "저혈당","고혈당",
         "목이 마르다","식은땀이 난다",
         "몸무게가 줄어든다","혈당이 떨어진다"
     };
-    public string[] quiz_line_answerMatch = new string[]
+    public string[] quiz_line_answerMatch = new string[LINE_QUIZ_NUM * 2]
     {
         "고혈당","저혈당",
         "목이 마르다","식은땀이 난다",
         "혈당이 떨어진다","몸무게가 줄어든다"
     };
-    public string[] quiz_line_library = new string[]
+    public string[] quiz_line_library = new string[LINE_QUIZ_NUM]
     {
         "당이 많으면 고혈당, 적으면 저혈당이예요.",
         "고혈당일 때는 목이 자주 마르고, 저혈당일 때는 식은 땀이 나요.",
         "짧은운동이 혈당을 떨어지게 하는데에 좋아요!"
     };
 
+    public const int DRAG_QUIZ_NUM = 7;
     //드래드앤드랍 퀴즈
-    public string[] quiz_drag_question = new string[]
+    public string[] quiz_drag_question = new string[DRAG_QUIZ_NUM]
     {
         "저혈당 상태가 온 것 같아요. \n저혈당 상태에 나타나는 내 몸의 증상은 무엇일까요?",
         "모든 일에 집중이 되지 않아요. \n뭔가를 먹어볼까요?",
@@ -302,7 +339,7 @@ public class GameData {
         "혈당을 낮추는 데에 도움이 되는 운동을 골라보세요!"
     };
 
-    public string[] quiz_drag_postit = new string[]
+    public string[] quiz_drag_postit = new string[DRAG_QUIZ_NUM * 6]
     {
         "기침","발저림","식은땀","집중력\n저하","치통","복통",
         "물","쨈","포도당\n사탕","초콜릿","오렌지\n주스","우유",
@@ -324,17 +361,17 @@ public class GameData {
         "에어로빅"
     };
 
-    public int[] quiz_drag_answer_num = new int[7] { 2,2,2,2,2,2,1 };
+    public int[] quiz_drag_answer_num = new int[DRAG_QUIZ_NUM] { 2,2,2,2,2,2,1 };
 
-    public string[] quiz_drag_library = new string[]
+    public string[] quiz_drag_library = new string[DRAG_QUIZ_NUM]
     {
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "기침과 치통, 복통은 저혈당의 증세가 아니예요.",
+        "포도당 사탕과 오렌지 주스가 저혈당 예방에 더 좋은 간식이예요.",
+        "치킨,짜장면,햄버거,피자는 간식으로 먹으면 혈당이 갑자기 올라갈 수 있어요.",
+        "너무 힘든 운동은 오히려 저혈당의 위험이 있어요.",
+        "몸이 떨리는 증상은 저혈당 증상이예요.",
+        "손, 가슴, 발, 목은 근육이 있어서 저혈당이 올 수 있어요.",
+        "에어로빅이 혈당을 낮추는 데 더 도움이 돼요!"
     };
 
     //캐릭터 변수
@@ -391,7 +428,6 @@ public class GameData {
 
     // Use this for initialization
     void Start () {
-        SetData(); //게임 내 필요 데이터 생성
 	}
 
     /**
@@ -645,7 +681,7 @@ public class GameData {
             character[i] = new Character(playerList[i], MakeKName(playerList[i]), false, 0, 0, 0, 0, 0, 5, monsterCard, 0, bloodSugar, 0, 0, false, 0); //만든 객체 초기화
         }
 
-        Debug.Log("캐릭터 생성완료");
+        //Debug.Log("캐릭터 생성완료");
     }
 
     /**
@@ -732,6 +768,15 @@ public class GameData {
 
         currentChar.bloodSugar.Add(lastValue + newBloodSugar);
         Debug.Log(currentChar.name + "의 혈당 변화 : " + lastValue + "->" + currentChar.bloodSugar[currentChar.bloodSugar.Count - 1]);
+    }
+
+    /**
+     * 현재 칸에 현재 캐릭터가 처음 도착했는가?
+     */
+    public static void IsFirstTime()
+    {
+        //보드 객체 생성 후, 해당 칸에 대한 속성확인
+
     }
 
     //혈당 매번 체크하여 저혈당인지 고혈당인지 체크할 것
