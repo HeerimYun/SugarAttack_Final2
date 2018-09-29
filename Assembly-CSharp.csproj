@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\AllCandyPopUp.cs" />
+    <Compile Include="Assets\Scripts\BGMController.cs" />
     <Compile Include="Assets\Scripts\CharAndChart.cs" />
     <Compile Include="Assets\Scripts\CharOrder.cs" />
     <Compile Include="Assets\Scripts\CharSelect.cs" />

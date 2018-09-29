@@ -35,6 +35,11 @@ public class Quiz_OX : MonoBehaviour {
     /*Popup pop anim*/
     Animator popAnim;
 
+    /*result sound*/
+    AudioSource resultSound;
+    public AudioClip correctSound;
+    public AudioClip incorrectSound;
+
     // Use this for initialization
     void Start () {
         RandomQuiz();
@@ -77,6 +82,8 @@ public class Quiz_OX : MonoBehaviour {
         correctParticle.Pause();
 
         popAnim = GameObject.Find("QuizResult").GetComponent<Animator>();
+
+        resultSound = GameObject.Find("QuizResult").GetComponent<AudioSource>();
     }
 
     /**
@@ -116,13 +123,17 @@ public class Quiz_OX : MonoBehaviour {
         {
             correctness = "correct";
             /*particle view*/
-            correctParticle.Play();        
+            correctParticle.Play();
+            /*resultSound*/
+            resultSound.PlayOneShot(correctSound);
         }
         else
         {
             correctness = "incorrect";
             /*particle view*/
             correctParticle.Stop();
+            /*resultSound*/
+            resultSound.PlayOneShot(incorrectSound);
         }
         /*popup pop anim*/
         popAnim.SetTrigger("ResultPop");

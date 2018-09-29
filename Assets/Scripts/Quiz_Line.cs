@@ -42,6 +42,10 @@ public class Quiz_Line : MonoBehaviour {
     ParticleSystem correctParticle;
     /*Popup pop anim*/
     Animator popAnim;
+    /*result sound*/
+    AudioSource resultSound;
+    public AudioClip correctSound;
+    public AudioClip incorrectSound;
 
     // Use this for initialization
     void Start () {
@@ -81,6 +85,8 @@ public class Quiz_Line : MonoBehaviour {
         correctParticle.Pause();
 
         popAnim = GameObject.Find("QuizResult").GetComponent<Animator>();
+
+        resultSound = GameObject.Find("QuizResult").GetComponent<AudioSource>();
     }
 
     public void SetUI()
@@ -348,16 +354,19 @@ public class Quiz_Line : MonoBehaviour {
         string correctness = "";
         if (isAnswer)
         {
-            Debug.Log("왜 안돼");
             correctness = "correct";
             /*particle view*/
             correctParticle.Play();
+            /*resultSound*/
+            resultSound.PlayOneShot(correctSound);
         }
         else
         {
             correctness = "incorrect";
             /*particle view*/
             correctParticle.Stop();
+            /*resultSound*/
+            resultSound.PlayOneShot(incorrectSound);
         }
         /*popup pop anim*/
         popAnim.SetTrigger("ResultPop");
