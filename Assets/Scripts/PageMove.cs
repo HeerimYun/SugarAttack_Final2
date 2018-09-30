@@ -13,7 +13,8 @@ using UnityEngine.SceneManagement;
 /**
  * 씬 이동
  */
-public class PageMove : MonoBehaviour {
+public class PageMove : MonoBehaviour
+{
 
     public static PageMove Instance;
 
@@ -27,9 +28,10 @@ public class PageMove : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
 
-	}
+    }
 
     /**
      * @parameter: asset 폴더에서의 씬 이름 ex)0.0_Splash
@@ -39,11 +41,12 @@ public class PageMove : MonoBehaviour {
         //Debug.Log(SceneManager.GetSceneByName(sceneName).buildIndex);
         SceneManager.LoadScene(SceneManager.GetSceneByName(sceneName).buildIndex);
     }
-	
+
     /**
      * 0.0_splash -> 0.1_WaitingRoom
      */
-    public static void MoveToWaitingRoom() {
+    public static void MoveToWaitingRoom()
+    {
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             SceneManager.LoadScene(1);
@@ -100,15 +103,39 @@ public class PageMove : MonoBehaviour {
     }
 
     /**
+     * 도서관으로 보낼 경우 유형에 맞게 도서관 씬에 보내기
+     */
+    public static void MoveToLibrary()
+    {
+        switch (SceneManager.GetActiveScene().name)
+        {
+            case "5.0_Quiz_OX":
+                SceneManager.LoadScene(15); //11.0_Library_OX
+                break;
+            case "5.0_Quiz_Line":
+                SceneManager.LoadScene(18);
+                break;
+            case "5.0_Quiz_DragDrop":
+                SceneManager.LoadScene(17);
+                break;
+            case "5.0_Quiz_Choice":
+                SceneManager.LoadScene(16); //11.0_Library_Choice
+                break;
+        }
+    }
+
+    /**
      * 룰렛결과에 따라 
      */
     public static void Roulette()
     {
-        //SceneManager.LoadScene(Random.Range(8, 13)); //퀴즈 유형 4개, 체육관, 비밀의 사물함 중 하나 랜덤
+        SceneManager.LoadScene(Random.Range(8, 14)); //퀴즈 유형 4개, 체육관, 비밀의 사물함 중 하나 랜덤
         //SceneManager.LoadScene(14); //인슐린 페이지
-        //SceneManager.LoadScene(12);
-        //SceneManager.LoadScene(Random.Range(8, 11));
-        SceneManager.LoadScene(10);
+        //SceneManager.LoadScene(11); //OX 퀴즈
+        //SceneManager.LoadScene(8); //선잇기 퀴즈
+        //SceneManager.LoadScene(9); //선택형 퀴즈
+        //SceneManager.LoadScene(10); //드래그드랍
+        //SceneManager.LoadScene(13); //운동
 
         //현재 위치
         /*switch (GameData.board[GameData.GetCharByOrder(GameData.currentOrder).position])
@@ -122,7 +149,8 @@ public class PageMove : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
-		
-	}
+    void Update()
+    {
+
+    }
 }

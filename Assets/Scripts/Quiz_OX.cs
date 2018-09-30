@@ -40,6 +40,8 @@ public class Quiz_OX : MonoBehaviour {
     public AudioClip correctSound;
     public AudioClip incorrectSound;
 
+    public static int index;
+
     // Use this for initialization
     void Start () {
         RandomQuiz();
@@ -52,7 +54,8 @@ public class Quiz_OX : MonoBehaviour {
      */
     public void RandomQuiz()
     {
-        quiz = GameData.oxQuizzes[Random.Range(0, GameData.oxQuizzes.Length)];
+        index = Random.Range(0, GameData.oxQuizzes.Length);
+        quiz = GameData.oxQuizzes[index];
         quiz.appeard++;
     }
 
@@ -138,6 +141,7 @@ public class Quiz_OX : MonoBehaviour {
         /*popup pop anim*/
         popAnim.SetTrigger("ResultPop");
         popUpImg.sprite = Resources.Load<Sprite>("quiz/" + correctness + "_" + GameData.GetCharByOrder(GameData.currentOrder).name);
+
         quizResult.transform.localScale = open;
     }
 

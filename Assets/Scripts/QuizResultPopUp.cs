@@ -16,9 +16,11 @@ public class QuizResultPopUp : MonoBehaviour {
     /*연 상태, 닫은 상태*/
     Vector3 open, close;
 
+    /*도서관 이동 팝업*/
+    GameObject moveToLibrary;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         GetUI();
         SetUI();
 	}
@@ -27,6 +29,7 @@ public class QuizResultPopUp : MonoBehaviour {
     {
         open = new Vector3(1, 1, 1);
         close = new Vector3(0, 1, 1);
+        moveToLibrary = GameObject.Find("MoveToLibrary");
     }
 
     public void SetUI()
@@ -41,25 +44,21 @@ public class QuizResultPopUp : MonoBehaviour {
         if (transform.localScale == open)
         {
             currentTime += Time.deltaTime;
-            
         }
 
         if (currentTime > duraition)
         {
             //transform.localScale = close;
             //화면 넘어가기
-
             if (transform.GetChild(0).GetComponent<SpriteRenderer>().sprite.name.Equals("correct_" + GameData.GetCharByOrder(GameData.currentOrder).name))
             {
-                Debug.Log("?");
                 //맞았으면 보상화면
                 PageMove.MoveToQuizReward();
             }
             else
             {
-                //틀렸으면 턴 넘기기
-                GameData.TurnChange();
-                PageMove.MoveToRoulette();
+                //틀렸으면 도서관 이동 팝업 띄우기
+                moveToLibrary.transform.localScale = open;
             }
         }
     }

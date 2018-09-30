@@ -47,6 +47,8 @@ public class Quiz_Line : MonoBehaviour {
     public AudioClip correctSound;
     public AudioClip incorrectSound;
 
+    public static int index;
+
     // Use this for initialization
     void Start () {
         RandomQuiz();
@@ -117,7 +119,8 @@ public class Quiz_Line : MonoBehaviour {
 	
     public void RandomQuiz()
     {
-        quiz = GameData.lineQuizzes[UnityEngine.Random.Range(0, GameData.lineQuizzes.Length)];
+        index = UnityEngine.Random.Range(0, GameData.lineQuizzes.Length);
+        quiz = GameData.lineQuizzes[index];
     }
 
     /**

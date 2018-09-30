@@ -78,6 +78,12 @@
     <Compile Include="Assets\Scripts\InsulinNeedle.cs" />
     <Compile Include="Assets\Scripts\Inventory.cs" />
     <Compile Include="Assets\Scripts\ItemUI.cs" />
+    <Compile Include="Assets\Scripts\LearnComplete.cs" />
+    <Compile Include="Assets\Scripts\LibraryChoice.cs" />
+    <Compile Include="Assets\Scripts\LibraryDragDrop.cs" />
+    <Compile Include="Assets\Scripts\LibraryLine.cs" />
+    <Compile Include="Assets\Scripts\LibraryOX.cs" />
+    <Compile Include="Assets\Scripts\MoveToLibrary.cs" />
     <Compile Include="Assets\Scripts\NeedleHeadController.cs" />
     <Compile Include="Assets\Scripts\PageMove.cs" />
     <Compile Include="Assets\Scripts\PauseMenu.cs" />
@@ -91,6 +97,7 @@
     <Compile Include="Assets\Scripts\RouletteScene.cs" />
     <Compile Include="Assets\Scripts\RouletteSpin.cs" />
     <Compile Include="Assets\Scripts\SecretLockerRoom.cs" />
+    <Compile Include="Assets\Scripts\SetCharImg.cs" />
     <Compile Include="Assets\Scripts\ShowTurn.cs" />
     <Compile Include="Assets\Scripts\SplashController.cs" />
     <Compile Include="Assets\SmartChart\Core\Scripts\ChartDataMonitor.cs" />

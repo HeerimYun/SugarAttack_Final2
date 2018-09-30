@@ -43,6 +43,8 @@ public class Quiz_DragDrop : MonoBehaviour {
     public AudioClip correctSound;
     public AudioClip incorrectSound;
 
+    public static int index;
+
     // Use this for initialization
     void Start () {
         RandomQuiz();
@@ -55,7 +57,8 @@ public class Quiz_DragDrop : MonoBehaviour {
      */
     public void RandomQuiz()
     {
-        quiz = GameData.dragQuizzes[Random.Range(0, GameData.dragQuizzes.Length)];
+        index = Random.Range(0, GameData.dragQuizzes.Length);
+        quiz = GameData.dragQuizzes[index];
         quiz.appear++;
     }
 
