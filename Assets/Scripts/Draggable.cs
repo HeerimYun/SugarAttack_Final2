@@ -12,6 +12,14 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     private GameObject placeHolder = null;
 
+    /*Sound*/
+    AudioSource selectSound;
+
+    private void Start()
+    {
+        selectSound = GameObject.Find("QuizSection/PostItArea").GetComponent<AudioSource>();
+    }
+
     public void OnBeginDrag(PointerEventData eventData) {
         placeHolder = new GameObject();
         placeHolder.transform.SetParent( this.transform.parent );
@@ -54,6 +62,10 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         }
 
         placeHolder.transform.SetSiblingIndex(newSiblingIndex);
+
+
+        /*sound*/
+        selectSound.Play();
     }
 
     public void OnEndDrag(PointerEventData eventData) {

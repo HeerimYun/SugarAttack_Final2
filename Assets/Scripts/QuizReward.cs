@@ -14,12 +14,16 @@ public class QuizReward : MonoBehaviour {
     GameObject rewards;
     /*결과 객체*/
     GameObject result;
+    /*결과텍스트 영역*/
+    GameObject resultArea;
     /*결과 텍스트*/
     Text resultText;
     /*결과 종이 이미지*/
     Image resultPaper;
     /*캔디 이미지*/
     Image candyImg;
+    /*get Text*/
+    Image getText;
     /*캔디 개수*/
     int num;
     /*현재 캐릭터*/
@@ -27,9 +31,15 @@ public class QuizReward : MonoBehaviour {
     /*현재 캐릭터 객체*/
     Character currentChar;
 
+    /*Animation*/
+    Animator rewardShow;
+
+    /*등장시간*/
+    double durationShow = 1.24;
+
     /*실시간과 화면 머물 시간*/
-    float currentTime = 0;
-    float duraition = 3;
+    double currentTime = 0;
+    double duraition = 4;
 
     // Use this for initialization
     void Start () {
@@ -44,9 +54,12 @@ public class QuizReward : MonoBehaviour {
         rewards = GameObject.Find("Rewards");
         result = GameObject.Find("Result");
         result.transform.localScale = GameData.close;
-        resultText = GameObject.Find("TextArea/Text").GetComponent<Text>();
+        resultText = GameObject.Find("paper/TextArea/Text").GetComponent<Text>();
         resultPaper = GameObject.Find("paper").GetComponent<Image>();
         candyImg = GameObject.Find("candyImage").GetComponent<Image>();
+        getText = GameObject.Find("getText").GetComponent<Image>();
+        resultArea = GameObject.Find("paper/TextArea");
+        rewardShow = GameObject.Find("paper").GetComponent<Animator>();
         //charImg = GameObject.Find("CharacterImage").GetComponent<Image>();
         //charImg.sprite = Resources.Load<Sprite>("Characters/" + currentChar.name + "/idle/" + currentChar.name.ToLower() + "_idle_01");
     }
@@ -56,10 +69,17 @@ public class QuizReward : MonoBehaviour {
      */
     public void OnClickRewards()
     {
-        //종이 색깔 결정
-        resultPaper.sprite = Resources.Load<Sprite>("quiz_reward/" + EventSystem.current.currentSelectedGameObject.name + "paper");
+        ////종이 색깔 결정
+        //resultPaper.sprite = Resources.Load<Sprite>("quiz_reward/" + EventSystem.current.currentSelectedGameObject.name + "paper");
 
-        //펼친다.
+        if(EventSystem.current.currentSelectedGameObject.name.Equals("reward1")) {
+            rewardShow.SetTrigger("SelectReward1");
+        } else if(EventSystem.current.currentSelectedGameObject.name.Equals("reward2")) {
+            rewardShow.SetTrigger("SelectReward2");
+        } else if (EventSystem.current.currentSelectedGameObject.name.Equals("reward3")) {
+            rewardShow.SetTrigger("SelectReward3");
+        }
+
         result.transform.localScale = GameData.open;
 
         //쪽지 3개는 안보이게 한다.
@@ -67,8 +87,8 @@ public class QuizReward : MonoBehaviour {
 
         //reward 해당 사탕을 플레이어에게 준다.
         currentChar.candy += num;
-
     }
+
 
     public void SetResult()
     {
@@ -77,14 +97,20 @@ public class QuizReward : MonoBehaviour {
         resultText.text = "포도당사탕 " + num + "개 획득!";
     }
 
-    // Update is called once per frame
-    void Update () {
 
+    // Update is called once per frame
+    void Update () {       
         //결과가 펼쳐지면,
-		if (result.transform.localScale == GameData.open)
+        if (result.transform.localScale == GameData.open)
         {
             currentTime += Time.deltaTime; //시간을 흐르게 하고,
         }
+
+        if (currentTime > durationShow) {
+            candyImg.transform.localScale = GameData.open;
+            getText.transform.localScale = GameData.open;
+            resultArea.transform.localScale = GameData.open;
+        } 
 
         //화면에 머무는 시간이 지나면
         if (currentTime > duraition)

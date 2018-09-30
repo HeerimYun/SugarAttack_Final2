@@ -36,7 +36,16 @@ public class Quiz_Line : MonoBehaviour {
     /*결과 팝업*/
     GameObject quizResult;
     /*팝업 이미지*/
-    Image popUpImg;
+    SpriteRenderer popUpImg;
+
+    /*correct_particle*/
+    ParticleSystem correctParticle;
+    /*Popup pop anim*/
+    Animator popAnim;
+    /*result sound*/
+    AudioSource resultSound;
+    public AudioClip correctSound;
+    public AudioClip incorrectSound;
 
     /*퀴즈 인덱스 넘버*/
     public static int index;
@@ -72,8 +81,15 @@ public class Quiz_Line : MonoBehaviour {
 
         quizResult = GameObject.Find("QuizResult");
         quizResult.transform.localScale = GameData.close;
+        
+        popUpImg = GameObject.Find("QuizResult/Image").GetComponent<SpriteRenderer>();
 
-        popUpImg = GameObject.Find("QuizResult/Image").GetComponent<Image>();
+        correctParticle = GameObject.Find("QuizResult/correct_panpare").GetComponent<ParticleSystem>();
+        correctParticle.Pause();
+
+        popAnim = GameObject.Find("QuizResult").GetComponent<Animator>();
+
+        resultSound = GameObject.Find("QuizResult").GetComponent<AudioSource>();
     }
 
     public void SetUI()
@@ -343,12 +359,21 @@ public class Quiz_Line : MonoBehaviour {
         if (isAnswer)
         {
             correctness = "correct";
+            /*particle view*/
+            correctParticle.Play();
+            /*resultSound*/
+            resultSound.PlayOneShot(correctSound);
         }
         else
         {
             correctness = "incorrect";
+            /*particle view*/
+            correctParticle.Stop();
+            /*resultSound*/
+            resultSound.PlayOneShot(incorrectSound);
         }
-
+        /*popup pop anim*/
+        popAnim.SetTrigger("ResultPop");
         popUpImg.sprite = Resources.Load<Sprite>("quiz/" + correctness + "_" + GameData.GetCharByOrder(GameData.currentOrder).name);
         quizResult.transform.localScale = GameData.open;
     }

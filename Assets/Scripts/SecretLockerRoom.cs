@@ -25,6 +25,19 @@ public class SecretLockerRoom : MonoBehaviour {
     /*자물쇠*/
     GameObject locker;
 
+    /*Animation*/
+    Animator lockeranim;
+    Animator lockerDoorAnim;
+    Animator getItem;
+
+    /*Audio*/
+    public AudioClip lockOpenSound;
+    public AudioClip lockerOpenSound;
+    AudioSource lockSound;
+
+    //lastAnimation is play?
+    Boolean animIsDone = false;
+
     /*비밀의 사물함 열린 문*/
     GameObject door_opened;
     /*비밀의 사물함 닫힌 문*/
@@ -33,8 +46,8 @@ public class SecretLockerRoom : MonoBehaviour {
     Vector3 open = new Vector3(1, 1, 1);
     Vector3 close = new Vector3(0, 1, 1);
 
-    float currentTime = 0;
-    float duraition = 2;
+    double currentTime = 0;
+    float duraition = 4;
 
     // Use this for initialization
     void Start () {
@@ -53,6 +66,12 @@ public class SecretLockerRoom : MonoBehaviour {
 
         door_opened.transform.localScale = close;
         guideTextImg = GameObject.Find("GuideTextImg");
+
+        lockeranim = GameObject.Find("locker").GetComponent<Animator>();
+        lockerDoorAnim = GameObject.Find("RedDoor_closed").GetComponent<Animator>();
+        getItem = GameObject.Find("LockerRoom/Item").GetComponent<Animator>();
+
+        lockSound = GameObject.Find("LockerRoom/locker").GetComponent<AudioSource>();
     }
 
     /**
@@ -134,20 +153,36 @@ public class SecretLockerRoom : MonoBehaviour {
 
     public void OpenLockerDoor()
     {
-        //닫힌 문과 자물쇠 숨김
-        door_closed.transform.localScale = close;
-        locker.transform.localScale = close;
-
-        //열린문 이미지를 보이기
-        door_opened.transform.localScale = open;
+        lockeranim.SetTrigger("Pressed");
+        lockerDoorAnim.SetTrigger("Pressed");
     }
 	
 	// Update is called once per frame
 	void Update () {
-        
+        if(!lockeranim.GetCurrentAnimatorStateInfo(0).IsName("lockerStop") && !lockeranim.GetCurrentAnimatorStateInfo(0).IsName("lockerShake")) {
+            if(lockSound.clip != lockOpenSound) {
+                lockSound.clip = lockOpenSound;
+                lockSound.Play();
+            }
+        }
+
+        if (!lockerDoorAnim.GetCurrentAnimatorStateInfo(0).IsName("lockerDoorClosed") && !lockerDoorAnim.GetCurrentAnimatorStateInfo(0).IsName("lockDoorOpen")) {
+            door_opened.transform.localScale = open;
+        }
+
 		if (door_opened.transform.localScale == open)
         {
             currentTime += Time.deltaTime;
+
+            if(currentTime > 2) {
+                if (!animIsDone)
+                {
+                    getItem.SetTrigger(item.name.ToLower() + numOfItem);
+                    itemImg.sprite = Resources.Load<Sprite>("Secret_LockerRoom/empty_locker");
+                    lockSound.PlayOneShot(lockerOpenSound);
+                    animIsDone = true;
+                }
+            }
 
             if (currentTime > duraition)
             {
