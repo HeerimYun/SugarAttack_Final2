@@ -426,11 +426,11 @@ MonoBehaviour:
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: "\uC218\uC601\uC744 \uD558\uBA74\uC11C \uCCB4\uC628\uC774 \uAE08\uBC29 \uB5A8\uC5B4\uC9C8
-    \uC218 \uC788\uC73C\uB2C8 \uC870\uC2EC\uD574\uC57C \uD574\uC694!"
+    \uC218 \n\uC788\uC73C\uB2C8 \uC870\uC2EC\uD574\uC57C \uD574\uC694!"
 --- !u!222 &795971064
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -471,8 +471,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -428, y: 82}
-  m_SizeDelta: {x: 513, y: 344}
+  m_AnchoredPosition: {x: -424, y: 92}
+  m_SizeDelta: {x: 584, y: 502}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &949668078
 MonoBehaviour:
@@ -889,7 +889,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.6, y: -329}
+  m_AnchoredPosition: {x: 9, y: -339}
   m_SizeDelta: {x: 667.6, y: 123.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1226382906
@@ -924,7 +924,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC790\uC804\uAC70\uD0C0\uAE30(\uB290\uB9AC\uAC8C)"
+  m_Text: "\uBC30\uB4DC\uBBFC\uD134"
 --- !u!222 &1226382907
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1065,11 +1065,11 @@ MonoBehaviour:
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: "\uC218\uC601\uC740 \uB2E4\uB978 \uC6B4\uB3D9\uC5D0 \uBE44\uD574 \uC9E7\uC740
-    \uC2DC\uAC04 \uB3D9\uC548 \uD608\uB2F9 \uC870\uC808\uC744 \uD560 \uC218 \uC788\uB294
+    \uC2DC\uAC04 \uB3D9\uC548 \n\uD608\uB2F9 \uC870\uC808\uC744 \uD560 \uC218 \uC788\uB294
     \uC6B4\uB3D9\uC774\uC5D0\uC694!\n\uBAB8 \uC804\uCCB4\uC758 \uD53C\uB97C \uACE8\uACE0\uB8E8
     \uC804\uB2EC\uD574\uC918\uC11C\n\uC2EC\uC7A5\uACFC \uD3D0 \uAE30\uB2A5\uC744 \uAC15\uD558\uAC8C
     \uD574\uC918\uC694!"

@@ -76,7 +76,7 @@ public class Gym : MonoBehaviour {
     }
 
     /**
-     * 운동 이미지
+     * 운동 이미지 및 글자 위치 지정
      */
     private void SetWorkImg()
     {
@@ -96,7 +96,7 @@ public class Gym : MonoBehaviour {
                 imgFileName = "badminton";
                 break;
             case "달리기":
-                imgFileName = "running";
+                imgFileName = "walking";
                 break;
             case "계단 오르내리기":
                 imgFileName = "stairs";

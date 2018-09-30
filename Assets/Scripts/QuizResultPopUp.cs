@@ -16,6 +16,9 @@ public class QuizResultPopUp : MonoBehaviour {
     /*연 상태, 닫은 상태*/
     Vector3 open, close;
 
+    /*도서관 이동 팝업*/
+    GameObject moveToLibrary;
+
 	// Use this for initialization
 	void Start () {
         GetUI();
@@ -26,11 +29,13 @@ public class QuizResultPopUp : MonoBehaviour {
     {
         open = new Vector3(1, 1, 1);
         close = new Vector3(0, 1, 1);
+        moveToLibrary = GameObject.Find("MoveToLibrary");
     }
 
     public void SetUI()
     {
         transform.localScale = close;
+        moveToLibrary.transform.localScale = close;
     }
 
 	// Update is called once per frame
@@ -55,8 +60,8 @@ public class QuizResultPopUp : MonoBehaviour {
             }
             else
             {
-                //틀렸으면 도서관으로 보내기
-                PageMove.MoveToLibrary();
+                //틀렸으면 도서관 이동 팝업 띄우기
+                moveToLibrary.transform.localScale = open;
             }
         }
     }

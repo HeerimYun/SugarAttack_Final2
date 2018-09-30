@@ -82,6 +82,7 @@
     <Compile Include="Assets\Scripts\LibraryDragDrop.cs" />
     <Compile Include="Assets\Scripts\LibraryLine.cs" />
     <Compile Include="Assets\Scripts\LibraryOX.cs" />
+    <Compile Include="Assets\Scripts\MoveToLibrary.cs" />
     <Compile Include="Assets\Scripts\NeedleHeadController.cs" />
     <Compile Include="Assets\Scripts\PageMove.cs" />
     <Compile Include="Assets\Scripts\PauseMenu.cs" />
