@@ -106,7 +106,7 @@ public class PageMove : MonoBehaviour {
     {
         //SceneManager.LoadScene(Random.Range(8, 13)); //퀴즈 유형 4개, 체육관, 비밀의 사물함 중 하나 랜덤
         //SceneManager.LoadScene(14); //인슐린 페이지
-        SceneManager.LoadScene(12);
+        SceneManager.LoadScene(13);
         //SceneManager.LoadScene(Random.Range(8, 11));
 
         //현재 위치

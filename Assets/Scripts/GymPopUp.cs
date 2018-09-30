@@ -11,34 +11,43 @@ public class GymPopUp : MonoBehaviour {
     /*현재 시간*/
     float currentTime = 0;
     /*지속 시간*/
-    float duraition = 3;
+    float duraition = 2;
     /*현재 캐릭터*/
     Character currentChar;
 
-	// Use this for initialization
-	void Start () {
+    /*correct_particle*/
+    ParticleSystem correctParticle;
+
+    // Use this for initialization
+    void Start () {
         currentChar = GameData.GetCharByOrder(GameData.currentOrder);
         //현재 순서의 캐릭터 팝업으로 바꿔줌
-        transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>("Gym/" + currentChar.name + "_gym_popup");
-	}
+        this.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Gym/" + currentChar.name + "_gym_popup");
+        correctParticle = GameObject.Find("WorkDonePopup/correct_panpare").GetComponent<ParticleSystem>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		if (transform.localScale == GameData.open)
+        if (this.transform.localScale == GameData.open)
         {
+            if(correctParticle.isPaused || correctParticle.isStopped) {
+                correctParticle.Play();
+            }
             currentTime += Time.deltaTime;
 
             //화면 터치 시 바로 넘어감
             if (Input.GetMouseButtonDown(0))
             {
-                transform.localScale = GameData.close;
+                this.GetComponent<Animator>().SetTrigger("RemovePop");
+                correctParticle.Stop();
                 Gym.isWorkDone = true;
             }
         }
 
         if (currentTime > duraition)
         {
-            transform.localScale = GameData.close;
+            this.GetComponent<Animator>().SetTrigger("RemovePop");
+            correctParticle.Stop();
             Gym.isWorkDone = true;
         }
 	}
