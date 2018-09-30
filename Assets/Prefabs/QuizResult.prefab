@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 114149307457246626}
   - component: {fileID: 212278156872690772}
   - component: {fileID: 114702022601782022}
-  m_Layer: 5
+  m_Layer: 4
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 222591922453550442}
   - component: {fileID: 114429036095783174}
   - component: {fileID: 114436367671066740}
-  m_Layer: 5
+  m_Layer: 4
   m_Name: MoveToLibrary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224057547674433324}
   - component: {fileID: 212219106817714360}
-  m_Layer: 5
+  m_Layer: 4
   m_Name: PopUpImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -319,7 +319,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 114702022601782022}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -5082,7 +5082,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: bafc63f7d48af8d4e91a5a9c4b49df42, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5128,7 +5128,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 46379b6b6fd5cf34bbf79ab6c0ea0bfd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

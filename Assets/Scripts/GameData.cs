@@ -1,4 +1,4 @@
-﻿ using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,8 +9,8 @@ using UnityEngine.SceneManagement;
  * - 음식, 간식, 몬스터, 비밀의 사물함, 운동 클래스 생성
  * - 캐릭터 클래스의 혈당을 리스트로 변경
  */
-public class GameData {
-
+public class GameData
+{
     public static GameData Instance; //single tone pattern 이용(:객체 하나만 생성)
 
     //몬스터 카드 개수
@@ -25,7 +25,7 @@ public class GameData {
     public const int EXERCISE = 13;
     //아이템 종류 개수
     public const int ITEM = 4;
-    
+
     //퀴즈 타입
     public const int OX_QUIZ = 0;
     public const int CHOICE_QUIZ = 1;
@@ -67,35 +67,35 @@ public class GameData {
 
     //운동 칸 배열
     string[] exerciseName = new string[EXERCISE] { "걷기", "걷기", "테니스", "테니스", "자전거타기", "자전거타기", "자전거타기", "자전거타기", "배드민턴", "달리기", "계단 오르내리기", "체조", "수영" };
-    string[] exerciseType = new string[EXERCISE] { "(느리게)", "(빠르게)", "(혼자)", "(같이)", "(느리게)", "(보통)", "(빠르게)", "(격하게)", "", "", "", "", ""};
+    string[] exerciseType = new string[EXERCISE] { "(느리게)", "(빠르게)", "(혼자)", "(같이)", "(느리게)", "(보통)", "(빠르게)", "(격하게)", "", "", "", "", "" };
     int[] exerciseCa = new int[EXERCISE] { 17, 28, 28, 20, 17, 25, 28, 40, 20, 40, 19, 11, 45 };
 
     string[] exerciseAdvantage = new string[] { //어디에 좋을까? 에 들어가는 내용
-        "가벼운 걷기 운동은 근육과 지방이\n활발히 움직이면서 혈당을 낮춰주는\n아주 좋은 운동이에요! 가볍게\n걸으면서 몸을 움직이면 식사 조절의 스트레스도 사라져요.", //걷기
-        "테니스는 팔과 다리 몸의 모든 근육을 골고루 사용해서 활동량이 매우 큰 운동이에요! 활동량이 많기 때문에 심장혈관을 튼튼하게 해주고, 혈당도 금방 낮아져요.", //테니스
-        "자전거는 관절에 무리가 없고,\n다리의 근육을 만들어 주는\n운동이에요! 심장과 폐 기능에\n좋아서 부담 없이 혈당을 조절하기\n위해 할 수 있는 운동이에요.", //자전거타기
-        "배드민턴은 상체로는 공을 치고,\n하체는 공을 향해 뛰는 운동으로\n근육 발달에 좋은 운동이에요!\n공을 칠 때 복부의 힘이 생겨 복근을 만들어줘요!", //배드민턴
-        "달리기는 지방을 사라지게 해주고,\n식욕을 낮춰서 혈당 조절에 좋은 운동이에요!\n뇌를 깨워주고, 피를 깨끗하게 만들어주는 운동이에요!", //달리기
-        "계단 오르내리기는 허벅지, 종아리,\n발목의 근육을 만들어 주는 운동이에요!\n심장 기능이 좋아져서 몸 전체에\n골고루 피를 전달할 수 있도록 도와줘요!", //계단 오르내리기
+        "가벼운 걷기 운동은 근육과 지방이\n활발히 움직이면서 혈당을 낮춰주는\n아주 좋은 운동이에요!\n가볍게 걸으면서 몸을 움직이면\n식사 조절의 스트레스도 사라져요.", //걷기
+        "테니스는 팔, 다리 몸의 모든 근육을\n골고루 사용해서 활동량이 매우 큰\n운동이에요! 활동량이 많기 때문에\n심장혈관을 튼튼하게 해주고,\n혈당도 금방 낮아져요.", //테니스
+        "자전거는 관절에 무리가 없고,\n다리의 근육을 만들어 주는\n운동이에요! 심장과 폐 기능에\n좋아서 부담 없이 혈당을 조절\n하기 위해 할 수 있는 운동이에요.", //자전거타기
+        "배드민턴은 상체로는 공을 치고,\n하체는 공을 향해 뛰는 운동으로\n근육 발달에 좋은 운동이에요!\n공을 칠 때 복부의 힘이\n생겨 복근을 만들어줘요!", //배드민턴
+        "달리기는 지방을 사라지게 해주고,\n식욕을 낮춰서 혈당 조절에 좋은\n운동이에요! 뇌를 깨워주고, 피를\n깨끗하게 만들어주는 운동이에요!", //달리기
+        "계단 오르내리기는 허벅지, 종아리,\n발목의 근육을 만들어 주는\n운동이에요! 심장 기능이 좋아져서\n몸 전체에 골고루 피를 전달할 수\n있도록 도와줘요!", //계단 오르내리기
         "체조는 몸 전체의 근육을 골고루\n발달시켜주는 운동이에요!\n꾸준한 체조 운동은 몸을 유연하게\n만들어줘서 부상을 예방할 수 있어요!", //체조
-        "수영은 다른 운동에 비해 짧은 시간 동안 혈당 조절을 할 수 있는 운동이에요!\n몸 전체의 피를 골고루 전달해줘서\n심장과 폐 기능을 강하게 해줘요!", //수영
+        "수영은 다른 운동에 비해 짧은 시간\n동안 혈당 조절을 할 수 있는\n운동이에요! 몸 전체의 피를 골고루\n전달해줘서 심장과 폐 기능을\n강하게 해줘요!", //수영
     };
     string[] exerciseCaution = new string[] { //주의사항 에 대한 내용
         "가볍게 걸을 때도 허리를 곧게 펴고,\n바닥을 뒤꿈치부터 내딛어야 해요!", //걷기
-        "공을 사용한 운동이기 때문에 스트레칭을 꼭 해주고, 너무 무리한 운동은 저혈당의 위험이 있어요!", //테니스
+        "공을 사용한 운동이기 때문에\n스트레칭을 꼭 해주고, 너무 무리한\n운동은 저혈당의 위험이 있어요!", //테니스
         "자전거를 탈 때는 머리와 무릎,\n팔꿈치를 보호할 수 있는 보호\n장비를 꼭 착용해야 해요!", //자전거타기
         "라켓을 사용하는 운동이기 때문에\n주변 사람들과 부딪치지 않도록\n조심해야 해요!", //배드민턴
         "너무 빠르게 달리면 심장에 무리가\n갈 수 있으니 자신의 몸 상태에 맞게\n잘 체크해줘야 해요!", //달리기
-        "상체가 앞으로 구부러지지 않게\n허리를 꼿꼿이 펴고, 발바닥 전체를 딛으면서 오르내려야 해요!", //계단 오르내리기
-        "체조의 순서와 동작을 정확하게\n따라해야 운동의 효과를 더욱\n크게 만들어줘요!", //체조
-        "수영을 하면서 체온이 금방 떨어질 수 있으니 조심해야 해요!" //수영
+        "상체가 앞으로 구부러지지 않게\n허리를 꼿꼿이 펴고, 발바닥 전체를\n디디면서 오르내려야 해요!", //계단 오르내리기
+        "체조의 순서와 동작을 정확하게\n따라해야 운동의 효과를 더욱 크게\n만들어줘요!", //체조
+        "수영을 하면서 체온이 금방 떨어질\n수 있으니 조심해야 해요!" //수영
     };
 
 
     //몬스터 칸 배열
     int[] monsterScore = new int[MONSTER_CARD] { 5, 10, 20, 10, 15, 20, 5, 10, 25, 5, 20, 25, 5, 15, 20, 5, 15, 25 };
     string[] monsterName = new string[MONSTER_CARD] { "카곤", "카곤", "카곤", "글루", "글루", "글루", "케톤", "케톤", "케톤", "고이드", "고이드", "고이드", "에피", "에피", "에피", "노르", "노르", "노르" };
-    int[] monsterLevel = new int[MONSTER_CARD] { 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3};
+    int[] monsterLevel = new int[MONSTER_CARD] { 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3 };
     int[] maxCandy = new int[MONSTER_CARD] { 2, 3, 4, 1, 3, 5, 1, 4, 5, 1, 3, 5, 1, 2, 5, 1, 2, 4 };
 
     //실험
@@ -235,7 +235,7 @@ public class GameData {
         "보관이 잘 된 인슐린은 무엇일까요?",
         "엄지와 검지를 (  )CM 정도 벌려 피부를 잡아주어야해요!",
         "보관이 잘못된 인슐린을 골라주세요!",
-        "인슐린 주사 방법 중 빈칸의 순서는 무엇일까요?",
+        "인슐린 주사 방법 중 빈칸의 순서는 무엇일까요?\n인슐린 용기 소독하기 / (   )제거하기 / 용량 설정하기 / 인슐린 주사하기",
         "운동 하기 가장 좋은 시간은 언제일까?",
         "몸이 아플 때 어떻게 해야하는지 정답을 골라주세요!",
         "식사는 (  )분 이상 천천히 해야해요!",
@@ -244,7 +244,7 @@ public class GameData {
         "주사를 맞았던 자리는 (  )일 동안 맞지 않는게 좋아요!",
         "물을 많이 먹고 화장실을 자주 가는 것은 어떤 상태일까요?"
     };
-    
+
     public string[] quiz_choice_choice = new string[CHOICE_QUIZ_NUM * 4]
     {
         "열심히 몬스터를 잡아야해","인슐린 주사를 맞을까?","잠시 앉아서 휴식을 취하자","운동을 해야해",
@@ -305,7 +305,7 @@ public class GameData {
     {
         "피에 당이 많은 상태","피에 당이 부족한 상태",
         "고혈당","저혈당",
-        "짧은운동","긴운동"
+        "짧은 운동","긴 운동"
     };
     public string[] quiz_line_choices2 = new string[LINE_QUIZ_NUM * 2]
     {
@@ -361,7 +361,7 @@ public class GameData {
         "에어로빅"
     };
 
-    public int[] quiz_drag_answer_num = new int[DRAG_QUIZ_NUM] { 2,2,2,2,2,2,1 };
+    public int[] quiz_drag_answer_num = new int[DRAG_QUIZ_NUM] { 2, 2, 2, 2, 2, 2, 1 };
 
     public string[] quiz_drag_library = new string[DRAG_QUIZ_NUM]
     {
@@ -427,8 +427,9 @@ public class GameData {
     }
 
     // Use this for initialization
-    void Start () {
-	}
+    void Start()
+    {
+    }
 
     /**
      * 게임 내 필요한 데이터를 생성
@@ -442,7 +443,7 @@ public class GameData {
         SetExercise(); //운동
         SetQuiz(); //퀴즈
         SetItem(); //아이템
-        
+
 
         //PageMove의 MoveToIntro() 에서 한 번 실행
         //Debug.Log("SetData 실행");
@@ -454,9 +455,9 @@ public class GameData {
     private void SetMonsters()
     {
         monster = new Monster[MONSTER_CARD];
-        for(int i=0; i<MONSTER_CARD; i++)
+        for (int i = 0; i < MONSTER_CARD; i++)
         {
-            monster[i] = new Monster(monsterName[i], monsterLevel[i] ,monsterScore[i], maxCandy[i]);
+            monster[i] = new Monster(monsterName[i], monsterLevel[i], monsterScore[i], maxCandy[i]);
         }
     }
 
@@ -469,7 +470,7 @@ public class GameData {
         food = new Food[FOOD]; //음식 배열 생성
 
         //배열 초기화
-        for (int i=0; i<FOOD; i++)
+        for (int i = 0; i < FOOD; i++)
         {
             food[i] = new Food(foodName[i], foodQuantity[i], foodCa[i]); //데이터 넣음
         }
@@ -483,7 +484,7 @@ public class GameData {
         snack = new Snack[SNACK]; //간식 배열 생성
 
         //배열 초기화
-        for (int i=0; i<SNACK; i++)
+        for (int i = 0; i < SNACK; i++)
         {
             snack[i] = new Snack(snackName[i], snackCa[i]);
         }
@@ -497,10 +498,10 @@ public class GameData {
         exercise = new Exercise[EXERCISE]; //운동 배열 생성
         int index;
         //배열 초기화
-        for (int i=0; i<EXERCISE; i++)
+        for (int i = 0; i < EXERCISE; i++)
         {
             index = -1;
-            switch(exerciseName[i])
+            switch (exerciseName[i])
             {
                 case "걷기":
                     index = 0;
@@ -528,7 +529,7 @@ public class GameData {
                     break;
             }
 
-            exercise[i] = new Exercise(exerciseName[i], exerciseCa[i], exerciseType[i], exerciseAdvantage[index],exerciseCaution[index]);
+            exercise[i] = new Exercise(exerciseName[i], exerciseCa[i], exerciseType[i], exerciseAdvantage[index], exerciseCaution[index]);
         }
     }
 
@@ -560,7 +561,7 @@ public class GameData {
      */
     public void AddText(string[] questionArray)
     {
-        for(int i=0; i<questionArray.Length; i++)
+        for (int i = 0; i < questionArray.Length; i++)
         {
             questionArray[i] = "문제. " + questionArray[i];
         }
@@ -572,12 +573,12 @@ public class GameData {
     private void SetChoiceQuiz()
     {
         choiceQuizzes = new ChoiceQuiz[quiz_choice_question.Length];
-        
-        for (int i=0; i<quiz_choice_question.Length; i++)
+
+        for (int i = 0; i < quiz_choice_question.Length; i++)
         {
             string[] choices = new string[4];
             //정답 배열 만들기
-            for (int k=0; k<4; k++)
+            for (int k = 0; k < 4; k++)
             {
                 choices[k] = quiz_choice_choice[(i * 4) + k];
             }
@@ -606,13 +607,13 @@ public class GameData {
     {
         lineQuizzes = new LineQuiz[quiz_line_question.Length];
 
-        for (int i=0; i<quiz_line_question.Length; i++)
+        for (int i = 0; i < quiz_line_question.Length; i++)
         {
             string[] c_left = new string[2]; //왼쪽 선택지
             string[] c_right = new string[2]; //오른쪽 선택지
             string[] answer = new string[2]; //선택지에 대한 답
 
-            for (int k=0; k<2; k++)
+            for (int k = 0; k < 2; k++)
             {
                 c_left[k] = quiz_line_choices1[(i * 2) + k];
                 c_right[k] = quiz_line_choices2[(i * 2) + k];
@@ -631,17 +632,17 @@ public class GameData {
     {
         dragQuizzes = new DragQuiz[quiz_drag_question.Length];
 
-        for (int i=0; i<quiz_drag_question.Length; i++)
+        for (int i = 0; i < quiz_drag_question.Length; i++)
         {
             string[] postits = new string[quiz_drag_postit.Length]; //한 문제에 대한 포스트잇 배열 생성
             string[] answers = new string[quiz_drag_answer_num[i]]; //답 배열 생성
 
-            for(int k=0; k<6; k++) //포스트잇 텍스트
+            for (int k = 0; k < 6; k++) //포스트잇 텍스트
             {
                 postits[k] = quiz_drag_postit[i * 6 + k];
             }
 
-            for (int n=0; n< quiz_drag_answer_num[i]; n++) //답 배열 텍스트
+            for (int n = 0; n < quiz_drag_answer_num[i]; n++) //답 배열 텍스트
             {
                 answers[n] = quiz_drag_answer[i * 2 + n];
             }
@@ -658,9 +659,9 @@ public class GameData {
         item = new Item[ITEM];
 
         //배열 초기화
-        for (int i=0; i<ITEM; i++)
+        for (int i = 0; i < ITEM; i++)
         {
-            item[i] = new Item(itemNames[i],itemKNames[i], itemGI[i]);
+            item[i] = new Item(itemNames[i], itemKNames[i], itemGI[i]);
         }
     }
 
@@ -678,7 +679,7 @@ public class GameData {
 
         for (int i = 0; i < character.Length; i++)
         {
-            character[i] = new Character(playerList[i], MakeKName(playerList[i]), false, 0, 0, 0, 0, 0, 5, monsterCard, 0, bloodSugar, 0, 0, false, 0); //만든 객체 초기화
+            character[i] = new Character(playerList[i], MakeKName(playerList[i]), false, 0, 0, 0, 0, 0, 5, monsterCard, 0, bloodSugar, 0, 0, false, 0, false); //만든 객체 초기화
         }
 
         //Debug.Log("캐릭터 생성완료");
@@ -717,7 +718,7 @@ public class GameData {
     {
         Character result = null;
 
-        for (int i=0; i<character.Length; i++)
+        for (int i = 0; i < character.Length; i++)
         {
             if (character[i].order == order)
             {
@@ -744,7 +745,7 @@ public class GameData {
         }
 
         //for문을 통해 현재 캐릭터의 상태를 바꿔줌
-        for(int i=0; i<playerCount; i++)
+        for (int i = 0; i < playerCount; i++)
         {
             if (currentOrder == character[i].order)
             {
@@ -818,10 +819,12 @@ public class Character
     public bool isCurrent;
     /*입력 혈당*/
     public int inputInsulin;
+    /*도서관 한 턴 쉬기*/
+    public bool libraryTurn;
 
     //생성자
-    public Character (string name, string kName , bool abilityUsed, int order, int score, int honey, int juice, int yogurt, int candy, 
-        List<int> monsterCard, int position, List<int> bloodSugar, int highOrLowCount, int nurseCount, bool isCurrent, int inputInsulin)
+    public Character(string name, string kName, bool abilityUsed, int order, int score, int honey, int juice, int yogurt, int candy,
+        List<int> monsterCard, int position, List<int> bloodSugar, int highOrLowCount, int nurseCount, bool isCurrent, int inputInsulin, bool libraryTurn)
     {
         this.name = name;
         this.kName = kName;
@@ -833,13 +836,14 @@ public class Character
         this.yogurt = yogurt;
         this.candy = candy;
         this.monsterCard = monsterCard;
-        this.position= position;
-        this.bloodSugar= bloodSugar;
-        this.highOrLowCount= highOrLowCount;
+        this.position = position;
+        this.bloodSugar = bloodSugar;
+        this.highOrLowCount = highOrLowCount;
         this.nurseCount = nurseCount;
         this.isCurrent = isCurrent;
         this.inputInsulin = inputInsulin;
-    }   
+        this.libraryTurn = libraryTurn;
+    }
 }
 
 /**
@@ -857,7 +861,7 @@ public class Monster
     public int candy;
 
     //생성자
-    public Monster(string name, int level ,int score, int candy)
+    public Monster(string name, int level, int score, int candy)
     {
         this.name = name;
         this.level = level;
@@ -890,7 +894,7 @@ public class Food
 /**
  * 간식 클래스
  */
- public class Snack
+public class Snack
 {
     /*간식 이름*/
     public string name;
@@ -976,7 +980,7 @@ public class OXQuiz
     public string library;
 
     //생성자
-    public OXQuiz(string question,  string answer, int appeard, string library)
+    public OXQuiz(string question, string answer, int appeard, string library)
     {
         this.question = question;
         this.answer = answer;
@@ -1043,7 +1047,7 @@ public class DragQuiz
 /**
  * 비밀의 사물함 클래스
  */
- public class SecretLocker
+public class SecretLocker
 {
     /*비밀의 사물함 가이드 멘트*/
     public string guideText;
@@ -1100,5 +1104,22 @@ public class Item
         this.name = name;
         this.kName = kName;
         this.itemGI = itemGI;
+    }
+}
+
+/**
+ * 보드판 클래스
+ */
+public class Board
+{
+    /*칸 이름*/
+    public string name;
+    /*방문자 수*/
+    public int visitor;
+
+    public Board(string name, int visitor)
+    {
+        this.name = name;
+        this.visitor = visitor;
     }
 }

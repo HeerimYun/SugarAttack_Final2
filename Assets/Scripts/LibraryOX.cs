@@ -28,7 +28,6 @@ public class LibraryOX : MonoBehaviour {
         LoadQuiz();
         GetUI();
         SetUI();
-        Debug.Log("왜 실행안돼?");
 	}
 
     private void SetUI()

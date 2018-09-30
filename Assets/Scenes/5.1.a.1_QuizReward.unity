@@ -888,11 +888,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1065538148}
   m_CullTransparentMesh: 0
---- !u!224 &1090442093 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 224506384148652024, guid: fe7580ca819e1a84da6499173366cb87,
-    type: 2}
-  m_PrefabInternal: {fileID: 1532890178}
 --- !u!1 &1115333420
 GameObject:
   m_ObjectHideFlags: 0
@@ -1292,6 +1287,51 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224225238381861436, guid: fe7580ca819e1a84da6499173366cb87,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224144036677097532, guid: fe7580ca819e1a84da6499173366cb87,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224144036677097532, guid: fe7580ca819e1a84da6499173366cb87,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224766838483841180, guid: fe7580ca819e1a84da6499173366cb87,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224766838483841180, guid: fe7580ca819e1a84da6499173366cb87,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224192285126206598, guid: fe7580ca819e1a84da6499173366cb87,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224192285126206598, guid: fe7580ca819e1a84da6499173366cb87,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224501247759724936, guid: fe7580ca819e1a84da6499173366cb87,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224501247759724936, guid: fe7580ca819e1a84da6499173366cb87,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe7580ca819e1a84da6499173366cb87, type: 2}
@@ -1717,6 +1757,11 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1848699670}
   m_CullTransparentMesh: 0
+--- !u!224 &1849774751 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 224225238381861436, guid: fe7580ca819e1a84da6499173366cb87,
+    type: 2}
+  m_PrefabInternal: {fileID: 1532890178}
 --- !u!1 &1885538155
 GameObject:
   m_ObjectHideFlags: 0
@@ -1747,7 +1792,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c8b74ea5ffa66f45b07a55f757495b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  appearSound: {fileID: 8300000, guid: 400c8af982f1f48e0b2369b5bb89f46e, type: 3}
 --- !u!114 &1885538160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1816,7 +1860,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1848699671}
-  - {fileID: 1090442093}
+  - {fileID: 1849774751}
   - {fileID: 1804571081}
   - {fileID: 1115333421}
   - {fileID: 1529591725}
