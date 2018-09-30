@@ -32,7 +32,17 @@ public class Gym : MonoBehaviour {
     /*운동 완료 팝업*/
     GameObject workDone;
     /*캐릭터&차트*/
-    GameObject charAndChart;
+    GameObject charAndGraph;
+
+    /*animation*/
+    Animator bookFrontAnim;
+    Animator opendBookAnim;
+    Animator bookBackAnim;
+    Boolean openAnimCheck = false;
+    Boolean closeAnimCheck = false;
+    Boolean bookBackAnimCheck = false;
+    /*Popup pop anim*/
+    Animator popAnim;
 
     public static bool isWorkDone = false; //팝업이 종료되었는가?
     float currentTime = 0;
@@ -62,7 +72,7 @@ public class Gym : MonoBehaviour {
         workBtn.transform.localScale = GameData.open;
         workDone.transform.localScale = GameData.close;
         SetBook(BOOK_CLOSE_FRONT);
-        charAndChart.transform.localScale = GameData.close;
+        charAndGraph.transform.localScale = GameData.close;
 
         //책 내용 세팅
         //운동 이미지
@@ -122,7 +132,12 @@ public class Gym : MonoBehaviour {
         caution = GameObject.Find("Title2/Content").GetComponent<Text>();
         workBtn = GameObject.Find("WorkButton").GetComponent<Button>();
         workDone = GameObject.Find("WorkDonePopup");
-        charAndChart = GameObject.Find("CharAndChart_small");
+        charAndGraph = GameObject.Find("CharAndGraph");
+
+        bookFrontAnim = GameObject.Find("BookFront").GetComponent<Animator>();
+        opendBookAnim = GameObject.Find("BookOpened").GetComponent<Animator>();
+        bookBackAnim = GameObject.Find("BookBack").GetComponent<Animator>();
+        popAnim = GameObject.Find("WorkDonePopup").GetComponent<Animator>();
     }
 
     /**
@@ -131,8 +146,7 @@ public class Gym : MonoBehaviour {
      */
     public void OnClickBook()
     {
-        SetBook(BOOK_OPEN);
-        workBtn.interactable = true;
+        bookFrontAnim.SetTrigger("BookDisappear");
     }
 	
     public void SetBook(int state)
@@ -163,19 +177,35 @@ public class Gym : MonoBehaviour {
     public void OnClickWorkBtn()
     {
         //운동완료 팝업
-        workDone.transform.localScale = GameData.open;
+        popAnim.SetTrigger("ResultPop");
         //혈당 내리기 (내릴 때는 -값으로 전달)
         GameData.UpdateBloodSugar(currentChar, -1 * exercise.GI);
         //currentChar.bloodSugar.Add(currentChar.bloodSugar[currentChar.bloodSugar.Count - 1] - exercise.GI);
     }
-    
+
 	// Update is called once per frame
 	void Update () {
-		if(isWorkDone)
+        if(!openAnimCheck) {
+            if(!bookFrontAnim.GetCurrentAnimatorStateInfo(0).IsName("BookDefault")) {
+                opendBookAnim.SetTrigger("BookOpen");
+                workBtn.interactable = true;
+                openAnimCheck = true;
+            }
+        }
+
+        if (isWorkDone)
         {
-            SetBook(BOOK_CLOSE_BACK);
+            if (!closeAnimCheck)
+            {
+                opendBookAnim.SetTrigger("OpenedBookDisappear");
+                closeAnimCheck = true;
+            }
+            if (!bookBackAnimCheck) {
+                bookBackAnim.SetTrigger("ClosedBookAppear");
+                bookBackAnimCheck = true;
+            }
             workBtn.transform.localScale = GameData.close;
-            charAndChart.transform.localScale = GameData.open;
+            charAndGraph.transform.localScale = GameData.open;
             guideText.GetComponent<RectTransform>().sizeDelta = new Vector2(945.4f, 182);
             guideText.transform.GetChild(0).GetComponent<Text>().text = "혈당이 내려갔어요!";
 
