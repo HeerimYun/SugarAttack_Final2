@@ -62,4 +62,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/11.0_Library_Line.unity
     guid: 7d12515da752ccd48943ab9b4cba2333
+  - enabled: 1
+    path: Assets/Scenes/4.2_Insulin_body.unity
+    guid: a268aaedc9d3d2c4995b07a372ed05b3
+  - enabled: 1
+    path: Assets/Scenes/4.2_Insulin_angle.unity
+    guid: 8d0fe4178bc1fb8439f164364cdc3555
+  - enabled: 1
+    path: Assets/Scenes/4.2_Insulin_inject.unity
+    guid: b8bc39d0d38210f498f019ffcc5807ff
+  - enabled: 1
+    path: Assets/Scenes/4.7_Insulin_result.unity
+    guid: e4b72e564db0e514ea0ae9c624b9542c
   m_configObjects: {}

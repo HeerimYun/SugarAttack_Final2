@@ -38,16 +38,17 @@ public class GameData
     "출발", "몬스터", "급식실", "퀴즈", "몬스터",
     "사물함", "퀴즈", "운동", "별별상황실", "사물함",
     "몬스터","급식실","퀴즈","급식실","몬스터",
-    "급식실(stop)","퀴즈","몬스터", "별별상황실","사물함",
+    "급식실","퀴즈","몬스터", "별별상황실","사물함",
     "몬스터","운동","사물함","몬스터", "별별상황실",
-    "과학실","몬스터","퀴즈","급식실(stop)" , "몬스터",
+    "과학실","몬스터","퀴즈","급식실" , "몬스터",
     "사물함","퀴즈","몬스터","운동", "몬스터",
     "사물함","퀴즈","급식실","퀴즈", "운동",
-    "급식실(stop)","별별상황실","퀴즈","몬스터","퀴즈",
+    "급식실","별별상황실","퀴즈","몬스터","퀴즈",
     "급식실", "몬스터","과학실","운동","몬스터",
     "퀴즈","도착","도서관","보건실"};
 
-    //
+    //stop 칸
+    public int[] stopIndex = { 15,  28, 40 };
 
     //*************************************각 칸 별 정보*************************************//
 
@@ -374,9 +375,20 @@ public class GameData
         "에어로빅이 혈당을 낮추는 데 더 도움이 돼요!"
     };
 
+    //주사 맞을 신체부위
+    public static Body[] body;
+    public const int ARM = 0; //팔
+    public const int STOMACH = 1; //배
+    public const int THIGH = 2; //허벅지
+
+    //하루 총 인슐린 별 1단위당 탄수화물 처리양
+    public static int[] valPerInject= new int[] { 25, 20, 17, 14, 13, 12 };
+    //인슐린 1단위당 감소혈당
+    public static int[] downBloodRate = new int[] { 90, 72, 60, 51, 45, 42 };
+
     //캐릭터 변수
     public static Character[] character;
-
+    
     //public static bool isCharSelected = false;
 
     //public List<int> bloodSugar = new List<int>();
@@ -443,6 +455,7 @@ public class GameData
         SetExercise(); //운동
         SetQuiz(); //퀴즈
         SetItem(); //아이템
+        SetBody(); //신체부위
 
 
         //PageMove의 MoveToIntro() 에서 한 번 실행
@@ -533,6 +546,22 @@ public class GameData
         }
     }
 
+    /**
+     * 주사 맞은 신체 부위 객체 배열 생성
+     */
+    public void SetBody()
+    {
+        string[] names = { "arm", "stomach", "thigh" };
+        string[] kNames = { "팔", "배", "허벅지" };
+
+        body = new Body[3];
+
+        for (int i=0; i<3; i++)
+        {
+            body[i] = new Body(names[i], kNames[i]);
+        }
+    }
+    
     /**
      * 퀴즈 객체 배열 생성
      */
@@ -671,17 +700,16 @@ public class GameData
     public void SetCharacters()
     {
         character = new Character[playerList.Length]; //플레이어가 몇 명인지 받아서 생성
-
-        //혈당 리스트 생성, 초기 혈당은 100
-        bloodSugar = new List<int> { 100 };
         //몬스터 카드 리스트 생성
         monsterCard = new List<int>();
 
         for (int i = 0; i < character.Length; i++)
         {
-            character[i] = new Character(playerList[i], MakeKName(playerList[i]), false, 0, 0, 0, 0, 0, 5, monsterCard, 0, bloodSugar, 0, 0, false, 0, false); //만든 객체 초기화
-        }
+            //캐릭터 마다 혈당 리스트 생성, 초기 혈당은 100
+            bloodSugar = new List<int> { 100 };
 
+            character[i] = new Character(playerList[i], MakeKName(playerList[i]), false, 0, 0, 0, 0, 0, 5, monsterCard, 0, bloodSugar, 0, 0, false, 0, false, 0, false); //만든 객체 초기화
+        }
         //Debug.Log("캐릭터 생성완료");
     }
 
@@ -760,10 +788,10 @@ public class GameData
 
     /**
      * 변화한 혈당값을 리스트의 맨 끝에 추가
+     * @parameter 현재 캐릭터 객체, 증가/감소 할 혈당량 (감소량은 - 붙여 넘겨줄 것)
      */
     public static void UpdateBloodSugar(Character currentChar, int newBloodSugar)
     {
-        currentChar = GetCharByOrder(currentOrder);
         int lastIndex = currentChar.bloodSugar.Count - 1;
         int lastValue = currentChar.bloodSugar[lastIndex];
 
@@ -778,6 +806,26 @@ public class GameData
     {
         //보드 객체 생성 후, 해당 칸에 대한 속성확인
 
+    }
+
+    /**
+     * 식사 후 선택한 용량과 시간에 따라 혈당을 감소시키는 함수
+     */
+    public static void GetInsulin(int volume, int time, int foodGI, Character currentChar)
+    {
+        Character curChar = currentChar;
+
+        float vol = volume;
+        float t = time;
+        float gi = foodGI;
+        int index = (curChar.inputInsulin - 20) / 5;
+        //식후 맞아야 하는 인슐린 단위 = foodGI / valPerInject[index]
+        //총 감소 혈당량
+        int downVal = (downBloodRate[index]) * (foodGI / valPerInject[index]) / 10 * time;
+        //감소한 혈당 결과 값
+        //int result = (int)(lastValue - downVal); //현재 혈당 - 총 감소량
+        Debug.Log("인슐린 주사로 감소할 혈당 량 : " + -1 * downVal);
+        UpdateBloodSugar(curChar, -1 * downVal); //혈당 변화 업데이트: 
     }
 
     //혈당 매번 체크하여 저혈당인지 고혈당인지 체크할 것
@@ -821,10 +869,14 @@ public class Character
     public int inputInsulin;
     /*도서관 한 턴 쉬기*/
     public bool libraryTurn;
+    /*주사 부위 차례*/
+    public int bodyOrder;
+    /*도서관 한 턴 쉬어야 하는가?*/
+    public bool isLibrary;
 
     //생성자
     public Character(string name, string kName, bool abilityUsed, int order, int score, int honey, int juice, int yogurt, int candy,
-        List<int> monsterCard, int position, List<int> bloodSugar, int highOrLowCount, int nurseCount, bool isCurrent, int inputInsulin, bool libraryTurn)
+        List<int> monsterCard, int position, List<int> bloodSugar, int highOrLowCount, int nurseCount, bool isCurrent, int inputInsulin, bool libraryTurn, int bodyOrder, bool isLibrary)
     {
         this.name = name;
         this.kName = kName;
@@ -843,6 +895,8 @@ public class Character
         this.isCurrent = isCurrent;
         this.inputInsulin = inputInsulin;
         this.libraryTurn = libraryTurn;
+        this.bodyOrder = bodyOrder;
+        this.isLibrary = isLibrary;
     }
 }
 
@@ -1108,6 +1162,21 @@ public class Item
 }
 
 /**
+ * 인슐린 맞을 신체 부위
+ */
+public class Body
+{
+    public string name;
+    public string kName;
+
+    public Body(string name, string kname)
+    {
+        this.name = name;
+        this.kName = kname;
+    }
+}
+
+/**
  * 보드판 클래스
  */
 public class Board
@@ -1116,10 +1185,13 @@ public class Board
     public string name;
     /*방문자 수*/
     public int visitor;
+    /*스탑칸 인가?*/
+    public bool isStop;
 
-    public Board(string name, int visitor)
+    public Board(string name, int visitor, bool isStop)
     {
         this.name = name;
         this.visitor = visitor;
+        this.isStop = isStop;
     }
 }

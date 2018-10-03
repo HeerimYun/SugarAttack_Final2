@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -26,12 +27,28 @@ public class RouletteScene : MonoBehaviour {
 
     float currentTime = 30;
 
+    /*도서관 한 턴 쉬기 팝업*/
+    GameObject libTurnOff;
+
 	// Use this for initialization
 	void Start () {
         GetCurrentChar(); //현재 순서인 캐릭터의 객체
         GetUI(); //이미지 가져오기
         SetUI(); //이미지 씌우기
+        CheckLibraryTurnOff(); //도서관 한 턴 쉬기인지 체크
 	}
+
+    /**
+     * 도서관 쉴 턴 인가 체크
+     */
+    private void CheckLibraryTurnOff()
+    {
+        if (currentChar.isLibrary) //도서관 한 턴 쉬기 이면,
+        {
+            libTurnOff.transform.localScale = GameData.open; //팝업 펼친다.
+            currentChar.isLibrary = false; //다시 바꿔준다.
+        }
+    }
 
     public void SetUI()
     {
@@ -39,6 +56,8 @@ public class RouletteScene : MonoBehaviour {
         charImg.sprite = Resources.Load<Sprite>("Characters/" + currentChar.name + "/idle/" + currentChar.name.ToLower() + "_idle_01");
         rouletteCharacterAnim.SetTrigger(currentChar.name + "Roulette");
         turnName.text = currentChar.kName;
+
+        libTurnOff.transform.localScale = GameData.close;
     }
 
     public void GetCurrentChar()
@@ -52,6 +71,8 @@ public class RouletteScene : MonoBehaviour {
         charImg = GameObject.Find("CharacterImage").GetComponent<Image>();
         rouletteCharacterAnim = GameObject.Find("CharacterImage").GetComponent<Animator>();
         turnName = GameObject.Find("TurnName").GetComponent<Text>();
+
+        libTurnOff = GameObject.Find("Library_turnOff");
     }
 	
     /**

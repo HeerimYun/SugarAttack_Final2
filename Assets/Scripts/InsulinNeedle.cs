@@ -26,7 +26,7 @@ public class InsulinNeedle : MonoBehaviour {
     Character currentChar;
     /*시간*/
     float currentTime = 0;
-    float duraition = 5;
+    float duraition = 3;
 
 	// Use this for initialization
 	void Start () {
@@ -99,7 +99,7 @@ public class InsulinNeedle : MonoBehaviour {
         
         coachMark.transform.localScale = GameData.open;
     }
-
+    
     // Update is called once per frame
     void Update () {
         currentTime += Time.deltaTime;

@@ -26,6 +26,7 @@ public class MoveToLibrary : MonoBehaviour {
      */
     public void OnClickMoveBtn()
     {
+        current.isLibrary = true; //도서관 한 턴 쉬기 적용
         PageMove.MoveToLibrary(); //도서관으로 이동
     }
 

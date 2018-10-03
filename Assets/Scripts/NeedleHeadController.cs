@@ -1,29 +1,73 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 /**
  * 주사기의 머리부분 드래그
+ * 참고 영상 : https://www.youtube.com/watch?v=oV9JE5K_uiM
  */
-public class NeedleHeadController : MonoBehaviour {
+public class NeedleHeadController : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+{
+    Text volume;
+    public static int value = 0;
+    float dragDist = 100;
 
-    /**
-     * 드래그 하는 동안 호출되는 함수
-     */
-    private void OnMouseDrag(PointerEventData eventData)
-    {
-        Debug.Log("x 좌표: " + Input.mousePosition.x + " .y 좌표: " + Input.mousePosition.y);
-        Debug.Log("드래그중");
-    }
+    Vector2 startPoint;
+    Vector2 endPoint;
+
+    Button setBtn;
 
     // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    void Start()
+    {
+        volume = GameObject.Find("volume").GetComponent<Text>();
+    }
+
+    /**
+     * 드래그 시작 시 한 번 호출
+     */
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        startPoint = eventData.position;
+    }
+
+    /**
+     * 드래그 끝날 시 한 번 호출
+     */
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        endPoint = eventData.position;
+        GetDragMove();
+        SetVolumeText();
+    }
+
+    public void SetVolumeText()
+    {
+        volume.text = value + "";
+    }
+
+    public void GetDragMove()
+    {
+        if (startPoint.y - endPoint.y < dragDist * -1)
+        {
+            //Debug.Log("아래로 드래그, 숫자 감소 : " + (startPoint.y - endPoint.y));
+            value += 2;
+        }
+        else if (startPoint.y - endPoint.y > dragDist)
+        {
+            //Debug.Log("위로 드래그, 숫자 증가" + (startPoint.y - endPoint.y));
+            
+            if (value > 0)
+            {
+                value -= 2;
+            }
+        }
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        
+    }
 }

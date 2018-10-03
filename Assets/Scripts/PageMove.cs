@@ -127,14 +127,52 @@ public class PageMove : MonoBehaviour
         }
     }
 
-    
+    /**
+     * 4.2_Insulin_volume 인슐린 용량 설정화면으로 가기
+     */
+    public static void MoveToInsulinInVolume()
+    {
+        SceneManager.LoadScene(14);
+    }
+
+    /**
+     * 4.2_Insulin_body 인슐린 맞을 신체부위 보는 화면으로 가기
+     */
+    public static void MoveToInsulinBody()
+    {
+        SceneManager.LoadScene(19);
+    }
+
+    /**
+     * 4.2_Insulin_angle 인슐린 용량 설정화면으로 가기
+     */
+    public static void MoveToInsulinAngle()
+    {
+        SceneManager.LoadScene(20);
+    }
+
+    /**
+     * 4.2_Insulin_inject 인슐린 주입 화면으로 가기
+     */
+    public static void MoveToInsulinInject()
+    {
+        SceneManager.LoadScene(21);
+    }
+
+    /**
+     * 4.2_Insulin_result 인슐린 결과 화면으로 가기
+     */
+    public static void MoveToInsulinResult()
+    {
+        SceneManager.LoadScene(22);
+    }
 
     /**
      * 룰렛결과에 따라 
      */
     public static void Roulette()
     {
-
+        /*
         if (sceneIndex > 5)
         {
             sceneIndex = 0;
@@ -143,7 +181,8 @@ public class PageMove : MonoBehaviour
         Debug.Log("씬넘버" + sceneIndex);
         SceneManager.LoadScene(scenes[sceneIndex]);
         sceneIndex++;
-        
+        */
+        SceneManager.LoadScene(14); //인슐린 용량 설정 페이지
         //SceneManager.LoadScene(Random.Range(8, 14)); //퀴즈 유형 4개, 체육관, 비밀의 사물함 중 하나 랜덤
         //SceneManager.LoadScene(14); //인슐린 페이지
         //SceneManager.LoadScene(11); //OX 퀴즈
