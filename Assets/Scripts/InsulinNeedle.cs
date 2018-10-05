@@ -44,7 +44,7 @@ public class InsulinNeedle : MonoBehaviour {
         name.text = currentChar.kName;
         volume.name = volumeVal + "";
 
-        transform.localPosition = new Vector3(110, 85, 0);
+        transform.localPosition = new Vector3(110, 85, 0); //맨 처음 주사기 위치
         transform.localScale = GameData.open;
 
         volumeSetBtn.transform.localScale = GameData.close;
@@ -96,8 +96,12 @@ public class InsulinNeedle : MonoBehaviour {
     private void DisplayCoachMark()
     {
         //만약 이번 칸에 도착한 사람이 최초이면 보인다.
+        if (GameData.iInjectCM)
+        {
+            coachMark.transform.localScale = GameData.open;
+            GameData.iInjectCM = false; //다음부터는 코치마크를 보이지 않는다.
+        }
         
-        coachMark.transform.localScale = GameData.open;
     }
     
     // Update is called once per frame

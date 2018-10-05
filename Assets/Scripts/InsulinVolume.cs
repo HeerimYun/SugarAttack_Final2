@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,17 +13,27 @@ public class InsulinVolume : MonoBehaviour {
 
     /*설정완료 버튼*/
     Button volumeSetBtn;
+    
     /*인슐린 양*/
     int value;
+
+    float currentTime = 0;
+
+    /*코치 마크*/
+    GameObject coachMark;
+
+    Text volumeVal;
 
 	// Use this for initialization
 	void Start () {
         volumeSetBtn = GameObject.Find("VolumeSetButton").GetComponent<Button>();
+        coachMark = GameObject.Find("CoachMark");
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
         value = NeedleHeadController.value; //계속 값 갱신
+        //Debug.Log(value);
 
         //인슐량 용량에 따른 버튼 활성화 / 비활성화
         if (value > 0)
@@ -32,6 +43,14 @@ public class InsulinVolume : MonoBehaviour {
         else
         {
             volumeSetBtn.interactable = false;
+        }
+
+        if (coachMark.transform.localScale == GameData.open) //만약 코치마크가 켜져있으면,
+        {
+            if (Input.GetMouseButtonDown(0)) //터치 시
+            {
+                coachMark.transform.localScale = GameData.close; //코치마크를 닫아라
+            }
         }
 	}
 

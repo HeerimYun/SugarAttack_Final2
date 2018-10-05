@@ -45,6 +45,11 @@ public class PageMove : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetSceneByName(sceneName).buildIndex);
     }
 
+    public static string GetCurrentSceneName()
+    {
+        return SceneManager.GetActiveScene().name;
+    }
+
     /**
      * 0.0_splash -> 0.1_WaitingRoom
      */

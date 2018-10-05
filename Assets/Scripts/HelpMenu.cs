@@ -73,11 +73,15 @@ public class HelpMenu : MonoBehaviour {
     {
         //맨 처음 활성화 할 메뉴는 게임진행
         currentMenu = curMenu;
+
         curPage = 1;
 
         //아래 페이지네이션 설정
         allPage.text = pageNum[curMenu] + "";
         currentPage.text = curPage + "";
+
+        DisplayContent();
+        menu[currentMenu].isOn = true; //토글 버튼 업뎃
     }
 	
     /**
@@ -99,8 +103,8 @@ public class HelpMenu : MonoBehaviour {
                 break;
         }
 
-        SetUI(currentMenu);
-        DisplayContent();
+        SetUI(currentMenu); //UI 업뎃
+        DisplayContent(); //콘텐츠 내용 보여주기
     }
 
     /**
@@ -108,7 +112,15 @@ public class HelpMenu : MonoBehaviour {
      */
     public void OpenHelpMenu()
     {
-        SetUI(GAME_PAGE);
+        if (PageMove.GetCurrentSceneName().Equals("1.1_CharSelect")) //캐릭터 선택창에서 연 경우
+        {
+            SetUI(CHAR_PAGE); //디폴트가 캐릭터 페이지
+        }
+        else
+        {
+            SetUI(GAME_PAGE); // 그 외엔 게임설명이 디폴트
+        }
+
         gameObject.transform.localScale = open;
         DisplayContent();
     }
@@ -152,26 +164,18 @@ public class HelpMenu : MonoBehaviour {
         if (currentMenu == GAME_PAGE)
         {
             //게임페이지 관련 설명 넣을 예정
-            charImg.sprite = Resources.Load<Sprite>("helpMenu/game_menu_1");
+            charImg.sprite = Resources.Load<Sprite>("helpMenu/game_" + curPage);
         }
         else if (currentMenu == KAN_PAGE)
         {
             //칸 관련 설명 넣을 예정
-            charImg.sprite = Resources.Load<Sprite>("helpMenu/board_notComplited");
+            charImg.sprite = Resources.Load<Sprite>("helpMenu/kan_" + curPage);
         }
         else
         {
             //캐릭터 설명
-            charImg.sprite = Resources.Load<Sprite>("helpMenu/helpMenu_" + charNames[curPage-1]);
+            charImg.sprite = Resources.Load<Sprite>("helpMenu/char_" + curPage);
         }
-    }
-
-    /**
-     * 캐릭터 설명 부분 페이지마다 바꿔주기
-     */
-    public void SetCharMenu()
-    {
-
     }
 
 	// Update is called once per frame

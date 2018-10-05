@@ -21,8 +21,12 @@ public class InsulinResult : MonoBehaviour {
 
     Character currentChar;
 
-	// Use this for initialization
-	void Start () {
+    /*인슐린 용액*/
+    GameObject waterObj;
+    GameObject bubbleObj;
+
+    // Use this for initialization
+    void Start () {
         currentChar = GameData.GetCharByOrder(GameData.currentOrder);
         GetResult();
         GetUI();
@@ -33,15 +37,24 @@ public class InsulinResult : MonoBehaviour {
     {
         if (InsulinAngle.success) //각도를 성공한 경우,
         {
-            //각도 성공 시 주입여부와 상관없이 변화는 있음
-            changeBloodSugar = true;
-
+            if (InsulinInject.injectedTime == 0) //주입시간이 0인 경우
+            {
+                //혈당 변화 없음
+                changeBloodSugar = false;
+            }
+            else //주입시간이 최소 1초 이상
+            {
+                //각도 성공 시 주입여부와 상관없이 변화는 있음
+                changeBloodSugar = true;
+            }
         }
         else //각도를 실패할 경우
         {
             //혈당 변화 없음
             changeBloodSugar = false;
         }
+
+        
     }
 
     private void GetUI()
@@ -50,6 +63,8 @@ public class InsulinResult : MonoBehaviour {
         needle = GameObject.Find("Needle");
         nName = GameObject.Find("needleName").GetComponent<Text>();
         nVolume = GameObject.Find("needleVolume").GetComponent<Text>();
+        waterObj = GameObject.Find("Needle/water");
+        bubbleObj = GameObject.Find("Needle/bubbles");
     }
 
     private void SetUI()
@@ -75,6 +90,14 @@ public class InsulinResult : MonoBehaviour {
         guideText.transform.GetChild(0).GetComponent<Text>().text = content;
         nName.text = currentChar.kName;
         nVolume.text = InsulinVolume.finalValue + "";
+        needle.transform.Rotate(0, 0, InsulinAngle.angle); //이전 씬에서 설정한 각도로 세팅
+
+        //이전씬에서 주사한 만큼 인슐린 용액 남아있게 하기
+        waterObj.transform.localPosition = InsulinInject.waterPos;
+        waterObj.GetComponent<RectTransform>().sizeDelta = InsulinInject.waterSize;
+
+        //방울 위치 이전 씬과 동일하게
+        bubbleObj.transform.localPosition = InsulinInject.bubblePos;
     }
 
     /**

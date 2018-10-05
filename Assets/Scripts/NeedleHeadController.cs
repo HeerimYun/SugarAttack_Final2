@@ -11,7 +11,9 @@ using UnityEngine.EventSystems;
 public class NeedleHeadController : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     Text volume;
+
     public static int value = 0;
+
     float dragDist = 100;
 
     Vector2 startPoint;
@@ -23,6 +25,7 @@ public class NeedleHeadController : MonoBehaviour, IBeginDragHandler, IDragHandl
     void Start()
     {
         volume = GameObject.Find("volume").GetComponent<Text>();
+        value = 0; // static 이기 때문에 한번씩 초기화 필요
     }
 
     /**
@@ -50,14 +53,14 @@ public class NeedleHeadController : MonoBehaviour, IBeginDragHandler, IDragHandl
 
     public void GetDragMove()
     {
-        if (startPoint.y - endPoint.y < dragDist * -1)
+        if (startPoint.y - endPoint.y < -1 *dragDist)
         {
-            //Debug.Log("아래로 드래그, 숫자 감소 : " + (startPoint.y - endPoint.y));
+            //Debug.Log("아래서 위로 드래그, 숫자 증가 : " + (startPoint.y - endPoint.y));
             value += 2;
         }
         else if (startPoint.y - endPoint.y > dragDist)
         {
-            //Debug.Log("위로 드래그, 숫자 증가" + (startPoint.y - endPoint.y));
+            //Debug.Log("위에서 아래로 드래그, 숫자 감소" + (startPoint.y - endPoint.y));
             
             if (value > 0)
             {

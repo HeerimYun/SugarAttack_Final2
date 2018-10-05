@@ -16,6 +16,8 @@ public class InsulinBody : MonoBehaviour {
     GameObject guideText;
     /*신체부위 이미지*/
     Image bodyImg;
+    /*신체 깜빡임 표시 이미지*/
+    Image bodyBlinkImg;
     /*가이드 텍스트 사이즈*/
     float width;
 
@@ -33,6 +35,7 @@ public class InsulinBody : MonoBehaviour {
         currentChar = GameData.GetCharByOrder(GameData.currentOrder);
         guideText = GameObject.Find("GuideText");
         bodyImg = GameObject.Find("BodyImage").GetComponent<Image>();
+        bodyBlinkImg = GameObject.Find("blinkImage").GetComponent<Image>();
     }
 
     private void SetUI()
@@ -40,7 +43,7 @@ public class InsulinBody : MonoBehaviour {
         string content = "";
         string fileName = "";
 
-        switch (currentChar.bodyOrder)
+        switch (currentChar.bodyOrder) //팔, 배, 허벅지에 따라 guideText와 이미지 바꿔줌
         {
             case GameData.ARM:
                 width = 976.7f;
@@ -65,6 +68,9 @@ public class InsulinBody : MonoBehaviour {
 
         //신체 이미지 설정
         bodyImg.sprite = Resources.Load<Sprite>("InsulinNeedle/" + fileName);
+
+        //신체 깜빡일 이미지 설정
+        bodyBlinkImg.sprite = Resources.Load<Sprite>("InsulinNeedle/" + fileName + "_blink");
 
         //현재 캐릭터의 다음에 맞을 주사 부위 변경
         currentChar.bodyOrder++;

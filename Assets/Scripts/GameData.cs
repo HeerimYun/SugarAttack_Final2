@@ -431,6 +431,11 @@ public class GameData
     public static Vector3 open = new Vector3(1, 1, 1);
     public static Vector3 close = new Vector3(0, 1, 1);
 
+    /*코치마크*/
+    public static bool iVolumeCM = true;
+    public static bool iAngleCM = true;
+    public static bool iInjectCM = true;
+
     //인스턴스 없을 시 생성
     void Awake()
     {
