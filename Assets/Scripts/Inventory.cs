@@ -172,7 +172,10 @@ public class Inventory : MonoBehaviour {
     public void OpenBag()
     {
         //인벤토리 창을 펼친다.
-        inventory_content.transform.localScale = open;
+        //inventory_content.transform.localScale = open;
+
+        //애니메이션으로 인벤토리 창 열기
+        inventory_content.GetComponent<Animator>().SetTrigger("InvenOpen");
 
         //가이드 텍스트도 펼친다
         inven_guide.transform.localScale = open;
@@ -190,7 +193,10 @@ public class Inventory : MonoBehaviour {
     public void CloseBag()
     {
         //인벤토리 창을 닫는다.
-        inventory_content.transform.localScale = close;
+        //inventory_content.transform.localScale = close;
+
+        //애니메이션으로 인벤토리 창 열기
+        inventory_content.GetComponent<Animator>().SetTrigger("InvenClose");
 
         //가이드 텍스트를 닫는다
         inven_guide.transform.localScale = close;

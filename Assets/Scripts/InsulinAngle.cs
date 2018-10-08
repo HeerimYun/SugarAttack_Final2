@@ -30,6 +30,9 @@ public class InsulinAngle : MonoBehaviour {
     /*주사기 이름, 용량*/
     Text nName, nVolume;
 
+    /*Animator*/
+    Animator fingerAnim;
+
 	// Use this for initialization
 	void Start () {
         GetUI();
@@ -43,6 +46,8 @@ public class InsulinAngle : MonoBehaviour {
         coachMark = GameObject.Find("CoachMark"); //코치마크 객체 찾기
         nName = GameObject.Find("NeedleName").GetComponent<Text>();
         nVolume = GameObject.Find("NeedleValue").GetComponent<Text>();
+        fingerAnim = GameObject.Find("GuideFinger").GetComponent<Animator>();
+        fingerAnim.SetTrigger("fingerStop");
     }
 
     private void SetUI()
@@ -54,6 +59,7 @@ public class InsulinAngle : MonoBehaviour {
 
         if (GameData.iAngleCM) //코치마크가 처음이면 
         {
+            fingerAnim.SetTrigger("fingerMove");
             coachMark.transform.localScale = GameData.open; //펼치고,
             GameData.iAngleCM = false; //다음부터는 펼치지 않는다.
         }
@@ -105,6 +111,7 @@ public class InsulinAngle : MonoBehaviour {
         {
             if (Input.GetMouseButtonDown(0)) // 터치가 있을 경우
             {
+                fingerAnim.SetTrigger("fingerStop");
                 coachMark.transform.localScale = GameData.close; // 코치마크를 닫는다.
             }
         }

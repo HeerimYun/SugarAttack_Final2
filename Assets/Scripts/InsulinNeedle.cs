@@ -22,6 +22,8 @@ public class InsulinNeedle : MonoBehaviour {
     /*코치마크*/
     GameObject coachMark;
 
+    Animator coachAnim;
+
     /*현재 순서 캐릭터*/
     Character currentChar;
     /*시간*/
@@ -53,6 +55,8 @@ public class InsulinNeedle : MonoBehaviour {
         guideText.GetComponent<RectTransform>().sizeDelta = new Vector2(1259, 182);
 
         coachMark.transform.localScale = GameData.close;
+
+        coachAnim.SetTrigger("CoachStop");
     }
 
     /**
@@ -73,6 +77,7 @@ public class InsulinNeedle : MonoBehaviour {
         volumeSetBtn = GameObject.Find("VolumeSetButton").GetComponent<Button>();
         guideText = GameObject.Find("GuideText");
         coachMark = GameObject.Find("CoachMark");
+        coachAnim = GameObject.Find("Guide_finger").GetComponent<Animator>();
     }
 
     public void ZoomInsulinNeedle()
@@ -99,6 +104,7 @@ public class InsulinNeedle : MonoBehaviour {
         if (GameData.iInjectCM)
         {
             coachMark.transform.localScale = GameData.open;
+            coachAnim.SetTrigger("CoachMove");
             GameData.iInjectCM = false; //다음부터는 코치마크를 보이지 않는다.
         }
         

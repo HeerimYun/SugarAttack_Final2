@@ -10,8 +10,9 @@ public class SetCharImg : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         charName = GameData.GetCharByOrder(GameData.currentOrder).name;
-        transform.GetComponent<Image>().sprite = Resources.Load<Sprite>("Library/" + charName + "_library");
-        transform.GetComponent<Image>().SetNativeSize();
+        //transform.GetComponent<Image>().sprite = Resources.Load<Sprite>("Library/" + charName + "_library");
+        gameObject.GetComponent<Animator>().SetTrigger("lib" + charName);
+        //transform.GetComponent<Image>().SetNativeSize();
 
     }
 	

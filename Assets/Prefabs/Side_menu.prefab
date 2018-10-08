@@ -246,6 +246,7 @@ GameObject:
   - component: {fileID: 114190318548653918}
   - component: {fileID: 114824572280031704}
   - component: {fileID: 82693047538478106}
+  - component: {fileID: 95898792441432270}
   m_Layer: 5
   m_Name: HoneyBtn
   m_TagString: Untagged
@@ -413,6 +414,7 @@ GameObject:
   - component: {fileID: 114498586139192512}
   - component: {fileID: 114373271432115004}
   - component: {fileID: 82943029631230258}
+  - component: {fileID: 95605861647796176}
   m_Layer: 5
   m_Name: JuiceBtn
   m_TagString: Untagged
@@ -428,6 +430,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 224741232270886020}
+  - component: {fileID: 95547683433896638}
   m_Layer: 0
   m_Name: Inventory_content
   m_TagString: Untagged
@@ -464,6 +467,7 @@ GameObject:
   - component: {fileID: 114955886705647492}
   - component: {fileID: 114213745109735660}
   - component: {fileID: 82271962601996322}
+  - component: {fileID: 95747462113139844}
   m_Layer: 5
   m_Name: CandyBtn
   m_TagString: Untagged
@@ -617,6 +621,7 @@ GameObject:
   - component: {fileID: 114070811987224894}
   - component: {fileID: 114240462362578512}
   - component: {fileID: 82660139232909994}
+  - component: {fileID: 95471642583907884}
   m_Layer: 5
   m_Name: YogurtBtn
   m_TagString: Untagged
@@ -636,6 +641,7 @@ GameObject:
   - component: {fileID: 114018781717238950}
   - component: {fileID: 114055505247080940}
   - component: {fileID: 82918766778599258}
+  - component: {fileID: 95176830412808462}
   m_Layer: 0
   m_Name: useItemBtn
   m_TagString: Untagged
@@ -1441,6 +1447,114 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &95176830412808462
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1863322432128188}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7296ea77cd3154bffa5adf64d9fb84c0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!95 &95471642583907884
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1852039820910204}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7296ea77cd3154bffa5adf64d9fb84c0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!95 &95547683433896638
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1564727208224738}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3f84ec2483eb94450a9aaa372a2f212d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!95 &95605861647796176
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1553225611258186}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7296ea77cd3154bffa5adf64d9fb84c0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!95 &95747462113139844
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1606284664015940}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7296ea77cd3154bffa5adf64d9fb84c0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!95 &95898792441432270
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1371299626361530}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7296ea77cd3154bffa5adf64d9fb84c0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114018781717238950
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1485,7 +1599,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 0
+  m_Transition: 3
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -1498,10 +1612,10 @@ MonoBehaviour:
     m_PressedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_DisabledTrigger: Disabled
+    m_NormalTrigger: 
+    m_HighlightedTrigger: 
+    m_PressedTrigger: InvenBtnClicked
+    m_DisabledTrigger: 
   m_Interactable: 1
   m_TargetGraphic: {fileID: 114018781717238950}
   m_OnClick:
@@ -1800,6 +1914,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 95747462113139844}
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: InvenBtnClicked
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114240462362578512
@@ -1862,6 +1987,17 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 95471642583907884}
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: InvenBtnClicked
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -2088,10 +2224,10 @@ MonoBehaviour:
     m_PressedSprite: {fileID: 21300000, guid: d700dd2b3f2db2a46b3804a5477ca143, type: 3}
     m_DisabledSprite: {fileID: 21300000, guid: 0824843c5c4c8164d8ca32276fd7bbcc, type: 3}
   m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_DisabledTrigger: Disabled
+    m_NormalTrigger: JuiceNormal
+    m_HighlightedTrigger: JuiceHighlighted
+    m_PressedTrigger: JuicePressed
+    m_DisabledTrigger: JuiceDisabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 114498586139192512}
   m_OnClick:
@@ -2117,6 +2253,17 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 95605861647796176}
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: InvenBtnClicked
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -2681,6 +2828,17 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 95898792441432270}
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: InvenBtnClicked
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -3271,13 +3429,13 @@ RectTransform:
   m_Children:
   - {fileID: 224914756716870438}
   m_Father: {fileID: 224741232270886020}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 46, y: -684.6}
+  m_AnchoredPosition: {x: 147, y: -789.6}
   m_SizeDelta: {x: 202, y: 210}
-  m_Pivot: {x: 0, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224084041775138350
 RectTransform:
   m_ObjectHideFlags: 1
@@ -3439,13 +3597,13 @@ RectTransform:
   m_Children:
   - {fileID: 224553027083854718}
   m_Father: {fileID: 224741232270886020}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 46, y: -1320}
+  m_AnchoredPosition: {x: 146.5, y: -1425}
   m_SizeDelta: {x: 201, y: 210}
-  m_Pivot: {x: 0, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224416391278628560
 RectTransform:
   m_ObjectHideFlags: 1
@@ -3763,10 +3921,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 1, z: 1}
   m_Children:
   - {fileID: 224553428551448686}
-  - {fileID: 224851414897582606}
-  - {fileID: 224024199918907352}
-  - {fileID: 224800958567627414}
   - {fileID: 224395429568741190}
+  - {fileID: 224800958567627414}
+  - {fileID: 224024199918907352}
+  - {fileID: 224851414897582606}
   m_Father: {fileID: 224084652403805038}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3843,13 +4001,13 @@ RectTransform:
   m_Children:
   - {fileID: 224970475393394442}
   m_Father: {fileID: 224741232270886020}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 46, y: -1005.7}
+  m_AnchoredPosition: {x: 144, y: -1108.7}
   m_SizeDelta: {x: 196, y: 206}
-  m_Pivot: {x: 0, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224816214864197066
 RectTransform:
   m_ObjectHideFlags: 1
@@ -3880,13 +4038,13 @@ RectTransform:
   m_Children:
   - {fileID: 224757064652005924}
   m_Father: {fileID: 224741232270886020}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 46, y: -367.3}
+  m_AnchoredPosition: {x: 147, y: -471.8}
   m_SizeDelta: {x: 202, y: 209}
-  m_Pivot: {x: 0, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224877628339260108
 RectTransform:
   m_ObjectHideFlags: 1

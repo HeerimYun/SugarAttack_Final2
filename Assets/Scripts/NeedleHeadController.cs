@@ -21,10 +21,14 @@ public class NeedleHeadController : MonoBehaviour, IBeginDragHandler, IDragHandl
 
     Button setBtn;
 
+    //Animator
+    Animator headAnim;
+
     // Use this for initialization
     void Start()
     {
         volume = GameObject.Find("volume").GetComponent<Text>();
+        headAnim = gameObject.GetComponent<Animator>();
         value = 0; // static 이기 때문에 한번씩 초기화 필요
     }
 
@@ -57,6 +61,7 @@ public class NeedleHeadController : MonoBehaviour, IBeginDragHandler, IDragHandl
         {
             //Debug.Log("아래서 위로 드래그, 숫자 증가 : " + (startPoint.y - endPoint.y));
             value += 2;
+            headAnim.SetTrigger("Increase");
         }
         else if (startPoint.y - endPoint.y > dragDist)
         {
@@ -65,6 +70,7 @@ public class NeedleHeadController : MonoBehaviour, IBeginDragHandler, IDragHandl
             if (value > 0)
             {
                 value -= 2;
+                headAnim.SetTrigger("Decrease");
             }
         }
     }

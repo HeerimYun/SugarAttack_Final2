@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class MoveToLibrary : MonoBehaviour {
 
     /*팝업 이미지*/
-    SpriteRenderer popupImg;
+    Animator popupImg;
 
     /*현재 순서 캐릭터*/
     Character current;
@@ -17,8 +17,9 @@ public class MoveToLibrary : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         current = GameData.GetCharByOrder(GameData.currentOrder); //현재 캐릭터
-        popupImg = GameObject.Find("PopUpImage").GetComponent<SpriteRenderer>(); //팝업 이미지
-        popupImg.sprite = Resources.Load<Sprite>("Library/" + current.name + "_library_popup"); //해당 캐릭터의 팝업으로 바꿔줌
+        popupImg = GameObject.Find("PopUpImage").GetComponent<Animator>(); //팝업 이미지
+
+        popupImg.SetTrigger("lib" + current.name + "Run");
 	}
 	
     /**

@@ -21,6 +21,7 @@ public class InsulinVolume : MonoBehaviour {
 
     /*코치 마크*/
     GameObject coachMark;
+    GameObject guideFinger;
 
     Text volumeVal;
 
@@ -28,6 +29,7 @@ public class InsulinVolume : MonoBehaviour {
 	void Start () {
         volumeSetBtn = GameObject.Find("VolumeSetButton").GetComponent<Button>();
         coachMark = GameObject.Find("CoachMark");
+        guideFinger = GameObject.Find("Guide_finger");
     }
 
     // Update is called once per frame
@@ -49,6 +51,7 @@ public class InsulinVolume : MonoBehaviour {
         {
             if (Input.GetMouseButtonDown(0)) //터치 시
             {
+                guideFinger.GetComponent<Animator>().SetTrigger("CoachStop");
                 coachMark.transform.localScale = GameData.close; //코치마크를 닫아라
             }
         }

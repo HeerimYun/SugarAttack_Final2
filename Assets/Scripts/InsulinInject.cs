@@ -22,6 +22,12 @@ public class InsulinInject : MonoBehaviour {
     int injectionTime = 10; // 10초
     int timerTime = 10;
 
+    /*Inject Button image*/
+    Image injectBtn;
+
+    /*particle control*/
+    ParticleSystem sucessParticle;
+
     /*인슐린 주사*/
     GameObject needle;
     /*주사기에 쓰인 이름*/
@@ -81,6 +87,8 @@ public class InsulinInject : MonoBehaviour {
         waterAnim = GameObject.Find("Needle/water").GetComponent<Animator>();
         waterObj = GameObject.Find("Needle/water");
         bubbleObj = GameObject.Find("Needle/bubbles");
+        injectBtn = GameObject.Find("ButtonImage").GetComponent<Image>();
+        sucessParticle = GameObject.Find("ResultImg/correct_panpare").GetComponent<ParticleSystem>();
     }
 
     private void SetUI()
@@ -101,11 +109,20 @@ public class InsulinInject : MonoBehaviour {
             shadow.transform.localScale = GameData.close; //버튼의 확대 shadow를 숨긴다.
         }
 
+        /*timer sound*/
+        timer.GetComponent<AudioSource>().enabled = false;
+
+
         if (GameData.iInjectCM) //코치마크가 처음이면
         {
             coachMark.transform.localScale = GameData.open; //코치마크 열기
+            /*coachAnim*/
+            coachMark.GetComponent<Animator>().SetTrigger("CoachMove");
             GameData.iInjectCM = false; //다음부터는 코치마크 열지 않음
         }
+
+        /*particle controll*/
+        sucessParticle.Pause();
     }
 
     // Update is called once per frame
@@ -113,7 +130,11 @@ public class InsulinInject : MonoBehaviour {
 
 		if (pressed) //용량 주입 버튼이 눌리는 경우
         {
+            injectBtn.sprite = Resources.Load<Sprite>("Insulin_inject/inject_button_image_push");
             currentTime += Time.deltaTime; //시간을 흐르게 한다.
+
+            /*timer sound*/
+            timer.GetComponent<AudioSource>().enabled = true;
         }
 
         if (timerTime - (int)currentTime >= 0) //타이머 시간이 0 보다 크면,
@@ -127,13 +148,16 @@ public class InsulinInject : MonoBehaviour {
             success = true; //성공여부 true
             //Debug.Log("주입 성공 여부 : " + success);
             DisplayResultPopUp(); //성공여부 결과 팝업 펼치기
+
+            /*timer sound*/
+            timer.GetComponent<AudioSource>().enabled = false;
         }
 
         if (resultImg.transform.localScale == GameData.open)
         {
             currentTime2 += Time.deltaTime;
 
-            if (currentTime2 > 2)
+            if (currentTime2 > 4)
             {
                 PageMove.MoveToInsulinResult();
             }
@@ -143,6 +167,8 @@ public class InsulinInject : MonoBehaviour {
         {
             if (Input.GetMouseButtonDown(0)) //터치할 경우
             {
+                /*coachAnim*/
+                coachMark.GetComponent<Animator>().SetTrigger("CoachEnd");
                 coachMark.transform.localScale = GameData.close; // 코치마크를 닫는다.
             }
         }
@@ -155,6 +181,11 @@ public class InsulinInject : MonoBehaviour {
     {
         //Debug.Log("버튼 떼짐");
         injectedTime = (int)currentTime; //실패한 경우의 주입한 시간 저장
+
+        /*timer sound*/
+        timer.GetComponent<AudioSource>().enabled = false;
+
+        injectBtn.sprite = Resources.Load<Sprite>("Insulin_inject/inject_button_image");
 
         //현재 물 이미지의 양, 위치 저장
         waterPos = waterObj.transform.localPosition;
@@ -198,15 +229,17 @@ public class InsulinInject : MonoBehaviour {
         if (success && InsulinAngle.success) //각도, 주입 둘 다 성공하면,
         {
             //성공했어요 코치마크
-            resultImg.transform.GetChild(0).GetComponent<Image>().sprite
+            resultImg.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite
                 = Resources.Load<Sprite>("Insulin_inject/" + currentChar.name + "_sucess");
+            sucessParticle.Play();
         }
         else //둘 다 혹은 하나라도 성공 못 한 경우
         {
             //실패했어요 코치마크
-            resultImg.transform.GetChild(0).GetComponent<Image>().sprite
+            resultImg.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite
                 = Resources.Load<Sprite>("Insulin_inject/" + currentChar.name + "_fail");
+            sucessParticle.Stop();
         }
-
+        resultImg.GetComponent<Animator>().SetTrigger("ResultPop");
     }
 }

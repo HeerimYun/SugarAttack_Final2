@@ -51,6 +51,9 @@ TagManager:
   - name: Effect
     uniqueID: 2534930127
     locked: 0
+  - name: Popup
+    uniqueID: 1895845039
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
