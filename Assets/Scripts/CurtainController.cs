@@ -29,6 +29,7 @@ public class CurtainController : MonoBehaviour {
         width = curtain.GetComponent<RectTransform>().rect.width;
         height = curtain.GetComponent<RectTransform>().rect.height;
         curtain.GetComponent<RectTransform>().sizeDelta = new Vector2(width * (1 - blueHandler.value), height);
+        blueHandler.value = GameObject.Find("BGM").GetComponent<AudioSource>().volume;
     }
 	
 	// Update is called once per frame

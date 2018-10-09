@@ -187,13 +187,13 @@ public class PageMove : MonoBehaviour
         SceneManager.LoadScene(scenes[sceneIndex]);
         sceneIndex++;
         */
-        SceneManager.LoadScene(14); //인슐린 용량 설정 페이지
+        //SceneManager.LoadScene(14); //인슐린 용량 설정 페이지
         //SceneManager.LoadScene(Random.Range(8, 14)); //퀴즈 유형 4개, 체육관, 비밀의 사물함 중 하나 랜덤
         //SceneManager.LoadScene(14); //인슐린 페이지
         //SceneManager.LoadScene(11); //OX 퀴즈
         //SceneManager.LoadScene(8); //선잇기 퀴즈
         //SceneManager.LoadScene(9); //선택형 퀴즈
-        //SceneManager.LoadScene(10); //드래그드랍
+        SceneManager.LoadScene(10); //드래그드랍
         //SceneManager.LoadScene(13); //운동
         //SceneManager.LoadScene(12); //비밀의사물함
         

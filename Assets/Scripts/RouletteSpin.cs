@@ -57,8 +57,8 @@ public class RouletteSpin : MonoBehaviour {
             spinBtnPress = false;
         }
         transform.Rotate(0, 0, spinSpeed); //원판 z축 rotating
-        //spinSpeed *= 0.99f; //점점 속도 느리게 하기
-        spinSpeed *= Random.Range(0.99f, 0.999f); //점점 속도 느리게 하기
+        spinSpeed *= 0.987f; //점점 속도 느리게 하기 -> 7초 정도 걸리도록 수정
+        //spinSpeed *= Random.Range(0.99f, 0.999f); //점점 속도 느리게 하기 -> 17초
 
         if (spinSpeed < 0.1 && spinSpeed > 0)
         {
@@ -128,7 +128,8 @@ public class RouletteSpin : MonoBehaviour {
         rouletteResult.text = "?";
 
         //sound + .8sec delay
-        source.Play(35280);
+        //source.Play(35280);
+        source.Play();
     }
 
     /**

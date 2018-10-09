@@ -23,7 +23,7 @@ public class RouletteScene : MonoBehaviour {
     Animator rouletteCharacterAnim;
 
     /*룰렛씬 머무는 시간*/
-    float duraition = 20;
+    float duraition = 10; //10초로 수정
 
     float currentTime = 30;
 
@@ -76,7 +76,7 @@ public class RouletteScene : MonoBehaviour {
     }
 	
     /**
-     * 버튼 누르면 24초 정도 타이머를 센다
+     * 버튼 누르면 타이머를 센다
      */
     public void StartTimer()
     {
